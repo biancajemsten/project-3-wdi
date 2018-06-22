@@ -51,8 +51,8 @@ Bundle.create([{
   bar: {
     name: 'The Alchemist',
     location: {
-      lat: 58.4358,
-      lng: 3.9576
+      lat: 53.4358,
+      lng: 2.9576
     }
   },
   restaurant: {
@@ -73,7 +73,7 @@ Bundle.create([{
       lng: 0.1169
     }
   },
-  pub: {
+  bar: {
     name: String,
     location: {
       lat: Number,
