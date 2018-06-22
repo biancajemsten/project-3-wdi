@@ -5,3 +5,5 @@
 Bella Dear
 
 -Bianca Jemsten
+
+- James Newell
