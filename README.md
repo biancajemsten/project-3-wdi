@@ -5,8 +5,6 @@
 
 - Bianca Jemsten
 
-Hey what's up hello
-
 - James Newell
 
 Hello hello hello
