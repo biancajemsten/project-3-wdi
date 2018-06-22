@@ -1,9 +1,10 @@
 # Project 3
 ## A MEAN Stack App
 
+- Bella Dear
 
-Bella Dear
+- Bianca Jemsten
 
--Bianca Jemsten
+Hey what's up hello
 
-Hey what's up hello 
+- James Newell
