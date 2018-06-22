@@ -23,7 +23,7 @@ const bundleSchema = new mongoose.Schema({
       lng: Number
     }
   },
-  Creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
 
 module.exports = mongoose.model('Bundle', bundleSchema);
