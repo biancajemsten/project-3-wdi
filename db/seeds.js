@@ -8,30 +8,33 @@ mongoose.connect(dbURI, (err, db) => {
   db.dropDatabase();
 
   User.create([{
-    firstname: 'Arabella' ,
+    firstname: 'Arabella',
     lastname: 'Dear',
     email: 'ab@test.com',
-    password: '1234' ,
+    password: '1234',
+    passwordConfirmation: '1234',
     location: 'Scotland',
     musicgenres: 'Jazz'
   },
   {
-    firstname: 'Bianca' ,
+    firstname: 'Bianca',
     lastname: 'Jemsten',
     email: 'bj@test.com',
-    password: '1234' ,
+    password: '1234',
+    passwordConfirmation: '1234',
     location: 'Sweden',
     musicgenres: 'Swedish Pop'
   },
   {
-    firstname: 'James' ,
+    firstname: 'James',
     lastname: 'Newell',
-    email: 'ab@test.com',
-    password: '1234' ,
+    email: 'jn@test.com',
+    password: '1234',
+    passwordConfirmation: '1234',
     location: 'London',
     musicgenres: 'Metal'
   }])
-    .then(
-      console.log('User(s) created')
-    );
+    .then(users => console.log(`${users.length} User(s) created`))
+    .catch(err => console.log(err))
+    .finally(() =>  mongoose.connection.close());
 });
