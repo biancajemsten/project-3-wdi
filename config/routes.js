@@ -3,11 +3,12 @@ const router = require('express').Router();
 const user = require('../controllers/users');
 const auth = require('../controllers/auth');
 const skiddle = require('../controllers/skiddle');
+const secureRoute = require('../lib/secureRoute');
 
 
 
-router.get('/user/:id', user.show);
-router.put('/user/:id/edit', user.update);
+router.get('/user/:id',secureRoute, user.show);
+router.put('/user/:id/edit', secureRoute, user.update);
 
 router.get('/events', skiddle.eventFinder);
 
