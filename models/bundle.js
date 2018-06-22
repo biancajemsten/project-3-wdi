@@ -5,22 +5,22 @@ const bundleSchema = new mongoose.Schema({
     name: String,
     date: String,
     location: {
-      lat: { type: Number, required: true},
-      lng: { type: Number, required: true}
+      lat: Number,
+      lng: Number
     }
   },
   Pub: {
     name: String,
     location: {
-      lat: { type: Number, required: true},
-      lng: { type: Number, required: true}
+      lat: Number,
+      lng: Number
     }
   },
   Restaurant: {
     name: String,
     location: {
-      lat: { type: Number, required: true},
-      lng: { type: Number, required: true}
+      lat: Number,
+      lng: Number
     }
   },
   Creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
