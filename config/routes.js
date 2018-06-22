@@ -1,13 +1,13 @@
 const router = require('express').Router();
 // const bundles = require('../controllers/bundles');
-const user = require('../controllers/user');
+const user = require('../controllers/users');
 const auth = require('../controllers/auth');
 const skiddle = require('../controllers/skiddle');
 
 
 
 router.get('/user/:id', user.show);
-
+router.put('/user/:id/edit', user.update);
 
 router.get('/events', skiddle.eventFinder);
 
