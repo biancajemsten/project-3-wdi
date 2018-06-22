@@ -6,19 +6,19 @@ const skiddle = require('../controllers/skiddle');
 const secureRoute = require('../lib/secureRoute');
 const googlePlaces = require('../controllers/googlePlaces');
 
-router.post('/bundles', bundles.create);
+router.post('/bundles', secureRoute, bundles.create);
 
 router.route('/bundles/:id')
   .get(bundles.show)
-  .put(bundles.update)
-  .delete(bundles.delete);
+  .put(secureRoute, bundles.update)
+  .delete(secureRoute, bundles.delete);
 
 router.get('/user/:id',secureRoute, user.show);
 router.put('/user/:id/edit', secureRoute, user.update);
 
 router.get('/events', skiddle.eventFinder);
 
-router.get('/findPlaces', googlePlaces.findGooglePlaces); 
+router.get('/findPlaces', googlePlaces.findGooglePlaces);
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);
