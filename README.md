@@ -1,9 +1,8 @@
 # Project 3
 ## A MEAN Stack App
 
+- Bella Dear
 
-Bella Dear
-
--Bianca Jemsten
+- Bianca Jemsten
 
 - James Newell
