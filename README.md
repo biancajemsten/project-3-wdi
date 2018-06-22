@@ -1,2 +1,4 @@
 # Project 3
-## A MEAN Stack App 
+## A MEAN Stack App
+
+Bella Dear
