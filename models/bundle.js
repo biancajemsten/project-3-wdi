@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const bundleSchema = new mongoose.Schema({
-  Event: {
+  event: {
     name: String,
     date: String,
     location: {
@@ -9,14 +9,14 @@ const bundleSchema = new mongoose.Schema({
       lng: Number
     }
   },
-  Pub: {
+  pub: {
     name: String,
     location: {
       lat: Number,
       lng: Number
     }
   },
-  Restaurant: {
+  restaurant: {
     name: String,
     location: {
       lat: Number,
