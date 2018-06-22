@@ -9,7 +9,7 @@ const bundleSchema = new mongoose.Schema({
       lng: Number
     }
   },
-  pub: {
+  bar: {
     name: String,
     location: {
       lat: Number,
