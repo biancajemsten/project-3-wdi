@@ -1,0 +1,14 @@
+<h2 is-2 title>Create a bundle</h2>
+<form>
+  <div class="field">
+    <input class="input" name="search" placeholder="What event are you going to?" ng-model="search"/>
+    <button class="button" name="button" ng-click="searchEvents()">Search</button>
+  </div>
+</form>
+
+<div class="columns is-multiline">
+    <div class="column is-one-third-desktop is-half-tablet" ng-repeat="event in events | filter: search">
+      {{event.eventname}}
+      {{}}
+    </div>
+</div>

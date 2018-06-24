@@ -16,8 +16,13 @@ function Router($stateProvider, $urlRouterProvider){
     })
     .state('bundlesShow', {
       url: '/bundles/:id',
-      templateUrl: 'views/bundles/show.html',
+      templateUrl: './views/bundles/show.html',
       controller: 'BundlesShowCtrl'
+    })
+    .state('bundlesNew', {
+      url: '/bundles/new',
+      templateUrl: './views/bundles/new.html',
+      controller: 'BundlesNewCtrl'
     });
 
   $urlRouterProvider.otherwise('/');
