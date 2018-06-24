@@ -22,7 +22,8 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.1.6",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "satellizer": "^0.15.5"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

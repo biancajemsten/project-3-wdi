@@ -17,8 +17,6 @@ userSchema.virtual('bundles', {
   ref: 'Bundle'
 });
 
-// user virtual for password passwordConfirmation
-
 
 userSchema.virtual('passwordConfirmation')
   .set(function setPasswordConfirmaion(passwordConfirmation){
