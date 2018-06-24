@@ -3,7 +3,7 @@ function findGooglePlaces(req, res, next){
 
   rp({
     method: 'GET',
-    url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&key=AIzaSyDoFQd8oippLlkVlWztrh2rGfq4RGMjLqQ',
+    url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.query.lat},${req.query.lng}&radius=${req.query.radius}&type=restaurant&key=AIzaSyDoFQd8oippLlkVlWztrh2rGfq4RGMjLqQ`,
     json: true
   })
     .then(response => res.json(response))

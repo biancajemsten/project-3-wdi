@@ -7,8 +7,33 @@
 </form>
 
 <div class="columns is-multiline">
-    <div class="column is-one-third-desktop is-half-tablet" ng-repeat="event in events | filter: search">
-      {{event.eventname}}
-      {{}}
+    <div class="column is-3-desktop is-4-tablet" ng-repeat="event in events | filter: search">
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <form>
+              <h6 class="title is-6">{{event.eventname}}</h6>
+              <p><strong>Venue: </strong> {{event.venue.name}}</p>
+              <p><strong>Date: </strong> {{event.date}}</p>
+              <p><strong>Ticket Price: </strong> {{event.entryprice}}</p>
+              <button class="button" name="button" ng-click="choseEvent(event)">Pick this event</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+</div>
+<div class="columns-is-multiline">
+  <div class="column" ng-repeat="restaurant in restaurants">
+    <div class="card">
+      <div class="card-content">
+        <h6 class="title is-6">{{restaurant.name}}</h6>
+        <p><strong>Price level: </strong> {{restaurant.price_level}}</p>
+        <p><strong>Rating: </strong> {{event.rating}}</p>
+    </div>
+
+    </div>
+
+  </div>
+
 </div>
