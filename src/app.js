@@ -1,6 +1,8 @@
 import angular from 'angular';
-
+import '@uirouter/angularjs';
 import Router from './config/routes';
 
-angular.module('bundle-api', ['angular'])
-  .config(Router); 
+import 'bulma';
+
+angular.module('bundleApi', ['ui.router'])
+  .config(Router);
