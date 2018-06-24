@@ -7,6 +7,7 @@ import Router from './config/routes';
 import Auth from './config/satellizer';
 
 import 'bulma';
+import './scss/main.scss';
 
 import BundlesShowCtrl from './controllers/bundles/show';
 import BundlesNewCtrl from './controllers/bundles/new';

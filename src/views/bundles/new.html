@@ -6,7 +6,7 @@
   </div>
 </form>
 
-<div class="columns is-multiline">
+<div class="columns is-multiline" ng-class="{ 'hide': hideEvents }">
     <div class="column is-3-desktop is-4-tablet" ng-repeat="event in events | filter: search">
       <div class="card">
         <div class="card-content">
@@ -23,17 +23,43 @@
       </div>
     </div>
 </div>
-<div class="columns-is-multiline">
-  <div class="column" ng-repeat="restaurant in restaurants">
-    <div class="card">
+<div class="columns">
+  <div class="column is-one-third" ng-class="{ 'hide': !hideEvents}">
+    <div class="card" >
       <div class="card-content">
-        <h6 class="title is-6">{{restaurant.name}}</h6>
-        <p><strong>Price level: </strong> {{restaurant.price_level}}</p>
-        <p><strong>Rating: </strong> {{event.rating}}</p>
+        <div class="content">
+          <form>
+            <h6 class="title is-6">{{pickedEvent.name}}</h6>
+            <p><strong>Venue: </strong> {{pickedEvent.venue}}</p>
+            <p><strong>Date: </strong> {{pickedEvent.date}}</p>
+            <p><strong>Ticket Price: </strong> {{pickedEvent.price}}</p>
+          </form>
+        </div>
+      </div>
     </div>
-
-    </div>
-
   </div>
-
+  <div class="columns column is-multiline is-one-third">
+    <h3>Restaurants</h3>
+    <div class="column is-full" ng-repeat="restaurant in restaurants">
+      <div class="card">
+        <div class="card-content">
+          <h6 class="title is-6">{{restaurant.name}}</h6>
+          <p><strong>Price level: </strong> {{restaurant.price_level}}</p>
+          <p><strong>Rating: </strong> {{event.rating}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columns column is-multiline is-one-third">
+    <h3>Bars</h3>
+    <div class="column is-full" ng-repeat="bar in bars">
+      <div class="card">
+        <div class="card-content">
+          <h6 class="title is-6">{{bar.name}}</h6>
+          <p><strong>Price level: </strong> {{bar.price_level}}</p>
+          <p><strong>Rating: </strong> {{bar.rating}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
