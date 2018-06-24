@@ -7,11 +7,13 @@ import Auth from './config/satellizer';
 
 import 'bulma';
 
+import BundlesShowCtrl from './controllers/bundles/show';
 import AuthRegisterCtrl from './controllers/auth/register';
 import AuthLoginCtrl from './controllers/auth/login';
 
 angular.module('bundleApi', ['ui.router', 'satellizer'])
   .config(Router)
   .config(Auth)
+  .controller('BundlesShowCtrl', BundlesShowCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
   .controller('AuthLoginCtrl', AuthLoginCtrl);
