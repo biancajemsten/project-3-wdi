@@ -1,7 +1,9 @@
 function BundlesNewCtrl($scope, $http){
   $scope.data= {};
-  $scope.hideEvents = false,
+  $scope.hideEvents = false;
   $scope.pickedEvent = {};
+  $scope.pickedRestaurant = {};
+  $scope.pickedBar = {};
 
 
   //search function only works if the user searches in one keyword
@@ -17,6 +19,22 @@ function BundlesNewCtrl($scope, $http){
       .then(res => {
         $scope.events = res.data.results;
       });
+  };
+
+  $scope.choseRestaurant = function(restaurant){
+    $scope.pickedRestaurant = {
+      name: restaurant.name,
+      priceLevel: restaurant.price_level,
+      rating: restaurant.rating
+    };
+  };
+
+  $scope.choseBar = function(bar){
+    $scope.pickedRestaurant = {
+      name: bar.name,
+      priceLevel: bar.price_level,
+      rating: bar.rating
+    };
   };
 
   //function that sends a request to get bar and restaurant info based on the location of the picked event. Also hides the full list of events and only displays picked one.
@@ -51,6 +69,8 @@ function BundlesNewCtrl($scope, $http){
     })
       .then(res=> $scope.bars = res.data.results);
   };
+
+
 }
 
 export default BundlesNewCtrl;
