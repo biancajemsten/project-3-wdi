@@ -13,6 +13,16 @@ function Router($stateProvider, $urlRouterProvider){
       url: '/login',
       templateUrl: './views/auth/login.html',
       controller: 'AuthLoginCtrl'
+    })
+    .state('bundlesShow', {
+      url: '/bundles/:id',
+      templateUrl: './views/bundles/show.html',
+      controller: 'BundlesShowCtrl'
+    })
+    .state('bundlesNew', {
+      url: '/bundles/new',
+      templateUrl: './views/bundles/new.html',
+      controller: 'BundlesNewCtrl'
     });
 
   $urlRouterProvider.otherwise('/');

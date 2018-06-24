@@ -8,6 +8,7 @@ function showRoute(req, res, next){
 }
 
 function createRoute(req, res, next){
+  req.body.creator = '5b2f7492e074e9c3dc9d2fc7';
   Bundle
     .create(req.body)
     .then(bundle => res.status(201).json(bundle))
