@@ -3,9 +3,14 @@ function Router($stateProvider, $urlRouterProvider){
     .state('home', {
       url: '/',
       templateUrl: './views/home.html'
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: './views/auth/register.html',
+      controller: 'AuthRegisterCtrl'
     });
 
   $urlRouterProvider.otherwise('/');
 }
 
-export default Router; 
+export default Router;
