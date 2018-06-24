@@ -1,0 +1,23 @@
+<form ng-submit="updateUser()">
+  <div class="field">
+    <label class="label" for="firstname">First Name</label>
+    <input class="input" id="name" name="name" placeholder="Name" ng-model="data.firstname"/>
+  </div>
+  <div class="field">
+    <label class="label" for="lastname">Last Name</label>
+    <input class="input" id="lastname" name="lastname" placeholder="Last Name" ng-model="data.lastname"/>
+  </div>
+  <div class="field">
+    <label class="label" for="image">Image</label>
+    <input class="input" id="image" name="image" placeholder="Image" ng-model="data.image"/>
+  </div>
+  <div class="field">
+    <label class="label" for="location">Location</label>
+    <input class="input" id="location" name="location" placeholder="Location" ng-model="data.location"/>
+  </div>
+  <div class="field">
+    <label class="label" for="musicgenres">Music Genres</label>
+    <input class="input" id="musicgenres" name="musicgenres" placeholder="Music Genres" ng-model="data.musicgenres"/>
+  </div>
+  <button class="button">Update</button>
+</form>

@@ -12,6 +12,7 @@ import AuthRegisterCtrl from './controllers/auth/register';
 import AuthLoginCtrl from './controllers/auth/login';
 import MainCtrl from './controllers/main';
 import UsersShowCtrl from './controllers/users/show';
+import UsersEditCtrl from './controllers/users/edit';
 
 angular.module('bundleApi', ['ui.router', 'satellizer', 'ngMessages'])
   .config(Router)
@@ -19,4 +20,5 @@ angular.module('bundleApi', ['ui.router', 'satellizer', 'ngMessages'])
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
   .controller('AuthLoginCtrl', AuthLoginCtrl)
   .controller('MainCtrl', MainCtrl)
-  .controller('UsersShowCtrl', UsersShowCtrl);
+  .controller('UsersShowCtrl', UsersShowCtrl)
+  .controller('UsersEditCtrl', UsersEditCtrl);

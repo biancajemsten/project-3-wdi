@@ -18,6 +18,11 @@ function Router($stateProvider, $urlRouterProvider){
       url: '/users/:id',
       templateUrl: './views/users/show.html',
       controller: 'UsersShowCtrl'
+    })
+    .state('userEdit', {
+      url: '/users/:id/edit',
+      templateUrl: './views/users/edit.html',
+      controller: 'UsersEditCtrl'
     });
 
   $urlRouterProvider.otherwise('/');
