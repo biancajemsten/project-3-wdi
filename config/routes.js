@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bundles = require('../controllers/bundles');
-const user = require('../controllers/users');
+const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 const skiddle = require('../controllers/skiddle');
 // const secureRoute = require('../lib/secureRoute');
@@ -14,8 +14,9 @@ router.route('/bundles/:id')
   .put( bundles.update)
   .delete( bundles.delete);
 
-router.get('/user/:id', user.show);
-router.put('/user/:id/edit', user.update);
+router.route('/users/:id')
+  .get(users.show)
+  .put(users.update);
 
 router.get('/events', skiddle.eventFinder);
 
