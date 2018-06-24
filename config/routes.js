@@ -13,8 +13,8 @@ router.route('/bundles/:id')
   .put(secureRoute, bundles.update)
   .delete(secureRoute, bundles.delete);
 
-router.get('/user/:id',secureRoute, user.show);
-router.put('/user/:id/edit', secureRoute, user.update);
+router.get('/users/:id',secureRoute, user.show);
+router.put('/users/:id/edit', secureRoute, user.update);
 
 router.get('/events', skiddle.eventFinder);
 
