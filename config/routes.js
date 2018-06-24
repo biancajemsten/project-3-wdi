@@ -3,15 +3,15 @@ const bundles = require('../controllers/bundles');
 const user = require('../controllers/users');
 const auth = require('../controllers/auth');
 const skiddle = require('../controllers/skiddle');
-const secureRoute = require('../lib/secureRoute');
+// const secureRoute = require('../lib/secureRoute');
 const googlePlaces = require('../controllers/googlePlaces');
 
-router.post('/bundles', secureRoute, bundles.create);
+router.post('/bundles', bundles.create);
 
 router.route('/bundles/:id')
   .get(bundles.show)
-  .put(secureRoute, bundles.update)
-  .delete(secureRoute, bundles.delete);
+  .put( bundles.update)
+  .delete( bundles.delete);
 
 router.get('/users/:id', user.show);
 router.put('/users/:id/edit', user.update);

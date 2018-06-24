@@ -3,7 +3,7 @@ function AuthLoginCtrl($scope, $auth, $state){
 
   $scope.handleSubmit = function() {
     $auth.login($scope.data)
-      .then(() => $state.go('/'));
+      .then(() => $state.go('bundlesNew'));
   };
 }
 

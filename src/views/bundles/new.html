@@ -1,0 +1,96 @@
+<h2 is-2 title>Create a bundle</h2>
+
+<form>
+  <div class="field">
+    <input class="input" name="search" placeholder="What event are you going to?" ng-model="search"/>
+    <button class="button" name="button" ng-click="searchEvents()">Search</button>
+  </div>
+</form>
+
+<div class="columns is-multiline" ng-class="{ 'hide': hideEvents }">
+    <div class="column is-3-desktop is-4-tablet" ng-repeat="event in events | filter: search">
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <form>
+              <h6 class="title is-6">{{event.eventname}}</h6>
+              <p><strong>Venue: </strong> {{event.venue.name}}</p>
+              <p><strong>Date: </strong> {{event.date}}</p>
+              <p><strong>Ticket Price: </strong> {{event.entryprice}}</p>
+              <button class="button" name="button" ng-click="choseEvent(event)">Pick this event</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="columns" ng-class="{ 'hide': !hideEvents}">
+  <div class="column is-one-third">
+    <h3>Your Event</h3>
+    <div class="card">
+      <div class="card-content">
+        <div class="content">
+          <form>
+            <h6 class="title is-6">{{pickedEvent.name}}</h6>
+            <p><strong>Venue: </strong> {{pickedEvent.venue}}</p>
+            <p><strong>Date: </strong> {{pickedEvent.date}}</p>
+            <p><strong>Ticket Price: </strong> {{pickedEvent.price}}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columns column is-multiline is-one-third">
+    <h3>Restaurants</h3>
+    <div class="column is-full" ng-repeat="restaurant in restaurants" ng-class="{ 'hide': hideRestaurants}">
+      <div class="card">
+        <div class="card-content">
+          <form>
+            <h6 class="title is-6">{{restaurant.name}}</h6>
+            <p><strong>Price level: </strong> {{restaurant.price_level}}</p>
+            <p><strong>Rating: </strong> {{restaurant.rating}}</p>
+            <button class="button" name="button" ng-click="chooseRestaurant(restaurant)">Pick this restaurant</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="column is-full ng-class="{ 'hide': !hideRestaurants}"">
+      <div class="card" >
+        <div class="card-content">
+          <form>
+            <h6 class="title is-6">{{pickedRestaurant.name}}</h6>
+            <p><strong>Price level: </strong> {{pickedRestaurant.priceLevel}}</p>
+            <p><strong>Rating: </strong> {{pickedRestaurant.rating}}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columns column is-multiline is-one-third">
+    <h3>Bars</h3>
+    <div class="column is-full" ng-repeat="bar in bars"  ng-class="{ 'hide': hideBars}">
+      <div class="card">
+        <div class="card-content">
+          <form>
+            <h6 class="title is-6">{{bar.name}}</h6>
+            <p><strong>Price level: </strong> {{bar.price_level}}</p>
+            <p><strong>Rating: </strong> {{bar.rating}}</p>
+            <button class="button" name="button" ng-click="chooseBar(bar)">Pick this bar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="column is-full ng-class="{ 'hide': !hideBars}"">
+      <div class="card" >
+        <div class="card-content">
+          <form>
+            <h6 class="title is-6">{{pickedBar.name}}</h6>
+            <p><strong>Price level: </strong> {{pickedBar.priceLevel}}</p>
+            <p><strong>Rating: </strong> {{pickedBar.rating}}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="button" name="button" ng-click="createBundle()">Submit Bundle</button>
