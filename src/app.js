@@ -2,6 +2,8 @@ import angular from 'angular';
 import '@uirouter/angularjs';
 import 'satellizer';
 import 'angular-messages';
+import 'filepicker-js';
+import 'angular-filepicker/dist/angular_filepicker';
 
 import Router from './config/routes';
 import Auth from './config/satellizer';
@@ -16,14 +18,23 @@ import AuthLoginCtrl from './controllers/auth/login';
 import MainCtrl from './controllers/main';
 import UsersShowCtrl from './controllers/users/show';
 import UsersEditCtrl from './controllers/users/edit';
+import filePicker from './directives/filePicker';
 
-angular.module('bundleApi', ['ui.router', 'satellizer', 'ngMessages'])
+angular.module('bundleApi', [
+  'ui.router',
+  'satellizer',
+  'ngMessages',
+  'angular-filepicker'
+])
   .config(Router)
   .config(Auth)
+
   .controller('BundlesShowCtrl', BundlesShowCtrl)
   .controller('BundlesNewCtrl', BundlesNewCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
   .controller('AuthLoginCtrl', AuthLoginCtrl)
   .controller('MainCtrl', MainCtrl)
   .controller('UsersShowCtrl', UsersShowCtrl)
-  .controller('UsersEditCtrl', UsersEditCtrl);
+  .controller('UsersEditCtrl', UsersEditCtrl)
+
+  .directive('filePicker', filePicker);

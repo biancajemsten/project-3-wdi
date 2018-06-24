@@ -9,8 +9,12 @@
   </div>
   <div class="field">
     <label class="label" for="image">Image</label>
-    <input class="input" id="image" name="image" placeholder="Image" ng-model="data.image"/>
+    <button class="button" id="image" name="image" placeholder="Image" file-picker ng-model="data.image">Choose File</button>
   </div>
+
+<img src="{{ data.image }}" ng-if="data.image">
+
+  {{ data.image }}
   <div class="field">
     <label class="label" for="location">Location</label>
     <input class="input" id="location" name="location" placeholder="Location" ng-model="data.location"/>
