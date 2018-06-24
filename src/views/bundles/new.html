@@ -1,11 +1,23 @@
 <h2 is-2 title>Create a bundle</h2>
 
-<form>
-  <div class="field">
-    <input class="input" name="search" placeholder="What event are you going to?" ng-model="search"/>
-    <button class="button" name="button" ng-click="searchEvents()">Search</button>
-  </div>
-</form>
+    <form>
+      <div class="field">
+        <input class="input" name="search" placeholder="What event are you going to?" ng-model="search"/>
+        <label for="rating">Radius for restaurants and bars: </label>
+          <div class="control">
+            <div class="select">
+              <select ng-model="radius" name="rating">
+                <option value="500">0.5km</option>
+                <option value="1000">1km</option>
+                <option value="1500">1.5km</option>
+                <option value="2000">2km</option>
+                <option value="2500">2.5km</option>
+              </select>
+            </div>
+          </div>
+        <button class="button" name="button" ng-click="searchEvents()">Search</button>
+      </div>
+    </form>
 
 <div class="columns is-multiline" ng-class="{ 'hide': hideEvents }">
     <div class="column is-3-desktop is-4-tablet" ng-repeat="event in events | filter: search">
@@ -16,6 +28,7 @@
               <h6 class="title is-6">{{event.eventname}}</h6>
               <p><strong>Venue: </strong> {{event.venue.name}}</p>
               <p><strong>Date: </strong> {{event.date}}</p>
+              <p><strong>Address: </strong> {{event.venue.address}}, {{event.venue.town}}</p>
               <p><strong>Ticket Price: </strong> {{event.entryprice}}</p>
               <button class="button" name="button" ng-click="choseEvent(event)">Pick this event</button>
             </form>
@@ -49,6 +62,20 @@
             <h6 class="title is-6">{{restaurant.name}}</h6>
             <p><strong>Price level: </strong> {{restaurant.price_level}}</p>
             <p><strong>Rating: </strong> {{restaurant.rating}}</p>
+            <div ng-class="{'hide' : toggleDetails}">
+              <p ng-if="details.website"><strong>Website: </strong> {{details.website}}</p>
+              <p ng-if="details.opening_hours"><strong>Opening Hours: </strong>
+                <ul>
+                  <li>{{details.opening_hours.weekday_text[0]}}</li>
+                  <li>{{details.opening_hours.weekday_text[1]}}</li>
+                  <li>{{details.opening_hours.weekday_text[2]}}</li>
+                  <li>{{details.opening_hours.weekday_text[3]}}</li>
+                  <li>{{details.opening_hours.weekday_text[4]}}</li>
+                  <li>{{details.opening_hours.weekday_text[5]}}</li>
+                  <li>{{details.opening_hours.weekday_text[6]}}</li>
+                </ul></p>
+            </div>
+            <button class="button" name="button" ng-click="getDetails(restaurant)">See More</button>
             <button class="button" name="button" ng-click="chooseRestaurant(restaurant)">Pick this restaurant</button>
           </form>
         </div>
@@ -75,6 +102,20 @@
             <h6 class="title is-6">{{bar.name}}</h6>
             <p><strong>Price level: </strong> {{bar.price_level}}</p>
             <p><strong>Rating: </strong> {{bar.rating}}</p>
+            <div ng-class="{'hide' : toggleDetails}">
+              <p ng-if="details.website"><strong>Website: </strong> {{details.website}}</p>
+              <p ng-if="details.opening_hours"><strong>Opening Hours: </strong>
+                <ul>
+                  <li>{{details.opening_hours.weekday_text[0]}}</li>
+                  <li>{{details.opening_hours.weekday_text[1]}}</li>
+                  <li>{{details.opening_hours.weekday_text[2]}}</li>
+                  <li>{{details.opening_hours.weekday_text[3]}}</li>
+                  <li>{{details.opening_hours.weekday_text[4]}}</li>
+                  <li>{{details.opening_hours.weekday_text[5]}}</li>
+                  <li>{{details.opening_hours.weekday_text[6]}}</li>
+                </ul></p>
+            </div>
+            <button class="button" name="button" ng-click="getDetails(bar)">See More</button>
             <button class="button" name="button" ng-click="chooseBar(bar)">Pick this bar</button>
           </form>
         </div>

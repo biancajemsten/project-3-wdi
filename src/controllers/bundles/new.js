@@ -3,29 +3,14 @@ function BundlesNewCtrl($scope, $http, $state){
   $scope.hideEvents = false;
   $scope.hideRestaurants = false;
   $scope.hideBars = false;
-  $scope.pickedEvent = {
-    name: '',
-    venue: '',
-    date: '',
-    ticketPrice: '',
-    location: {
-      lat: '',
-      lng: ''
-    }
-  };
+  $scope.toggleDetails = true;
+  $scope.pickedEvent = {};
   let pickedEvent;
   let pickedRestaurant;
   let pickedBar;
-  $scope.pickedRestaurant = {
-    name: '',
-    priceLevel: '',
-    rating: '',
-    location: {
-      lat: '',
-      lng: ''
-    }
-  };
+  $scope.pickedRestaurant = {};
   $scope.pickedBar = {};
+  $scope.details = {};
 
 
   //search function only works if the user searches in one keyword
@@ -34,15 +19,31 @@ function BundlesNewCtrl($scope, $http, $state){
     $http({
       method: 'GET',
       url: '/api/events',
-      params: {
-        keyword: $scope.search
-      }
+      params: { keyword: $scope.search, radius: $scope.radius }
     })
       .then(res => {
         $scope.events = res.data.results;
       });
   };
+  // function openInNewTab(url) {
+  //   const win = window.open(url, '_blank');
+  //   win.focus();
+  // }
 
+  $scope.getDetails = function(place){
+    $http({
+      method: 'GET',
+      url: '/api/findDetails',
+      params: { place_id: place.place_id}
+    })
+      .then(res => {
+        console.log(res.data.result);
+        $scope.details = res.data.result;
+        $scope.toggleDetails = false;
+      });
+  };
+
+  //function that hides the other restaurants and saves the details of the picked restaurant
   $scope.chooseRestaurant = function(restaurant){
     $scope.hideRestaurants = true;
     $scope.pickedRestaurant = {
@@ -52,7 +53,8 @@ function BundlesNewCtrl($scope, $http, $state){
       location: {
         lat: restaurant.geometry.location.lat,
         lng: restaurant.geometry.location.lng
-      }
+      },
+      place_id: restaurant.place_id
     };
     return pickedRestaurant = $scope.pickedRestaurant;
   };
@@ -66,7 +68,8 @@ function BundlesNewCtrl($scope, $http, $state){
       location: {
         lat: bar.geometry.location.lat,
         lng: bar.geometry.location.lng
-      }
+      },
+      place_id: bar.place_id
     };
     return pickedBar = $scope.pickedBar;
   };
@@ -90,22 +93,28 @@ function BundlesNewCtrl($scope, $http, $state){
       params: {
         lat: event.venue.latitude,
         lng: event.venue.longitude,
-        radius: 1000,
+        radius: $scope.radius,
         type: 'restaurant'
       }
     })
-      .then(res => $scope.restaurants = res.data.results);
+      .then(res => {
+        $scope.restaurants = res.data.results;
+        $scope.retaurants.details = {};
+      });
     $http({
       method: 'GET',
       url: 'api/findPlaces',
       params: {
         lat: event.venue.latitude,
         lng: event.venue.longitude,
-        radius: 3000,
+        radius: $scope.radius,
         type: 'bar'
       }
     })
-      .then(res=> $scope.bars = res.data.results);
+      .then(res=> {
+        $scope.bars = res.data.results;
+        $scope.bars.details = {};
+      });
     return pickedEvent = $scope.pickedEvent;
   };
 

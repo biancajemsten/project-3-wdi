@@ -14,14 +14,16 @@ const bundleSchema = new mongoose.Schema({
     location: {
       lat: Number,
       lng: Number
-    }
+    },
+    place_id: String
   },
   restaurant: {
     name: String,
     location: {
       lat: Number,
       lng: Number
-    }
+    },
+    place_id: String
   },
   creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
