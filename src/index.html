@@ -6,10 +6,32 @@
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoFQd8oippLlkVlWztrh2rGfq4RGMjLqQ&libraries=places"></script> -->
 </head>
 <body>
-<section class="section">
-  <div class="container">
-    <ui-view></ui-view>
-  </div>
-</section>
+  <nav class="navbar is-fixed-top">
+    <div class="navbar-brand">
+      <a class="navbar-item" ui-sref="home">Home</a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" ui-sref="home">New Bundle</a>
+        <a class="navbar-item" ui-sref="userShow({ id: currentUser._id })">My Bundles</a>
+        <a class="navbar-item" ui-sref="login">Login</a>
+        <a class="navbar-item" ui-sref="register">Register</a>
+        <a class="navbar-item" ng-click="logout()">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <ui-view></ui-view>
+    </div>
+  </section>
 </body>
 </html>
