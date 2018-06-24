@@ -1,10 +1,30 @@
-function BundlesNewCtrl($scope, $http){
+function BundlesNewCtrl($scope, $http, $state){
   $scope.data= {};
   $scope.hideEvents = false;
   $scope.hideRestaurants = false;
   $scope.hideBars = false;
-  $scope.pickedEvent = {};
-  $scope.pickedRestaurant = {};
+  $scope.pickedEvent = {
+    name: '',
+    venue: '',
+    date: '',
+    ticketPrice: '',
+    location: {
+      lat: '',
+      lng: ''
+    }
+  };
+  let pickedEvent;
+  let pickedRestaurant;
+  let pickedBar;
+  $scope.pickedRestaurant = {
+    name: '',
+    priceLevel: '',
+    rating: '',
+    location: {
+      lat: '',
+      lng: ''
+    }
+  };
   $scope.pickedBar = {};
 
 
@@ -34,6 +54,7 @@ function BundlesNewCtrl($scope, $http){
         lng: restaurant.geometry.location.lng
       }
     };
+    return pickedRestaurant = $scope.pickedRestaurant;
   };
 
   $scope.chooseBar = function(bar){
@@ -47,6 +68,7 @@ function BundlesNewCtrl($scope, $http){
         lng: bar.geometry.location.lng
       }
     };
+    return pickedBar = $scope.pickedBar;
   };
 
   //function that sends a request to get bar and restaurant info based on the location of the picked event. Also hides the full list of events and only displays picked one.
@@ -56,7 +78,11 @@ function BundlesNewCtrl($scope, $http){
       name: event.eventname,
       venue: event.venue.name,
       date: event.date,
-      ticketPrice: event.entryprice
+      ticketPrice: event.entryprice,
+      location: {
+        lat: event.venue.latitude,
+        lng: event.venue.longitude
+      }
     };
     $http({
       method: 'GET',
@@ -80,8 +106,40 @@ function BundlesNewCtrl($scope, $http){
       }
     })
       .then(res=> $scope.bars = res.data.results);
+    return pickedEvent = $scope.pickedEvent;
   };
 
+  $scope.createBundle = function(){
+    $http({
+      method: 'POST',
+      url: 'api/bundles',
+      data: {
+        event: {
+          name: pickedEvent.name,
+          date: pickedEvent.date,
+          location: {
+            lat: pickedEvent.location.lat,
+            lng: pickedEvent.location.lng
+          }
+        },
+        bar: {
+          name: pickedBar.name,
+          location: {
+            lat: pickedBar.location.lat,
+            lng: pickedBar.location.lat
+          }
+        },
+        restaurant: {
+          name: pickedRestaurant.name,
+          location: {
+            lat: pickedRestaurant.location.lat,
+            lng: pickedRestaurant.location.lng
+          }
+        }
+      }
+    })
+      .then(() => $state.go('home'));
+  };
 
 }
 
