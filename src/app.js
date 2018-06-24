@@ -7,6 +7,7 @@ import 'angular-filepicker/dist/angular_filepicker';
 
 import Router from './config/routes';
 import Auth from './config/satellizer';
+import Upload from './config/filePicker';
 
 import 'bulma';
 import './scss/main.scss';
@@ -28,7 +29,8 @@ angular.module('bundleApi', [
 ])
   .config(Router)
   .config(Auth)
-
+  .config(Upload)
+  
   .controller('BundlesShowCtrl', BundlesShowCtrl)
   .controller('BundlesNewCtrl', BundlesNewCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
