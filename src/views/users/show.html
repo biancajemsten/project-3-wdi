@@ -1,11 +1,15 @@
-<div class="columns">
-  <div class="column">
+<section class="columns">
+  <div class="column is-half-desktop">
     <img src="{{ user.image }}" alt="">
     <h6>{{ user.firstname }} {{ user.lastname }}</h6>
   </div>
-  <div class="column">
+  <div class="column is-half-desktop">
     <h5>{{ user.location }}</h5>
     <hr>
     <h5>{{ user.musicgenres }}</h5>
   </div>
-</div>
+</section>
+<hr>
+
+<h3>My Bundles</h3>
+<p ng-repeat="bundle in user.bundles">{{ bundle }}</p>
