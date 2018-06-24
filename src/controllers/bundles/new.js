@@ -1,6 +1,8 @@
 function BundlesNewCtrl($scope, $http){
   $scope.data= {};
   $scope.hideEvents = false;
+  $scope.hideRestaurants = false;
+  $scope.hideBars = false;
   $scope.pickedEvent = {};
   $scope.pickedRestaurant = {};
   $scope.pickedBar = {};
@@ -21,19 +23,29 @@ function BundlesNewCtrl($scope, $http){
       });
   };
 
-  $scope.choseRestaurant = function(restaurant){
+  $scope.chooseRestaurant = function(restaurant){
+    $scope.hideRestaurants = true;
     $scope.pickedRestaurant = {
       name: restaurant.name,
       priceLevel: restaurant.price_level,
-      rating: restaurant.rating
+      rating: restaurant.rating,
+      location: {
+        lat: restaurant.geometry.location.lat,
+        lng: restaurant.geometry.location.lng
+      }
     };
   };
 
-  $scope.choseBar = function(bar){
-    $scope.pickedRestaurant = {
+  $scope.chooseBar = function(bar){
+    $scope.hideBars = true;
+    $scope.pickedBar = {
       name: bar.name,
       priceLevel: bar.price_level,
-      rating: bar.rating
+      rating: bar.rating,
+      location: {
+        lat: bar.geometry.location.lat,
+        lng: bar.geometry.location.lng
+      }
     };
   };
 

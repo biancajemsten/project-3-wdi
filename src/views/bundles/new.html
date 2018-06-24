@@ -1,4 +1,5 @@
 <h2 is-2 title>Create a bundle</h2>
+
 <form>
   <div class="field">
     <input class="input" name="search" placeholder="What event are you going to?" ng-model="search"/>
@@ -41,14 +42,25 @@
   </div>
   <div class="columns column is-multiline is-one-third">
     <h3>Restaurants</h3>
-    <div class="column is-full" ng-repeat="restaurant in restaurants">
+    <div class="column is-full" ng-repeat="restaurant in restaurants" ng-class="{ 'hide': hideRestaurants}">
       <div class="card">
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{restaurant.name}}</h6>
             <p><strong>Price level: </strong> {{restaurant.price_level}}</p>
             <p><strong>Rating: </strong> {{restaurant.rating}}</p>
-            <button class="button" name="button" ng-click="choseRestaurant(restaurant)">Pick this restaurant</button>
+            <button class="button" name="button" ng-click="chooseRestaurant(restaurant)">Pick this restaurant</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="column is-full ng-class="{ 'hide': !hideRestaurants}"">
+      <div class="card" >
+        <div class="card-content">
+          <form>
+            <h6 class="title is-6">{{pickedRestaurant.name}}</h6>
+            <p><strong>Price level: </strong> {{pickedRestaurant.priceLevel}}</p>
+            <p><strong>Rating: </strong> {{pickedRestaurant.rating}}</p>
           </form>
         </div>
       </div>
@@ -56,17 +68,29 @@
   </div>
   <div class="columns column is-multiline is-one-third">
     <h3>Bars</h3>
-    <div class="column is-full" ng-repeat="bar in bars">
+    <div class="column is-full" ng-repeat="bar in bars"  ng-class="{ 'hide': hideBars}">
       <div class="card">
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{bar.name}}</h6>
             <p><strong>Price level: </strong> {{bar.price_level}}</p>
             <p><strong>Rating: </strong> {{bar.rating}}</p>
-            <button class="button" name="button" ng-click="choseBar(bar)">Pick this bar</button>
+            <button class="button" name="button" ng-click="chooseBar(bar)">Pick this bar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="column is-full ng-class="{ 'hide': !hideBars}"">
+      <div class="card" >
+        <div class="card-content">
+          <form>
+            <h6 class="title is-6">{{pickedBar.name}}</h6>
+            <p><strong>Price level: </strong> {{pickedBar.priceLevel}}</p>
+            <p><strong>Rating: </strong> {{pickedBar.rating}}</p>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+<button class="button" name="button">Submit</button>
