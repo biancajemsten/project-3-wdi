@@ -62,7 +62,7 @@
             <h6 class="title is-6">{{restaurant.name}}</h6>
             <p><strong>Price level: </strong> {{restaurant.price_level}}</p>
             <p><strong>Rating: </strong> {{restaurant.rating}}</p>
-            <div ng-class="{'hide' : toggleDetails}">
+            <div ng-class="{'hide' : toggleDetails}"  ng-if="restaurant.place_id === details.place_id">
               <p ng-if="details.website"><strong>Website: </strong> {{details.website}}</p>
               <p ng-if="details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>
@@ -102,7 +102,7 @@
             <h6 class="title is-6">{{bar.name}}</h6>
             <p><strong>Price level: </strong> {{bar.price_level}}</p>
             <p><strong>Rating: </strong> {{bar.rating}}</p>
-            <div ng-class="{'hide' : toggleDetails}">
+            <div ng-class="{'hide' : toggleDetails}" ng-if="bar.place_id === details.place_id">
               <p ng-if="details.website"><strong>Website: </strong> {{details.website}}</p>
               <p ng-if="details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>

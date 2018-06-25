@@ -11,6 +11,7 @@ function BundlesNewCtrl($scope, $http, $state){
   $scope.pickedRestaurant = {};
   $scope.pickedBar = {};
   $scope.details = {};
+  $scope.events = {};
 
 
   //search function only works if the user searches in one keyword
@@ -25,10 +26,7 @@ function BundlesNewCtrl($scope, $http, $state){
         $scope.events = res.data.results;
       });
   };
-  // function openInNewTab(url) {
-  //   const win = window.open(url, '_blank');
-  //   win.focus();
-  // }
+
 
   $scope.getDetails = function(place){
     $http({
@@ -37,9 +35,9 @@ function BundlesNewCtrl($scope, $http, $state){
       params: { place_id: place.place_id}
     })
       .then(res => {
-        console.log(res.data.result);
+        console.log(res.data);
         $scope.details = res.data.result;
-        $scope.toggleDetails = false;
+        $scope.toggleDetails = !$scope.toggleDetails;
       });
   };
 
