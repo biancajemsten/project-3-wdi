@@ -20,6 +20,7 @@ import MainCtrl from './controllers/main';
 import UsersShowCtrl from './controllers/users/show';
 import UsersEditCtrl from './controllers/users/edit';
 import filePicker from './directives/filePicker';
+import googleMap from './directives/googleMap';
 
 angular.module('bundleApi', [
   'ui.router',
@@ -30,7 +31,7 @@ angular.module('bundleApi', [
   .config(Router)
   .config(Auth)
   .config(Upload)
-  
+
   .controller('BundlesShowCtrl', BundlesShowCtrl)
   .controller('BundlesNewCtrl', BundlesNewCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
@@ -39,4 +40,5 @@ angular.module('bundleApi', [
   .controller('UsersShowCtrl', UsersShowCtrl)
   .controller('UsersEditCtrl', UsersEditCtrl)
 
-  .directive('filePicker', filePicker);
+  .directive('filePicker', filePicker)
+  .directive('googleMap', googleMap);
