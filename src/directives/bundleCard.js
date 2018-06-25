@@ -6,7 +6,8 @@ function bundleCard() {
     scope: {
       event: '=',
       restaurant: '=?',
-      bar: '=?'
+      bar: '=?',
+      date: '='
     }
   };
 }

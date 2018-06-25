@@ -12,6 +12,13 @@
 <a class="button" ui-sref="usersEdit({ id: user._id })">Edit</a>
 <hr>
 
-<h3>My Bundles</h3>
-<p ng-if="bundle.creator === user._id" ng-repeat="bundle in bundles">{{ bundle.event.name }} {{ bundle.creator }}</p>
-<bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name"></bundle-card>
+<section ng-if="bundle.creator === user._id" ng-repeat="bundle in bundles" class="columns">
+  <div class="column is-half-desktop">
+    <h3>Previous Bundles</h3>
+    <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+  </div>
+  <div class="column is-half-desktop">
+    <h3>Upcoming Bundles</h3>
+    <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+  </div>
+</section>
