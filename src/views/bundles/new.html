@@ -89,8 +89,9 @@
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{pickedRestaurant.name}}</h6>
-            <p><strong>Price level: </strong> {{pickedRestaurant.priceLevel}}</p>
-            <p><strong>Rating: </strong> {{pickedRestaurant.rating}}</p>
+            <p><strong>Address:</strong>{{pickedRestaurant.address}}</p>
+            <p ng-if="pickedRestaurant.rating"><strong>Rating: </strong> {{pickedRestaurant.rating}}</p>
+            <p ng-if="pickedRestaurant.price_level"><strong>Price level: </strong> {{pickedRestaurant.price_level}}</p>
           </form>
         </div>
       </div>
@@ -130,8 +131,9 @@
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{pickedBar.name}}</h6>
-            <p><strong>Price level: </strong> {{pickedBar.priceLevel}}</p>
-            <p><strong>Rating: </strong> {{pickedBar.rating}}</p>
+            <p><strong>Address:</strong>{{pickedBar.address}}</p>
+            <p ng-if="pickedBar.rating"><strong>Rating: </strong> {{pickedBar.rating}}</p>
+            <p ng-if="pickedBar.price_level"><strong>Price level: </strong> {{pickedBar.price_level}}</p>
           </form>
         </div>
       </div>
