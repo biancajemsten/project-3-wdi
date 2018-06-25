@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const genreSchema = new mongoose.Schema({
+  genre: { type: String }
+});
+
 const userSchema = new mongoose.Schema({
   firstName: { type: String , required: true },
   lastName: { type: String , required: true },
@@ -8,8 +12,7 @@ const userSchema = new mongoose.Schema({
   image: { type: String, required: false },
   password: { type: String , required: true } ,
   location: { type: String },
-  musicGenres: [{ type: String }]
-
+  musicGenres: [ genreSchema ]
 });
 
 userSchema.virtual('bundles', {

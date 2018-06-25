@@ -6,8 +6,8 @@
   <div class="column is-half-desktop">
     <h5>{{ user.location }}</h5>
     <hr>
-    <span ng-repeat="genre in user.musicGenres" class="tag is-warning">
-        {{ genre }}
+    <span ng-repeat="item in user.musicGenres" class="tag is-warning">
+      {{ item.genre }}
       <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="removeGenre()"></button>
     </span>
   </div>
