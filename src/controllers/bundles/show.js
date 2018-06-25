@@ -5,6 +5,7 @@ function BundlesShowCtrl( $scope, $http, $state){
     url: `api/bundles/${$state.params.id}`
   })
     .then(res => $scope.bundle = res.data);
+
 }
 
-export default BundlesShowCtrl; 
+export default BundlesShowCtrl;

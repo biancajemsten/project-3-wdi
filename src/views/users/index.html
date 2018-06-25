@@ -1,0 +1,17 @@
+<section class="section">
+  <div class="field">
+    <input class="input" name="search" placeholder="Search users..." ng-model="search"/>
+  </div>
+  <hr>
+  <h1>All Users</h1>
+
+</section>
+
+<div class="columns">
+  <div class="column is-one-third" ng-repeat="user in users | filter: search">
+    <a ui-sref="usersShow({ id: user._id })">
+      <img src="{{ user.image }}" alt="{{ user.firstName }} {{ user.lastName }}">
+      <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+    </a>
+  </div>
+</div>

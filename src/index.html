@@ -10,15 +10,16 @@
     <div class="navbar-brand">
       <a class="navbar-item" ui-sref="home">Home</a>
 
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" ng-class="{ 'is-active': navbarOpen }" ng-click="toggleMenu()">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
 
-    <div class="navbar-menu">
+    <div class="navbar-menu" ng-class="{ 'is-active': navbarOpen }">
       <div class="navbar-end">
+        <a class="navbar-item" ui-sref="usersIndex">All Users</a>
         <a class="navbar-item" ui-sref="bundlesNew" ng-if="isAuthenticated()">New Bundle</a>
         <a class="navbar-item" ui-sref="usersShow({ id: currentUserId })" ng-if="isAuthenticated()">My Bundles</a>
         <a class="navbar-item" ui-sref="login" ng-if="!isAuthenticated()">Login</a>
@@ -27,6 +28,10 @@
       </div>
     </div>
   </nav>
+
+  <div class="notification is-{{flashMessage.type}} is-flash" ng-class="{ 'is-active': flashMessage }">
+      {{ flashMessage.content }}
+    </div
 
   <section class="section">
     <div class="container">

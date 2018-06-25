@@ -12,11 +12,12 @@ import Upload from './config/filePicker';
 import 'bulma';
 import './scss/main.scss';
 
+import MainCtrl from './controllers/main';
 import BundlesShowCtrl from './controllers/bundles/show';
 import BundlesNewCtrl from './controllers/bundles/new';
 import AuthRegisterCtrl from './controllers/auth/register';
 import AuthLoginCtrl from './controllers/auth/login';
-import MainCtrl from './controllers/main';
+import UsersIndexCtrl from './controllers/users/index';
 import UsersShowCtrl from './controllers/users/show';
 import UsersEditCtrl from './controllers/users/edit';
 import filePicker from './directives/filePicker';
@@ -33,11 +34,12 @@ angular.module('bundleApi', [
   .config(Auth)
   .config(Upload)
 
+  .controller('MainCtrl', MainCtrl)
   .controller('BundlesShowCtrl', BundlesShowCtrl)
   .controller('BundlesNewCtrl', BundlesNewCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
   .controller('AuthLoginCtrl', AuthLoginCtrl)
-  .controller('MainCtrl', MainCtrl)
+  .controller('UsersIndexCtrl', UsersIndexCtrl)
   .controller('UsersShowCtrl', UsersShowCtrl)
   .controller('UsersEditCtrl', UsersEditCtrl)
 

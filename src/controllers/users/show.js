@@ -1,4 +1,5 @@
 function UsersShowCtrl($scope, $http, $state){
+  $scope.bundles = {};
 
   $http({
     method: 'GET',
@@ -14,7 +15,16 @@ function UsersShowCtrl($scope, $http, $state){
   })
     .then(res => {
       $scope.bundles = res.data;
+      $scope.dates = $scope.bundles.forEach((bundle) => {
+        $scope.eventDate = bundle.event.date.split('-');
+      });
     });
+
+  $scope.today = new Date();
+  $scope.currentDate = $scope.today.getDate();
+  $scope.currentMonth = $scope.today.getMonth();
+  $scope.currentYear = $scope.today.getFullYear();
+
 }
 
 export default UsersShowCtrl;

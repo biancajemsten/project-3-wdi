@@ -11,7 +11,7 @@ mongoose.connect(dbURI, (err, db) => {
     firstName: 'Arabella',
     lastName: 'Dear',
     email: 'ab@test.com',
-    image: 'http://www.midlandstruckvan.com/wp-content/uploads/2016/01/nrc-female-silhouette-large-485x323.png',
+    image: 'https://maistas.ktu.edu/wp-content/uploads/sites/14/2017/09/funk-foto.jpg',
     password: '1234',
     passwordConfirmation: '1234',
     location: 'Scotland',
@@ -21,7 +21,7 @@ mongoose.connect(dbURI, (err, db) => {
     firstName: 'Bianca',
     lastName: 'Jemsten',
     email: 'bj@test.com',
-    image: 'http://www.midlandstruckvan.com/wp-content/uploads/2016/01/nrc-female-silhouette-large-485x323.png',
+    image: 'https://maistas.ktu.edu/wp-content/uploads/sites/14/2017/09/funk-foto.jpg',
     password: '1234',
     passwordConfirmation: '1234',
     location: 'Sweden',
@@ -42,24 +42,24 @@ mongoose.connect(dbURI, (err, db) => {
       return Bundle.create([{
         event: {
           name: 'Diamonds Are Forever',
-          date: 'Friday 20th July 2018',
+          date: '2018-06-20',
           location: {
             lat: 53.4767,
-            lng: 2.2390
+            lng: -2.2390
           }
         },
         bar: {
           name: 'The Alchemist',
           location: {
             lat: 53.4358,
-            lng: 2.9576
+            lng: -2.9576
           }
         },
         restaurant: {
           name: 'The Grill on New York Street',
           location: {
             lat: 53.2922,
-            lng: 2.14407
+            lng: -2.14407
           }
         },
         creator: users[0]
@@ -67,10 +67,10 @@ mongoose.connect(dbURI, (err, db) => {
       }, {
         event: {
           name: 'Gentlemen\'s Dub Club',
-          date: 'Friday 19th October 2018',
+          date: '2018-10-19',
           location: {
             lat: 51.4602,
-            lng: 0.1169
+            lng: -0.1169
           }
         },
         bar: {
