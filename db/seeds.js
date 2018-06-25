@@ -23,7 +23,7 @@ mongoose.connect(dbURI, (err, db) => {
     firstName: 'Bianca',
     lastName: 'Jemsten',
     email: 'bj@test.com',
-    image: 'https://maistas.ktu.edu/wp-content/uploads/sites/14/2017/09/funk-foto.jpg',
+    image: 'https://media.licdn.com/dms/image/C5603AQGP8ydXXjyNfw/profile-displayphoto-shrink_200_200/0?e=1535587200&v=beta&t=LWRubHnaKF4b7smqh27er3vnUFtcf6UxgwiF7A8sS2A',
     password: '1234',
     passwordConfirmation: '1234',
     location: 'Sweden',
