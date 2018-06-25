@@ -126,7 +126,7 @@
         </div>
       </div>
     </div>
-    <div class="column is-full ng-class="{ 'hide': !hideBars}"">
+    <div class="column is-full" ng-class="{ 'hide': !hideBars}">
       <div class="card" >
         <div class="card-content">
           <form>
@@ -140,4 +140,4 @@
     </div>
   </div>
 </div>
-<button class="button" name="button" ng-click="createBundle()">Submit Bundle</button>
+<button class="button" name="button" ng-class="{ 'hide': !hideEvents}" ng-click="createBundle()">Submit Bundle</button>
