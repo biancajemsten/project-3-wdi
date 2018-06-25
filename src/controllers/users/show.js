@@ -1,5 +1,4 @@
 function UsersShowCtrl($scope, $http, $state){
-  $scope.bundles = {};
 
   $http({
     method: 'GET',
