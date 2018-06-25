@@ -2,9 +2,9 @@ function UsersIndexCtrl($scope, $http) {
 
   $http({
     method: 'GET',
-    url: '/api/bundles'
+    url: '/api/users'
   })
-    .then(res => $scope.bundles = res.data);
+    .then(res => $scope.users = res.data);
 }
 
 export default UsersIndexCtrl;
