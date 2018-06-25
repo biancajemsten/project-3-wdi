@@ -3,7 +3,7 @@ const bundles = require('../controllers/bundles');
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 const skiddle = require('../controllers/skiddle');
-// const secureRoute = require('../lib/secureRoute');
+const secureRoute = require('../lib/secureRoute');
 const googlePlaceSearch = require('../controllers/googlePlaceSearch');
 const googlePlaceDetails = require('../controllers/googlePlaceDetails');
 
@@ -15,7 +15,7 @@ router.route('/bundles/:id')
   .delete( bundles.delete);
 
 router.route('/users/:id')
-  .get(users.show)
+  .get(secureRoute, users.show)
   .put(users.update);
 
 router.get('/events', skiddle.eventFinder);

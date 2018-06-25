@@ -19,7 +19,7 @@ function login(req, res, next){
       res.json({
         user,
         token,
-        message: `Welcome back ${user.firstname} ${user.lastname}`});
+        message: `Welcome back ${user.firstName} ${user.lastName}`});
     })
     .catch(next);
 }

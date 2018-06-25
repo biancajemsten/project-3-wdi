@@ -1,17 +1,17 @@
 <form ng-submit="handleSubmit()" name="form" novalidate>
   <div class="field">
-    <label class="label" for="firstname">First Name</label>
-    <input class="input" name="firstname" id="firstname" placeholder="First Name" ng-model="data.firstname" required/>
+    <label class="label" for="firstName">First Name</label>
+    <input class="input" name="firstName" id="firstName" placeholder="First Name" ng-model="data.firstName" required/>
 
-    <div ng-messages="form.firstname.$error" ng-if="form.firstname.$dirty">
+    <div ng-messages="form.firstName.$error" ng-if="form.firstName.$dirty">
       <small ng-message="required">This field is required </small>
     </div>
   </div>
   <div class="field">
-    <label class="label" for="lastname">Last Name</label>
-    <input class="input" name="lastname" id="lastname" placeholder="Last Name" ng-model="data.lastname" required/>
+    <label class="label" for="lastName">Last Name</label>
+    <input class="input" name="lastName" id="lastName" placeholder="Last Name" ng-model="data.lastName" required/>
 
-    <div ng-messages="form.lastname.$error" ng-if="form.lastname.$dirty">
+    <div ng-messages="form.lastName.$error" ng-if="form.lastName.$dirty">
       <small ng-message="required">This field is required </small>
     </div>
   </div>

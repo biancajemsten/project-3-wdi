@@ -8,34 +8,34 @@ mongoose.connect(dbURI, (err, db) => {
   db.dropDatabase();
 
   User.create([{
-    firstname: 'Arabella',
-    lastname: 'Dear',
+    firstName: 'Arabella',
+    lastName: 'Dear',
     email: 'ab@test.com',
     image: 'http://www.midlandstruckvan.com/wp-content/uploads/2016/01/nrc-female-silhouette-large-485x323.png',
     password: '1234',
     passwordConfirmation: '1234',
     location: 'Scotland',
-    musicgenres: 'Jazz'
+    musicGenres: 'Jazz'
   },
   {
-    firstname: 'Bianca',
-    lastname: 'Jemsten',
+    firstName: 'Bianca',
+    lastName: 'Jemsten',
     email: 'bj@test.com',
     image: 'http://www.midlandstruckvan.com/wp-content/uploads/2016/01/nrc-female-silhouette-large-485x323.png',
     password: '1234',
     passwordConfirmation: '1234',
     location: 'Sweden',
-    musicgenres: 'Swedish Pop'
+    musicGenres: 'Swedish Pop'
   },
   {
-    firstname: 'James',
-    lastname: 'Newell',
+    firstName: 'James',
+    lastName: 'Newell',
     email: 'jn@test.com',
     image: 'http://getdrawings.com/img/facebook-silhouette-female-22.png',
     password: '1234',
     passwordConfirmation: '1234',
     location: 'London',
-    musicgenres: 'Metal'
+    musicGenres: 'Metal'
   }])
     .then(users => {
       console.log(`${users.length} User(s) created`);
