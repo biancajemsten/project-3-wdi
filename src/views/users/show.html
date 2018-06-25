@@ -8,7 +8,7 @@
     <hr>
     <span ng-repeat="item in user.musicGenres" class="tag is-warning">
       {{ item.genre }}
-      <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="removeGenre()"></button>
+      <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(item)"></button>
     </span>
   </div>
 </section>

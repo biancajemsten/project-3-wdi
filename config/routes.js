@@ -23,6 +23,8 @@ router.route('/users/:id')
   .get(users.show)
   .put(secureRoute, users.update);
 
+router.delete('/users/:id/genres/:genreId', users.deleteGenre);
+
 router.get('/events', skiddle.eventFinder);
 
 router.get('/findPlaces', googlePlaceSearch.findGooglePlaces);

@@ -24,6 +24,13 @@ function UsersShowCtrl($scope, $http, $state){
   $scope.currentMonth = $scope.today.getMonth();
   $scope.currentYear = $scope.today.getFullYear();
 
+  $scope.deleteGenre = function(item) {
+    $http({
+      method: 'DELETE',
+      url: `/api/users/${$state.params.id}/genres/${item._id}`
+    })
+      .then(res => $scope.boat = res.data);
+  };
 }
 
 export default UsersShowCtrl;
