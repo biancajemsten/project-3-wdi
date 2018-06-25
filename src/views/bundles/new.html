@@ -62,31 +62,28 @@
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{restaurant.name}}</h6>
-            <!-- {{restaurant.details.photos[0]}} -->
-            {{restaurant.details.photos[1].html_attributions}}
-            second{{restaurant.details.photos[0].photo_reference}}
             <p ng-if="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
             <p ng-if="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
-            <div ng-class="{'hide' : toggleDetails}"  ng-if="restaurant.place_id === details.place_id">
-              <p ng-if="details.website"><strong>Website: </strong> {{details.website}}</p>
-              <p ng-if="details.opening_hours"><strong>Opening Hours: </strong>
+            <div ng-if="restaurant.id === currentShowRestaurant">
+              <p ng-if="restaurant.details.website"><strong>Website: </strong> {{restaurant.details.website}}</p>
+              <p ng-if="restaurant.details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>
-                  <li>{{details.opening_hours.weekday_text[0]}}</li>
-                  <li>{{details.opening_hours.weekday_text[1]}}</li>
-                  <li>{{details.opening_hours.weekday_text[2]}}</li>
-                  <li>{{details.opening_hours.weekday_text[3]}}</li>
-                  <li>{{details.opening_hours.weekday_text[4]}}</li>
-                  <li>{{details.opening_hours.weekday_text[5]}}</li>
-                  <li>{{details.opening_hours.weekday_text[6]}}</li>
+                  <li>{{restaurant.details.opening_hours.weekday_text[0]}}</li>
+                  <li>{{restaurant.details.opening_hours.weekday_text[1]}}</li>
+                  <li>{{restaurant.details.opening_hours.weekday_text[2]}}</li>
+                  <li>{{restaurant.details.opening_hours.weekday_text[3]}}</li>
+                  <li>{{restaurant.details.opening_hours.weekday_text[4]}}</li>
+                  <li>{{restaurant.details.opening_hours.weekday_text[5]}}</li>
+                  <li>{{restaurant.details.opening_hours.weekday_text[6]}}</li>
                 </ul></p>
             </div>
-            <button class="button" name="button" ng-click="getDetails(restaurant)">See More</button>
+            <button class="button" name="button" ng-click="showDetailsRestaurant(restaurant)">See More</button>
             <button class="button" name="button" ng-click="chooseRestaurant(restaurant)">Pick this restaurant</button>
           </form>
         </div>
       </div>
     </div>
-    <div class="column is-full ng-class="{ 'hide': !hideRestaurants}"">
+    <div class="column is-full" ng-class="{ 'hide': !hideRestaurants}">
       <div class="card" >
         <div class="card-content">
           <form>
@@ -107,20 +104,20 @@
             <h6 class="title is-6">{{bar.name}}</h6>
             <p ng-if="bar.price_level"><strong>Price level: </strong> {{bar.price_level}}</p>
             <p ng-if="bar.rating"><strong>Rating: </strong> {{bar.rating}}</p>
-            <div ng-class="{'hide' : toggleDetails}" ng-if="bar.place_id === details.place_id">
-              <p ng-if="details.website"><strong>Website: </strong> {{details.website}}</p>
-              <p ng-if="details.opening_hours"><strong>Opening Hours: </strong>
+            <div ng-if="bar.id === currentShowBar">
+              <p ng-if="bar.details.website"><strong>Website: </strong> {{bar.details.website}}</p>
+              <p ng-if="bar.details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>
-                  <li>{{details.opening_hours.weekday_text[0]}}</li>
-                  <li>{{details.opening_hours.weekday_text[1]}}</li>
-                  <li>{{details.opening_hours.weekday_text[2]}}</li>
-                  <li>{{details.opening_hours.weekday_text[3]}}</li>
-                  <li>{{details.opening_hours.weekday_text[4]}}</li>
-                  <li>{{details.opening_hours.weekday_text[5]}}</li>
-                  <li>{{details.opening_hours.weekday_text[6]}}</li>
+                  <li>{{bar.details.opening_hours.weekday_text[0]}}</li>
+                  <li>{{bar.details.opening_hours.weekday_text[1]}}</li>
+                  <li>{{bar.details.opening_hours.weekday_text[2]}}</li>
+                  <li>{{bar.details.opening_hours.weekday_text[3]}}</li>
+                  <li>{{bar.details.opening_hours.weekday_text[4]}}</li>
+                  <li>{{bar.details.opening_hours.weekday_text[5]}}</li>
+                  <li>{{bar.details.opening_hours.weekday_text[6]}}</li>
                 </ul></p>
             </div>
-            <button class="button" name="button" ng-click="getDetails(bar)">See More</button>
+            <button class="button" name="button" ng-click="showDetailsBar(bar)">See More</button>
             <button class="button" name="button" ng-click="chooseBar(bar)">Pick this bar</button>
           </form>
         </div>

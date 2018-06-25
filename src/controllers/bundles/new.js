@@ -12,6 +12,8 @@ function BundlesNewCtrl($scope, $http, $state){
   $scope.pickedBar = {};
   $scope.details = {};
   $scope.events = [];
+  $scope.currentShowRestaurant = '';
+  $scope.currentShowBar = '';
 
 
   //search function only works if the user searches in one keyword
@@ -27,7 +29,7 @@ function BundlesNewCtrl($scope, $http, $state){
       });
   };
 
-
+  //currently not in use
   $scope.getDetails = function(place){
     $http({
       method: 'GET',
@@ -39,6 +41,22 @@ function BundlesNewCtrl($scope, $http, $state){
         $scope.details = res.data.result;
         $scope.toggleDetails = false;
       });
+  };
+
+  //functions that show or hide place details depending on if they are currently showing by setting the currentShow to their id or an empty string.
+  $scope.showDetailsRestaurant = function(restaurant){
+    if(restaurant.id === $scope.currentShowRestaurant){
+      $scope.currentShowRestaurant = '';
+    }else{
+      $scope.currentShowRestaurant = restaurant.id;
+    }
+  };
+  $scope.showDetailsBar = function(bar){
+    if(bar.id === $scope.currentShowBar){
+      $scope.currentShowBar = '';
+    }else{
+      $scope.currentShowBar = bar.id;
+    }
   };
 
   //function that hides the other restaurants and saves the details of the picked restaurant
@@ -109,6 +127,15 @@ function BundlesNewCtrl($scope, $http, $state){
           })
             .then(res => {
               item.details= res.data.result;
+              // const photoReference = res.data.result.photos[0].photo_reference;
+              // $http({
+              //   method: 'GET',
+              //   url: '/api/findPhotos',
+              //   params: {photo_reference: photoReference}
+              // })
+              //   .then(res => {
+              //     return res;
+              //   });
             });
         });
       });
