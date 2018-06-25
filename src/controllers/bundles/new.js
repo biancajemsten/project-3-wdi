@@ -79,7 +79,7 @@ function BundlesNewCtrl($scope, $http, $state){
       name: event.eventname,
       venue: event.venue.name,
       date: event.date,
-      address: event.venue.address + ', ' +  event.venue.town, 
+      address: event.venue.address + ', ' +  event.venue.town,
       ticketPrice: event.entryprice,
       description: event.description,
       startTime: event.openingtimes.doorsopen,
@@ -101,7 +101,16 @@ function BundlesNewCtrl($scope, $http, $state){
     })
       .then(res => {
         $scope.restaurants = res.data.results;
-        $scope.retaurants.details = {};
+        res.data.results.forEach(item => {
+          $http({
+            method: 'GET',
+            url: '/api/findDetails',
+            params: { place_id: item.place_id}
+          })
+            .then(res => {
+              item.details= res.data.result;
+            });
+        });
       });
     $http({
       method: 'GET',
@@ -113,9 +122,18 @@ function BundlesNewCtrl($scope, $http, $state){
         type: 'bar'
       }
     })
-      .then(res=> {
+      .then(res => {
         $scope.bars = res.data.results;
-        $scope.bars.details = {};
+        res.data.results.forEach(item => {
+          $http({
+            method: 'GET',
+            url: '/api/findDetails',
+            params: { place_id: item.place_id}
+          })
+            .then(res => {
+              item.details= res.data.result;
+            });
+        });
       });
     return pickedEvent = $scope.pickedEvent;
   };

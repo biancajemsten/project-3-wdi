@@ -62,6 +62,9 @@
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{restaurant.name}}</h6>
+            <!-- {{restaurant.details.photos[0]}} -->
+            {{restaurant.details.photos[1].html_attributions}}
+            second{{restaurant.details.photos[0].photo_reference}}
             <p ng-if="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
             <p ng-if="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
             <div ng-class="{'hide' : toggleDetails}"  ng-if="restaurant.place_id === details.place_id">
