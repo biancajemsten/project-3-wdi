@@ -4,8 +4,9 @@ function bundleCard() {
     replace: true,
     templateUrl: './views/directives/bundleCard.html',
     scope: {
-      image: '=',
-      title: '='
+      event: '=',
+      restaurant: '=?',
+      bar: '=?'
     }
   };
 }

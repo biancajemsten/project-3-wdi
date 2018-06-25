@@ -21,6 +21,7 @@ import UsersShowCtrl from './controllers/users/show';
 import UsersEditCtrl from './controllers/users/edit';
 import filePicker from './directives/filePicker';
 import googleMap from './directives/googleMap';
+import bundleCard from './directives/bundleCard';
 
 angular.module('bundleApi', [
   'ui.router',
@@ -41,4 +42,5 @@ angular.module('bundleApi', [
   .controller('UsersEditCtrl', UsersEditCtrl)
 
   .directive('filePicker', filePicker)
-  .directive('googleMap', googleMap);
+  .directive('googleMap', googleMap)
+  .directive('bundleCard', bundleCard);
