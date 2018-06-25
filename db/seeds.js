@@ -42,7 +42,7 @@ mongoose.connect(dbURI, (err, db) => {
       return Bundle.create([{
         event: {
           name: 'Diamonds Are Forever',
-          date: '2018-04-20',
+          date: '2018-06-20',
           location: {
             lat: 53.4767,
             lng: 2.2390
@@ -67,7 +67,7 @@ mongoose.connect(dbURI, (err, db) => {
       }, {
         event: {
           name: 'Gentlemen\'s Dub Club',
-          date: '2018-04-19',
+          date: '2018-10-19',
           location: {
             lat: 51.4602,
             lng: 0.1169
