@@ -19,10 +19,11 @@ function BundlesNewCtrl($scope, $http, $state){
   //search function only works if the user searches in one keyword
   // possibly still only shows up to 20 results
   $scope.searchEvents = function() {
+    const keyword = $scope.search.replace(' ','_');
     $http({
       method: 'GET',
       url: '/api/events',
-      params: { keyword: $scope.search, radius: $scope.radius }
+      params: { keyword: keyword, radius: $scope.radius }
     })
       .then(res => {
         $scope.events = res.data.results;
