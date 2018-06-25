@@ -15,12 +15,19 @@ function googleMap() {
         center: { lat: 51.515, lng: -0.072}
       });
 
+      const marker = new google.maps.Marker({
+        map: map,
+        animation: google.maps.Animation.DROP
+      });
+
       $scope.$watch('location', () => {
         map.setCenter($scope.location);
+        marker.setPosition($scope.location);
 
       });
     }
   };
+
 }
 
 export default googleMap;
