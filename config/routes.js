@@ -7,16 +7,20 @@ const secureRoute = require('../lib/secureRoute');
 const googlePlaceSearch = require('../controllers/googlePlaceSearch');
 const googlePlaceDetails = require('../controllers/googlePlaceDetails');
 
-router.post('/bundles', secureRoute, bundles.create);
-router.get('/bundles', secureRoute, bundles.index);
+router.route('/bundles')
+  .get(secureRoute, bundles.index)
+  .post(secureRoute, bundles.create);
 
 router.route('/bundles/:id')
   .get(secureRoute, bundles.show)
   .put(secureRoute, bundles.update)
   .delete(secureRoute, bundles.delete);
 
+router.route('/users')
+  .get(users.index);
+
 router.route('/users/:id')
-  .get(secureRoute, users.show)
+  .get(users.show)
   .put(secureRoute, users.update);
 
 router.get('/events', skiddle.eventFinder);

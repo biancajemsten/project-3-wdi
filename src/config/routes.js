@@ -14,6 +14,11 @@ function Router($stateProvider, $urlRouterProvider){
       templateUrl: './views/auth/login.html',
       controller: 'AuthLoginCtrl'
     })
+    .state('usersIndex', {
+      url: '/users',
+      templateUrl: './views/users/index.html',
+      controller: 'UsersIndexCtrl'
+    })
     .state('usersShow', {
       url: '/users/:id',
       templateUrl: './views/users/show.html',
