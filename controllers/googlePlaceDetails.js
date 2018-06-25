@@ -4,7 +4,7 @@ function findPlaceDetails(req, res, next){
 
   rp({
     method: 'GET',
-    url: `https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.query.place_id}&fields=website,opening_hours,reviews,photo,formatted_address,place_id&key=AIzaSyDoFQd8oippLlkVlWztrh2rGfq4RGMjLqQ`,
+    url: `https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.query.place_id}&fields=website,opening_hours,reviews,photo,formatted_address,place_id&key=AIzaSyDjrf_WTxOnonYdVvRwobJ7vTU6FD0VpM0`,
     json: true
   })
     .then(response => res.json(response))

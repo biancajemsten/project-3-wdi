@@ -29,18 +29,72 @@ function BundlesNewCtrl($scope, $http, $state){
       });
   };
 
-  //currently not in use
-  $scope.getDetails = function(place){
+  //function that sends a request to get bar and restaurant info based on the location of the picked event. Also hides the full list of events and only displays picked one.
+  $scope.choseEvent = function(event){
+    $scope.hideEvents = true;
+    $scope.pickedEvent = {
+      name: event.eventname,
+      venue: event.venue.name,
+      date: event.date,
+      address: event.venue.address + ', ' +  event.venue.town,
+      ticketPrice: event.entryprice,
+      description: event.description,
+      startTime: event.openingtimes.doorsopen,
+      eventType: event.EventCode,
+      location: {
+        lat: event.venue.latitude,
+        lng: event.venue.longitude
+      }
+    };
     $http({
       method: 'GET',
-      url: '/api/findDetails',
-      params: { place_id: place.place_id}
+      url: 'api/findPlaces',
+      params: {
+        lat: event.venue.latitude,
+        lng: event.venue.longitude,
+        radius: $scope.radius,
+        type: 'restaurant'
+      }
     })
       .then(res => {
-        $scope.details = res.data.result;
-        $scope.toggleDetails = false;
+        $scope.restaurants = res.data.results;
+        res.data.results.forEach(item => {
+          $http({
+            method: 'GET',
+            url: '/api/findDetails',
+            params: { place_id: item.place_id}
+          })
+            .then(res => {
+              item.details= res.data.result;
+            });
+        });
       });
+    $http({
+      method: 'GET',
+      url: 'api/findPlaces',
+      params: {
+        lat: event.venue.latitude,
+        lng: event.venue.longitude,
+        radius: $scope.radius,
+        type: 'bar'
+      }
+    })
+      .then(res => {
+        $scope.bars = res.data.results;
+        res.data.results.forEach(item => {
+          $http({
+            method: 'GET',
+            url: '/api/findDetails',
+            params: { place_id: item.place_id}
+          })
+            .then(res => {
+              item.details= res.data.result;
+            });
+        });
+      });
+    return pickedEvent = $scope.pickedEvent;
   };
+
 
   //functions that show or hide place details depending on if they are currently showing by setting the currentShow to their id or an empty string.
   $scope.showDetailsRestaurant = function(restaurant){
@@ -110,81 +164,6 @@ function BundlesNewCtrl($scope, $http, $state){
       place_id: bar.place_id
     };
     return pickedBar = $scope.pickedBar;
-  };
-
-  //function that sends a request to get bar and restaurant info based on the location of the picked event. Also hides the full list of events and only displays picked one.
-  $scope.choseEvent = function(event){
-    $scope.hideEvents = true;
-    $scope.pickedEvent = {
-      name: event.eventname,
-      venue: event.venue.name,
-      date: event.date,
-      address: event.venue.address + ', ' +  event.venue.town,
-      ticketPrice: event.entryprice,
-      description: event.description,
-      startTime: event.openingtimes.doorsopen,
-      eventType: event.EventCode,
-      location: {
-        lat: event.venue.latitude,
-        lng: event.venue.longitude
-      }
-    };
-    $http({
-      method: 'GET',
-      url: 'api/findPlaces',
-      params: {
-        lat: event.venue.latitude,
-        lng: event.venue.longitude,
-        radius: $scope.radius,
-        type: 'restaurant'
-      }
-    })
-      .then(res => {
-        $scope.restaurants = res.data.results;
-        res.data.results.forEach(item => {
-          $http({
-            method: 'GET',
-            url: '/api/findDetails',
-            params: { place_id: item.place_id}
-          })
-            .then(res => {
-              item.details= res.data.result;
-              // const photoReference = res.data.result.photos[0].photo_reference;
-              // $http({
-              //   method: 'GET',
-              //   url: '/api/findPhotos',
-              //   params: {photo_reference: photoReference}
-              // })
-              //   .then(res => {
-              //     return res;
-              //   });
-            });
-        });
-      });
-    $http({
-      method: 'GET',
-      url: 'api/findPlaces',
-      params: {
-        lat: event.venue.latitude,
-        lng: event.venue.longitude,
-        radius: $scope.radius,
-        type: 'bar'
-      }
-    })
-      .then(res => {
-        $scope.bars = res.data.results;
-        res.data.results.forEach(item => {
-          $http({
-            method: 'GET',
-            url: '/api/findDetails',
-            params: { place_id: item.place_id}
-          })
-            .then(res => {
-              item.details= res.data.result;
-            });
-        });
-      });
-    return pickedEvent = $scope.pickedEvent;
   };
 
   $scope.createBundle = function(){
