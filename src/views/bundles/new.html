@@ -29,7 +29,7 @@
               <p><strong>Venue: </strong> {{event.venue.name}}</p>
               <p><strong>Date: </strong> {{event.date}}</p>
               <p><strong>Address: </strong> {{event.venue.address}}, {{event.venue.town}}</p>
-              <p><strong>Ticket Price: </strong> {{event.entryprice}}</p>
+              <p ng-if="event.entryprice"><strong>Ticket Price: </strong> {{event.entryprice}}</p>
               <button class="button" name="button" ng-click="choseEvent(event)">Pick this event</button>
             </form>
           </div>
@@ -60,8 +60,8 @@
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{restaurant.name}}</h6>
-            <p><strong>Price level: </strong> {{restaurant.price_level}}</p>
-            <p><strong>Rating: </strong> {{restaurant.rating}}</p>
+            <p ng-if="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
+            <p ng-if="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
             <div ng-class="{'hide' : toggleDetails}"  ng-if="restaurant.place_id === details.place_id">
               <p ng-if="details.website"><strong>Website: </strong> {{details.website}}</p>
               <p ng-if="details.opening_hours"><strong>Opening Hours: </strong>
@@ -100,8 +100,8 @@
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{bar.name}}</h6>
-            <p><strong>Price level: </strong> {{bar.price_level}}</p>
-            <p><strong>Rating: </strong> {{bar.rating}}</p>
+            <p ng-if="bar.price_level"><strong>Price level: </strong> {{bar.price_level}}</p>
+            <p ng-if="bar.rating"><strong>Rating: </strong> {{bar.rating}}</p>
             <div ng-class="{'hide' : toggleDetails}" ng-if="bar.place_id === details.place_id">
               <p ng-if="details.website"><strong>Website: </strong> {{details.website}}</p>
               <p ng-if="details.opening_hours"><strong>Opening Hours: </strong>

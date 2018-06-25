@@ -37,7 +37,7 @@ function BundlesNewCtrl($scope, $http, $state){
       .then(res => {
         console.log(res.data);
         $scope.details = res.data.result;
-        $scope.toggleDetails = !$scope.toggleDetails;
+        $scope.toggleDetails = false;
       });
   };
 
