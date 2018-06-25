@@ -1,11 +1,19 @@
-function AuthLoginCtrl($scope, $auth, $state){
+function AuthLoginCtrl($scope, $auth, $state, $rootScope){
   $scope.data = {};
 
   $scope.handleSubmit = function() {
     console.log($scope.data);
     $auth.login($scope.data)
-      .then(() => $state.go('bundlesNew'));
+      .then(() => $state.go('bundlesNew'))
+      .catch(() => {
+        $rootScope.$broadcast('flashMessage', {
+          type: 'danger',
+          content: 'Invalid credentials'
+        });
+      });
   };
+
+
 }
 
 
