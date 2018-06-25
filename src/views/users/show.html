@@ -15,10 +15,10 @@
 <section ng-if="bundle.creator === user._id" ng-repeat="bundle in bundles" class="columns">
   <div class="column is-half-desktop">
     <h3>Previous Bundles</h3>
-    <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+    <bundle-card ng-if="+eventDate[0] < currentYear || +eventDate[0] === currentYear && +eventDate[1] < currentMonth || +eventDate[0] === currentYear && +eventDate[1] === currentMonth && +eventDate[2] <= currentDate" event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
   </div>
   <div class="column is-half-desktop">
     <h3>Upcoming Bundles</h3>
-    <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+    <bundle-card ng-if="+eventDate[0] > currentYear || +eventDate[0] === currentYear && +eventDate[1] > currentMonth || +eventDate[0] === currentYear && +eventDate[1] === currentMonth && +eventDate[2] >= currentDate" event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
   </div>
 </section>
