@@ -1,3 +1,16 @@
+function secureState($q, $state, $auth, $rootScope) {
+  return new $q(resolve => {
+    if($auth.isAuthenticated()) return resolve();
+
+    $rootScope.$broadcast('flashMessage', {
+      type: 'warning',
+      content: 'Please log in'
+    });
+
+    $state.go('login');
+  });
+}
+
 function Router($stateProvider, $urlRouterProvider){
   $stateProvider
     .state('home', {
@@ -22,7 +35,8 @@ function Router($stateProvider, $urlRouterProvider){
     .state('usersEdit', {
       url: '/users/:id/edit',
       templateUrl: './views/users/edit.html',
-      controller: 'UsersEditCtrl'
+      controller: 'UsersEditCtrl',
+      resolve: { secureState }
     })
     .state('bundlesShow', {
       url: '/bundles/:id',
@@ -32,7 +46,8 @@ function Router($stateProvider, $urlRouterProvider){
     .state('bundlesNew', {
       url: '/bundles/new',
       templateUrl: './views/bundles/new.html',
-      controller: 'BundlesNewCtrl'
+      controller: 'BundlesNewCtrl',
+      resolve: { secureState }
     });
 
   $urlRouterProvider.otherwise('/');
