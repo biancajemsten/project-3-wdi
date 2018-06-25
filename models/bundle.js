@@ -15,28 +15,29 @@ const eventSchema = new mongoose.Schema({
   }
 });
 
-// const placeSchema = new mongoose.Schema({
-//
-// })
+const placeSchema = new mongoose.Schema({
+  name: String,
+  address: String,
+  website: String,
+  openingHours: {
+    monday: String,
+    tuesday: String,
+    wednesday: String,
+    thursday: String,
+    friday: String,
+    saturday: String,
+    sunday: String
+  },
+  location: {
+    lat: Number,
+    lng: Number
+  }
+});
 
 const bundleSchema = new mongoose.Schema({
   event: eventSchema,
-  bar: {
-    name: String,
-    location: {
-      lat: Number,
-      lng: Number
-    },
-    place_id: String
-  },
-  restaurant: {
-    name: String,
-    location: {
-      lat: Number,
-      lng: Number
-    },
-    place_id: String
-  },
+  bar: placeSchema,
+  restaurant: placeSchema,
   creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
 

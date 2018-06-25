@@ -62,10 +62,11 @@
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{restaurant.name}}</h6>
-            <p ng-if="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
+            <p><strong>Address:</strong>{{restaurant.details.formatted_address}}</p>
             <p ng-if="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
+            <p ng-if="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
             <div ng-if="restaurant.id === currentShowRestaurant">
-              <p ng-if="restaurant.details.website"><strong>Website: </strong> {{restaurant.details.website}}</p>
+              <p ng-if="restaurant.details.website"><strong>Website: </strong> <a href="{{restaurant.details.website}}">{{restaurant.details.website}}</a></p>
               <p ng-if="restaurant.details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>
                   <li>{{restaurant.details.opening_hours.weekday_text[0]}}</li>
@@ -102,10 +103,11 @@
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{bar.name}}</h6>
-            <p ng-if="bar.price_level"><strong>Price level: </strong> {{bar.price_level}}</p>
+            <p><strong>Address:</strong>{{bar.details.formatted_address}}</p>
             <p ng-if="bar.rating"><strong>Rating: </strong> {{bar.rating}}</p>
+            <p ng-if="bar.price_level"><strong>Price level: </strong> {{bar.price_level}}</p>
             <div ng-if="bar.id === currentShowBar">
-              <p ng-if="bar.details.website"><strong>Website: </strong> {{bar.details.website}}</p>
+              <p ng-if="bar.details.website"><strong>Website: </strong> <a href="{{bar.details.website}}">{{bar.details.website}}</a></p>
               <p ng-if="bar.details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>
                   <li>{{bar.details.opening_hours.weekday_text[0]}}</li>

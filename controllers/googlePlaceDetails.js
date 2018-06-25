@@ -1,7 +1,6 @@
 const rp = require('request-promise');
 // const {googleApiKey} = require('../config/environment');
 function findPlaceDetails(req, res, next){
-  console.log(req.query.place_id);
 
   rp({
     method: 'GET',

@@ -37,7 +37,6 @@ function BundlesNewCtrl($scope, $http, $state){
       params: { place_id: place.place_id}
     })
       .then(res => {
-        console.log(res.data);
         $scope.details = res.data.result;
         $scope.toggleDetails = false;
       });
@@ -66,12 +65,24 @@ function BundlesNewCtrl($scope, $http, $state){
       name: restaurant.name,
       priceLevel: restaurant.price_level,
       rating: restaurant.rating,
+      address: restaurant.details.formatted_address,
+      website: restaurant.details.website,
+      openingHours: {
+        monday: restaurant.details.opening_hours.weekday_text[0],
+        tuesday: restaurant.details.opening_hours.weekday_text[1],
+        wednesday: restaurant.details.opening_hours.weekday_text[2],
+        thursday: restaurant.details.opening_hours.weekday_text[3],
+        friday: restaurant.details.opening_hours.weekday_text[4],
+        saturday: restaurant.details.opening_hours.weekday_text[5],
+        sunday: restaurant.details.opening_hours.weekday_text[6]
+      },
       location: {
         lat: restaurant.geometry.location.lat,
         lng: restaurant.geometry.location.lng
       },
       place_id: restaurant.place_id
     };
+    console.log($scope.pickedRestaurant);
     return pickedRestaurant = $scope.pickedRestaurant;
   };
 
@@ -81,6 +92,17 @@ function BundlesNewCtrl($scope, $http, $state){
       name: bar.name,
       priceLevel: bar.price_level,
       rating: bar.rating,
+      address: bar.details.formatted_address,
+      website: bar.details.website,
+      openingHours: {
+        monday: bar.details.opening_hours.weekday_text[0],
+        tuesday: bar.details.opening_hours.weekday_text[1],
+        wednesday: bar.details.opening_hours.weekday_text[2],
+        thursday: bar.details.opening_hours.weekday_text[3],
+        friday: bar.details.opening_hours.weekday_text[4],
+        saturday: bar.details.opening_hours.weekday_text[5],
+        sunday: bar.details.opening_hours.weekday_text[6]
+      },
       location: {
         lat: bar.geometry.location.lat,
         lng: bar.geometry.location.lng
@@ -171,20 +193,8 @@ function BundlesNewCtrl($scope, $http, $state){
       url: 'api/bundles',
       data: {
         event: pickedEvent,
-        bar: {
-          name: pickedBar.name,
-          location: {
-            lat: pickedBar.location.lat,
-            lng: pickedBar.location.lat
-          }
-        },
-        restaurant: {
-          name: pickedRestaurant.name,
-          location: {
-            lat: pickedRestaurant.location.lat,
-            lng: pickedRestaurant.location.lng
-          }
-        }
+        bar: pickedBar,
+        restaurant: pickedRestaurant
       }
     })
       .then(() => $state.go('home'));
