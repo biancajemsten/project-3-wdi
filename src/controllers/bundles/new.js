@@ -11,7 +11,7 @@ function BundlesNewCtrl($scope, $http, $state){
   $scope.pickedRestaurant = {};
   $scope.pickedBar = {};
   $scope.details = {};
-  $scope.events = {};
+  $scope.events = [];
 
 
   //search function only works if the user searches in one keyword

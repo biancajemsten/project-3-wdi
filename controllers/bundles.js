@@ -9,6 +9,7 @@ function showRoute(req, res, next){
 
 function createRoute(req, res, next){
   req.body.creator = req.currentUser;
+  console.log(req);
   Bundle
     .create(req.body)
     .then(bundle => res.status(201).json(bundle))
