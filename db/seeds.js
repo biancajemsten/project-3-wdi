@@ -52,14 +52,14 @@ mongoose.connect(dbURI, (err, db) => {
           name: 'The Alchemist',
           location: {
             lat: 53.4358,
-            lng: 2.9576
+            lng: -2.9576
           }
         },
         restaurant: {
           name: 'The Grill on New York Street',
           location: {
             lat: 53.2922,
-            lng: 2.14407
+            lng: -2.14407
           }
         },
         creator: users[0]
@@ -70,7 +70,7 @@ mongoose.connect(dbURI, (err, db) => {
           date: '2018-10-19',
           location: {
             lat: 51.4602,
-            lng: 0.1169
+            lng: -0.1169
           }
         },
         bar: {
