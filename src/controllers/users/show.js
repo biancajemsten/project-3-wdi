@@ -1,6 +1,4 @@
 function UsersShowCtrl($scope, $http, $state){
-  
-  $state.params.currentUser = $scope.currentUser;
 
   $http({
     method: 'GET',
