@@ -45,7 +45,7 @@ mongoose.connect(dbURI, (err, db) => {
           date: '2018-06-20',
           location: {
             lat: 53.4767,
-            lng: 2.2390
+            lng: -2.2390
           }
         },
         bar: {
