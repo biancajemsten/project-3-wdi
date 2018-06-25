@@ -7,6 +7,14 @@ function UsersShowCtrl($scope, $http, $state){
     .then(res => {
       $scope.user = res.data;
     });
+
+  $http({
+    method: 'GET',
+    url: '/api/bundles'
+  })
+    .then(res => {
+      $scope.bundles = res.data;
+    });
 }
 
 export default UsersShowCtrl;

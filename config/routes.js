@@ -8,6 +8,7 @@ const googlePlaceSearch = require('../controllers/googlePlaceSearch');
 const googlePlaceDetails = require('../controllers/googlePlaceDetails');
 
 router.post('/bundles', bundles.create);
+router.get('/bundles', bundles.index);
 
 router.route('/bundles/:id')
   .get(bundles.show)

@@ -1,7 +1,7 @@
 function MainCtrl($scope, $auth, $state){
+  $scope.isAuthenticated = $auth.isAuthenticated;
 
-
-  // $scope.currentUserId = $auth.getPayload().sub;
+  if($auth.isAuthenticated()) $scope.currentUserId = $auth.getPayload().sub;
 
   $scope.logout =function() {
     $auth.logout();

@@ -1,13 +1,15 @@
 <div class="card">
-  <div class="card-image">
-    <figure class="image">
-      <img ng-src="{{ image }}" alt="{{ title }}" />
-    </figure>
-  </div>
-
-  <div class="card-content">
-    <div class="content">
-      <h4 class="title is-4">{{ title }}</h4>
+  <h3>{{ date }}</h3>
+  <hr>
+  <div class="columns">
+    <div class="column is-one-third">
+      <h2>{{ event }}</h2>
+    </div>
+    <div class="column is-one-third">
+      <h2>{{ restaurant }}</h2>
+    </div>
+    <div class="column is-one-third">
+      <h2>{{ bar }}</h2>
     </div>
   </div>
 </div>
