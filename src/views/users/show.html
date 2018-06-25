@@ -13,4 +13,4 @@
 <hr>
 
 <h3>My Bundles</h3>
-<p ng-repeat="bundle in bundles">{{ bundle.event.name }} {{ bundle.creator }}</p>
+<p ng-if="bundle.creator === user._id" ng-repeat="bundle in bundles">{{ bundle.event.name }} {{ bundle.creator }}</p>
