@@ -12,6 +12,7 @@
     <a ui-sref="usersShow({ id: user._id })">
       <img src="{{ user.image }}" alt="{{ user.firstName }} {{ user.lastName }}">
       <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+      <h1 ng-if="bundle.creator === user._id" ng-repeat="bundle in bundles">{{ bundles.length }}</h1>
     </a>
   </div>
 </div>
