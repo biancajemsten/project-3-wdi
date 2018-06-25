@@ -3,7 +3,6 @@ function BundlesNewCtrl($scope, $http, $state){
   $scope.hideEvents = false;
   $scope.hideRestaurants = false;
   $scope.hideBars = false;
-  $scope.toggleDetails = true;
   $scope.pickedEvent = {};
   let pickedEvent;
   let pickedRestaurant;
@@ -177,7 +176,7 @@ function BundlesNewCtrl($scope, $http, $state){
         restaurant: pickedRestaurant
       }
     })
-      .then(() => $state.go('home'));
+      .then(() => $state.go('usersShow', { id: $scope.currentUserId }));
   };
 
 }
