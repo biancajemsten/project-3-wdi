@@ -1,5 +1,12 @@
 const Bundle = require('../models/bundle');
 
+function indexRoute(req, res, next){
+  Bundle
+    .find()
+    .then(bundles => res.json(bundles))
+    .catch(next);
+}
+
 function showRoute(req, res, next){
   Bundle
     .findById(req.params.id)
@@ -33,6 +40,7 @@ function deleteRoute(req, res, next){
 }
 
 module.exports = {
+  index: indexRoute,
   show: showRoute,
   create: createRoute,
   update: updateRoute,
