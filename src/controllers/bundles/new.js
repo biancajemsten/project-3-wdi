@@ -79,7 +79,11 @@ function BundlesNewCtrl($scope, $http, $state){
       name: event.eventname,
       venue: event.venue.name,
       date: event.date,
+      address: event.venue.address + ', ' +  event.venue.town, 
       ticketPrice: event.entryprice,
+      description: event.description,
+      startTime: event.openingtimes.doorsopen,
+      eventType: event.EventCode,
       location: {
         lat: event.venue.latitude,
         lng: event.venue.longitude
@@ -121,14 +125,7 @@ function BundlesNewCtrl($scope, $http, $state){
       method: 'POST',
       url: 'api/bundles',
       data: {
-        event: {
-          name: pickedEvent.name,
-          date: pickedEvent.date,
-          location: {
-            lat: pickedEvent.location.lat,
-            lng: pickedEvent.location.lng
-          }
-        },
+        event: pickedEvent,
         bar: {
           name: pickedBar.name,
           location: {
