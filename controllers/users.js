@@ -20,8 +20,20 @@ function updateRoute(req, res, next) {
     .catch(next);
 }
 
+function deleteGenreRoute(req, res, next) {
+  User.findById(req.params.id)
+    .then(user => {
+      const genre = user.musicGenres.id(req.params.genreId);
+      genre.remove();
+      return user.save();
+    })
+    .then(user => res.json(user))
+    .catch(next);
+}
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
-  update: updateRoute
+  update: updateRoute,
+  deleteGenre: deleteGenreRoute
 };

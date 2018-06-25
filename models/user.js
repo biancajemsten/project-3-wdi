@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userSchema = new mongoose.Schema({
-  firstName: {type: String , required: true },
-  lastName: {type: String , required: true},
-  email: {type: String , required: true, unique: true},
-  image: {type: String, required: false},
-  password: {type: String , required: true} ,
-  location: {type: String },
-  musicGenres: {type: String }
+const genreSchema = new mongoose.Schema({
+  genre: { type: String }
+});
 
+const userSchema = new mongoose.Schema({
+  firstName: { type: String , required: true },
+  lastName: { type: String , required: true },
+  email: { type: String , required: true, unique: true },
+  image: { type: String, required: false },
+  password: { type: String , required: true } ,
+  location: { type: String },
+  musicGenres: [ genreSchema ]
 });
 
 userSchema.virtual('bundles', {

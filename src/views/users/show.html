@@ -6,7 +6,10 @@
   <div class="column is-half-desktop">
     <h5>{{ user.location }}</h5>
     <hr>
-    <h5>{{ user.musicGenres }}</h5>
+    <span ng-repeat="item in user.musicGenres" class="tag is-warning">
+      {{ item.genre }}
+      <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(item)"></button>
+    </span>
   </div>
 </section>
 <a class="button" ui-sref="usersEdit({ id: user._id })">Edit</a>
