@@ -31,17 +31,24 @@
     </div>
   </div>
 </div>
-<div class="columns">
-  <div class="column is-one-quarter">
 
+<div class="columns">
+  <div class="column is-one-third">
+    <div class="wrapper">
+      <button>Add Attendees</button>
+      <input type="text" placeholder="Search users..." ng-model="search"/>
+    </div>
+    <div>
+      <ul ng-repeat="user in users | filter: search">
+        <li ng-click="addAttendee(user)">{{user.firstName}} {{user.lastName}}</li>
+      </ul>
+    </div>
   </div>
-  <div class="column is-one quarter">
+  <div class="column is-one-third">
     <a class="button">Edit</a>
   </div>
-  <div class="column is-one-quarter">
+  <div class="column is-one-third">
     <button class="button is-danger" ng-click="deleteBundle()">Delete</button>
-  </div>
-  <div class="column is-one-quarter">
   </div>
 </div>
 <div google-map location="bundle.event.location"></div>

@@ -25,3 +25,13 @@ body {
   margin-top: 80px !important;
 
 }
+
+.wrapper {
+    display:inline-block;
+}
+
+input,
+button {
+    background-color:transparent;
+    border: 1px solid grey;
+}
