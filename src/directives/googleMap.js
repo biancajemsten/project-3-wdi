@@ -9,25 +9,24 @@ function googleMap() {
       location: '='
     },
     link($scope, $element) {
-
+      console.log('googlescope', $scope.$parent);
       const map = new google.maps.Map($element[0], {
-        zoom: 14,
+        zoom: 15,
         center: { lat: 51.515, lng: -0.072}
       });
 
       const eventImage = {
-        url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-        size: new google.maps.Size(20, 32),
-        origin: new google.maps.Point(0, 0)
+        url: 'http://maps.google.com/mapfiles/ms/icons/red.png',
+        size: new google.maps.Size(50, 50)
       };
       const restaurantImage = {
-        url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-        size: new google.maps.Size(20, 32),
+        url: 'http://maps.google.com/mapfiles/ms/icons/green.png',
+        size: new google.maps.Size(50, 50),
         origin: new google.maps.Point(0, 0)
       };
       const barImage = {
-        url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-        size: new google.maps.Size(20, 32),
+        url: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
+        size: new google.maps.Size(50 , 50),
         origin: new google.maps.Point(0, 0)
       };
 
@@ -35,24 +34,30 @@ function googleMap() {
       const eventMarker = new google.maps.Marker({
         map: map,
         icon: eventImage,
-        animation: google.maps.Animation.DROP
+        animation: google.maps.Animation.DROP,
+        label: '🎶'
       });
       const restaurantMarker = new google.maps.Marker({
         map: map,
         icon: restaurantImage,
-        animation: google.maps.Animation.DROP
+        animation: google.maps.Animation.DROP,
+        label: '🍴'
       });
       const barMarker = new google.maps.Marker({
         map: map,
         icon: barImage,
-        animation: google.maps.Animation.DROP
+        animation: google.maps.Animation.DROP,
+        label: '🍺'
       });
 
       $scope.$watch('location', () => {
         map.setCenter($scope.location);
-        eventMarker.setPosition($scope.location);
-        restaurantMarker.setPosition($scope.restaurant.location);
-        barMarker.setPosition($scope.bar.location);
+        eventMarker.setPosition($scope.$parent.bundle.event.location);
+        // console.log('restaurant', $scope.$parent.bundle.event.location);
+        restaurantMarker.setPosition($scope.$parent.bundle.restaurant.location);
+        // console.log('restaurant', $scope.$parent.bundle.restaurant.location);
+        barMarker.setPosition($scope.$parent.bundle.bar.location);
+        // console.log('bar', $scope.$parent.bundle.bar.location);
 
       });
     }
