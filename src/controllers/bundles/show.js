@@ -23,20 +23,22 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
   $scope.addAttendee = function(user){
-    const data = {
-      _id: user._id,
-      firstName: user.firstName,
-      lastName: user.lastName
-    };
-    $http({
-      method: 'POST',
-      url: `/api/bundles/${$state.params.id}/attendees`,
-      data: data
-    })
-      .then(res => {
-        $scope.bundle = res.data;
-        $scope.search = '';
-      });
+    if(!$scope.bundle.attendees.includes(user)){
+      const data = {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName
+      };
+      $http({
+        method: 'POST',
+        url: `/api/bundles/${$state.params.id}/attendees`,
+        data: data
+      })
+        .then(res => {
+          $scope.bundle = res.data;
+          $scope.search = ''; 
+        });
+    }
   };
 }
 
