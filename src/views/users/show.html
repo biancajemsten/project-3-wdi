@@ -4,9 +4,9 @@
     <h3 class="title">{{ user.firstName }} {{ user.lastName }}</h3>
   </div>
   <div class="column is-half-desktop">
-    <h5><strong>City:</strong> {{ user.location }}</h5>
+    <h5><strong>Country:</strong> {{ user.location }}</h5>
     <hr>
-    <h5><strong>Preferred Music Genres:</strong> 
+    <h5><strong>Preferred Music Genres:</strong>
     <span ng-repeat="genre in user.musicGenres" class="tag is-warning">
       {{ genre }}
       <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
