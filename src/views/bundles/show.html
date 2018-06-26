@@ -1,8 +1,8 @@
 <h2 class="is-2 title">Get excited for your bundle  on {{bundle.event.date}}</h2>
 <div class="columns">
   <div class="column is-one-third">The Event</div>
-  <div class="column is-one-third">The Restaurant</div>
-  <div class="column is-one-third">The Bar</div>
+  <div class="column is-one-third" ng-if="bundle.restaurant">The Restaurant</div>
+  <div class="column is-one-third" ng-if="bundle.bar">The Bar</div>
 </div>
 
 <div class="columns">
@@ -16,14 +16,14 @@
       <p><strong>Description</strong> {{bundle.event.description}}</p>
     </div>
   </div>
-  <div class="column is-one-third">
+  <div ng-if="bundle.restaurant" class="column is-one-third">
     <h3 class="is-3 title">{{bundle.restaurant.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.restaurant.address}}</p>
       <p><strong>Website: </strong><a href="{{bundle.restaurant.website}}">{{bundle.restaurant.website}}</a></p>
     </div>
   </div>
-  <div class="column is-one-third">
+  <div ng-if="bundle.bar" class="column is-one-third">
     <h3 class="is-3 title">{{bundle.bar.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.bar.address}}</p>
@@ -31,17 +31,37 @@
     </div>
   </div>
 </div>
-<div class="columns">
-  <div class="column is-one-quarter">
 
-  </div>
-  <div class="column is-one quarter">
+<div class="columns">
+  <div class="column is-one-quarter"></div>
+  <div class="column is-one-quarter">
     <a class="button">Edit</a>
   </div>
   <div class="column is-one-quarter">
     <button class="button is-danger" ng-click="deleteBundle()">Delete</button>
   </div>
+  <div class="column is-one-quarter"></div>
+</div>
+<div class="columns">
+  <h5 class="title is-5">Who's coming?</h5>
   <div class="column is-one-quarter">
+    <form name="form">
+      <div class="wrapper">
+        <label>Add Attendees</label>
+        <input type="text" name="search" placeholder="Search users..." ng-model="search"/>
+      </div>
+      <div ng-if="form.search.$dirty">
+        <ul ng-repeat="user in users | filter: search">
+          <li>{{user.firstName}} {{user.lastName}}<button ng-click="addAttendee(user); form.search.$setPristine()">Add</button></li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <div class="column is-one-quarter">
+    <p>You've added</p>
+    <span ng-repeat="attendee in bundle.attendees" class="tag is-info">{{attendee.firstName}}
+      <button ng-click="removeAttendee(attendee)" class="delete is-small"></button>
+    </span>
   </div>
 </div>
 <div google-map location="bundle.event.location"></div>

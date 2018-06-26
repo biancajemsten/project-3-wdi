@@ -15,9 +15,7 @@ mongoose.connect(dbURI, (err, db) => {
     password: '1234',
     passwordConfirmation: '1234',
     location: 'Scotland',
-    musicGenres: [{
-      genre: 'Jazz'
-    }]
+    musicGenres: ['Jazz']
   },
   {
     firstName: 'Bianca',
@@ -27,11 +25,7 @@ mongoose.connect(dbURI, (err, db) => {
     password: '1234',
     passwordConfirmation: '1234',
     location: 'Sweden',
-    musicGenres: [{
-      genre: 'Swedish Pop'
-    }, {
-      genre: 'Rock'
-    }]
+    musicGenres: ['Swedish Pop', 'Rock']
   },
   {
     firstName: 'James',
@@ -41,9 +35,7 @@ mongoose.connect(dbURI, (err, db) => {
     password: '1234',
     passwordConfirmation: '1234',
     location: 'London',
-    musicGenres: [{
-      genre: 'Metal'
-    }]
+    musicGenres: ['Metal']
   }])
     .then(users => {
       console.log(`${users.length} User(s) created`);
