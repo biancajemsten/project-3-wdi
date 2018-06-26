@@ -5,7 +5,7 @@ function googleAutocomplete() {
     restrict: 'A',
     require: 'ngModel',
     scope: {
-      updateLocation: '&'
+      setCurrentLocation: '&'
     },
     link($scope, $element, attrs, ngModel) {
       const autocomplete = new google.maps.places.Autocomplete($element[0]);

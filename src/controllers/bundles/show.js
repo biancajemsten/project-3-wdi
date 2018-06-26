@@ -47,6 +47,10 @@ function BundlesShowCtrl( $scope, $http, $state){
     })
       .then(res => $scope.bundle = res.data);
   };
+
+  $scope.setCurrentLocation = function(location){
+    console.log(location);
+  };
 }
 
 
