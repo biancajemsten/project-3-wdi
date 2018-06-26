@@ -1,5 +1,12 @@
 function UsersShowCtrl($scope, $http, $state){
 
+  $scope.genres = {
+    option1: 'Rock',
+    option2: 'Blues',
+    option3: 'Jazz',
+    option4: 'Swedish Pop'
+  };
+
   $http({
     method: 'GET',
     url: `/api/users/${$state.params.id}`
@@ -8,36 +15,29 @@ function UsersShowCtrl($scope, $http, $state){
       $scope.user = res.data;
     });
 
-  $http({
-    method: 'GET',
-    url: '/api/bundles'
-  })
-    .then(res => {
-      $scope.bundles = res.data;
-      $scope.dates = $scope.bundles.forEach((bundle) => {
-        $scope.eventDate = bundle.event.date.split('-');
-      });
-    });
-
   $scope.today = new Date();
   $scope.currentDate = $scope.today.getDate();
   $scope.currentMonth = $scope.today.getMonth();
   $scope.currentYear = $scope.today.getFullYear();
 
-  $scope.createGenre = function(){
+  $scope.addGenre = function(genre){
+    if(!$scope.user.musicGenres.includes(genre)) $scope.user.musicGenres.push(genre);
+
     $http({
-      method: 'POST',
-      url: `/api/users/${$state.params.id}/genres`
-    })
-      .then(res => $scope.user = res.data);
+      method: 'PUT',
+      url: `/api/users/${$state.params.id}`,
+      data: $scope.data
+    });
   };
 
-  $scope.deleteGenre = function(item) {
+  $scope.deleteGenre = function(genre) {
+    $scope.user.musicGenres.splice(genre);
+
     $http({
-      method: 'DELETE',
-      url: `/api/users/${$state.params.id}/genres/${item._id}`
-    })
-      .then(res => $scope.user = res.data);
+      method: 'PUT',
+      url: `/api/users/${$state.params.id}`,
+      data: $scope.data
+    });
   };
 }
 
