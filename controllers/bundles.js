@@ -49,6 +49,16 @@ function attendeeCreateRoute(req, res, next){
     .then(boat => res.json(boat))
     .catch(next);
 }
+function attendeeDeleteRoute(req, res, next){
+  Bundle.findById(req.params.id)
+    .then(bundle => {
+      const attendee = bundle.attendees.id(req.params.attendeeId);
+      attendee.remove();
+      return bundle.save();
+    })
+    .then(bundle => res.json(bundle))
+    .catch(next);
+}
 
 module.exports = {
   index: indexRoute,
@@ -56,5 +66,6 @@ module.exports = {
   create: createRoute,
   update: updateRoute,
   delete: deleteRoute,
-  attendeeCreate: attendeeCreateRoute
+  attendeeCreate: attendeeCreateRoute,
+  attendeeDelete: attendeeDeleteRoute
 };

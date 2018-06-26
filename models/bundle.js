@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const attendeeSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  _id: String
+  userId: String
 });
 
 const eventSchema = new mongoose.Schema({

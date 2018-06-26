@@ -6,7 +6,6 @@ function BundlesShowCtrl( $scope, $http, $state){
   })
     .then(res => $scope.bundle = res.data);
 
-
   $http({
     method: 'GET',
     url: '/api/users'
@@ -25,7 +24,7 @@ function BundlesShowCtrl( $scope, $http, $state){
   $scope.addAttendee = function(user){
     if(!$scope.bundle.attendees.includes(user)){
       const data = {
-        _id: user._id,
+        userId: user._id,
         firstName: user.firstName,
         lastName: user.lastName
       };
@@ -36,9 +35,17 @@ function BundlesShowCtrl( $scope, $http, $state){
       })
         .then(res => {
           $scope.bundle = res.data;
-          $scope.search = ''; 
+          $scope.search = '';
         });
     }
+  };
+
+  $scope.removeAttendee = function(attendee){
+    $http({
+      method: 'DELETE',
+      url: `/api/bundles/${$state.params.id}/attendees/${attendee._id}`
+    })
+      .then(res => $scope.bundle = res.data);
   };
 }
 

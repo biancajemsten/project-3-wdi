@@ -43,8 +43,8 @@
   <div class="column is-one-quarter"></div>
 </div>
 <div class="columns">
-  <h5 class="title is-5">Add your friends to your bundle!</h5>
-  <div class="column">
+  <h5 class="title is-5">Who's coming?</h5>
+  <div class="column is-one-quarter">
     <form name="form">
       <div class="wrapper">
         <label>Add Attendees</label>
@@ -56,6 +56,12 @@
         </ul>
       </div>
     </form>
+  </div>
+  <div class="column is-one-quarter">
+    <p>You've added</p>
+    <span ng-repeat="attendee in bundle.attendees" class="tag is-info">{{attendee.firstName}}
+      <button ng-click="removeAttendee(attendee)" class="delete is-small"></button>
+    </span>
   </div>
 </div>
 <div google-map location="bundle.event.location"></div>
