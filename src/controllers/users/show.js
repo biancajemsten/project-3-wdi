@@ -27,7 +27,8 @@ function UsersShowCtrl($scope, $http, $state){
       method: 'PUT',
       url: `/api/users/${$state.params.id}`,
       data: $scope.data
-    });
+    })
+      .then(() => $state.go('usersShow', { id: $state.params.id }));
   };
 
   $scope.deleteGenre = function(genre) {
@@ -37,7 +38,8 @@ function UsersShowCtrl($scope, $http, $state){
       method: 'PUT',
       url: `/api/users/${$state.params.id}`,
       data: $scope.data
-    });
+    })
+      .then(() => $state.go('usersShow', { id: $state.params.id }));
   };
 }
 
