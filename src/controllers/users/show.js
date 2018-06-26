@@ -1,4 +1,5 @@
 function UsersShowCtrl($scope, $http, $state){
+  $scope.dropdownOpen = false;
 
   $scope.genres = {
     option1: 'Rock',
@@ -15,10 +16,9 @@ function UsersShowCtrl($scope, $http, $state){
       $scope.user = res.data;
     });
 
-  $scope.today = new Date();
-  $scope.currentDate = $scope.today.getDate();
-  $scope.currentMonth = $scope.today.getMonth();
-  $scope.currentYear = $scope.today.getFullYear();
+  $scope.toggleMenu = function() {
+    $scope.dropdownOpen = !$scope.dropdownOpen;
+  };
 
   $scope.addGenre = function(genre){
     if(!$scope.user.musicGenres.includes(genre)) $scope.user.musicGenres.push(genre);

@@ -11,8 +11,8 @@
       <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
     </span>
     <hr>
-    <div class="dropdown is-active" ng-if="currentUserId === user._id">
-      <div class="dropdown-trigger">
+    <div class="dropdown" ng-class="{ 'is-active': dropdownOpen }" ng-if="currentUserId === user._id">
+      <div ng-click="toggleMenu()">
         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
           <span>Add Music Genres</span>
           <span class="icon is-small">
