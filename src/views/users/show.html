@@ -4,30 +4,51 @@
     <h3 class="title">{{ user.firstName }} {{ user.lastName }}</h3>
   </div>
   <div class="column is-half-desktop">
-    <h5>{{ user.location }}</h5>
+    <h5><strong>Country:</strong> {{ user.location }}</h5>
     <hr>
-    <span ng-repeat="item in user.musicGenres" class="tag is-warning">
-      {{ item.genre }}
-      <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(item)"></button>
+    <h5><strong>Preferred Music Genres:</strong>
+    <span ng-repeat="genre in user.musicGenres" class="tag is-warning">
+      {{ genre }}
+      <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
     </span>
+    <hr>
+    <div class="dropdown" ng-class="{ 'is-active': dropdownOpen }" ng-if="currentUserId === user._id">
+      <div ng-click="toggleMenu()">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+          <span>Add Music Genres</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item" ng-click="addGenre(genre)" ng-repeat="genre in genres">
+            <p>{{ genre }}</p>
+            <hr class="dropdown-divider">
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 <a class="button" ui-sref="usersEdit({ id: user._id })">Edit</a>
 <hr>
 
-<section ng-if="bundle.creator === user._id" ng-repeat="bundle in bundles" class="columns">
+<section class="columns">
   <div class="column is-half-desktop">
     <h3>Previous Bundles</h3>
     <hr>
-    <a ui-sref="bundlesShow({ id: bundle._id })">
-      <bundle-card ng-if="+eventDate[0] < currentYear || +eventDate[0] === currentYear && +eventDate[1] < currentMonth || +eventDate[0] === currentYear && +eventDate[1] === currentMonth && +eventDate[2] <= currentDate" event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+    <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.previousBundles">
+      <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
     </a>
   </div>
   <div class="column is-half-desktop">
     <h3>Upcoming Bundles</h3>
     <hr>
-    <a ui-sref="bundlesShow({ id: bundle._id })">
-      <bundle-card ng-if="+eventDate[0] > currentYear || +eventDate[0] === currentYear && +eventDate[1] > currentMonth || +eventDate[0] === currentYear && +eventDate[1] === currentMonth && +eventDate[2] >= currentDate" event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+    <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.upcomingBundles">
+      <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
     </a>
   </div>
 </section>

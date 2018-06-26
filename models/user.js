@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
-const genreSchema = new mongoose.Schema({
-  genre: { type: String }
-});
+const moment = require('moment');
 
 const userSchema = new mongoose.Schema({
   firstName: { type: String , required: true },
@@ -12,13 +9,35 @@ const userSchema = new mongoose.Schema({
   image: { type: String, required: false },
   password: { type: String , required: true } ,
   location: { type: String },
-  musicGenres: [ genreSchema ]
+  musicGenres: [{ type: String }]
 });
 
 userSchema.virtual('bundles', {
   localField: '_id',
   foreignField: 'creator',
   ref: 'Bundle'
+});
+
+userSchema.virtual('upcomingBundles')
+  .get(function() {
+    if(!this.bundles) return null;
+
+    return this.bundles.filter(bundle => {
+      return moment(bundle.event.date).isAfter(moment());
+    });
+  });
+
+userSchema.virtual('previousBundles')
+  .get(function() {
+    if(!this.bundles) return null;
+
+    return this.bundles.filter(bundle => {
+      return moment(bundle.event.date).isBefore(moment());
+    });
+  });
+
+userSchema.set('toJSON', {
+  virtuals: true
 });
 
 

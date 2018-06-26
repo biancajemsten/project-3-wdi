@@ -1,4 +1,12 @@
 function UsersShowCtrl($scope, $http, $state){
+  $scope.dropdownOpen = false;
+
+  $scope.genres = {
+    option1: 'Rock',
+    option2: 'Blues',
+    option3: 'Jazz',
+    option4: 'Swedish Pop'
+  };
 
   $http({
     method: 'GET',
@@ -8,28 +16,28 @@ function UsersShowCtrl($scope, $http, $state){
       $scope.user = res.data;
     });
 
-  $http({
-    method: 'GET',
-    url: '/api/bundles'
-  })
-    .then(res => {
-      $scope.bundles = res.data;
-      $scope.dates = $scope.bundles.forEach((bundle) => {
-        $scope.eventDate = bundle.event.date.split('-');
-      });
-    });
+  $scope.toggleMenu = function() {
+    $scope.dropdownOpen = !$scope.dropdownOpen;
+  };
 
-  $scope.today = new Date();
-  $scope.currentDate = $scope.today.getDate();
-  $scope.currentMonth = $scope.today.getMonth();
-  $scope.currentYear = $scope.today.getFullYear();
+  $scope.addGenre = function(genre){
+    if(!$scope.user.musicGenres.includes(genre)) $scope.user.musicGenres.push(genre);
 
-  $scope.deleteGenre = function(item) {
     $http({
-      method: 'DELETE',
-      url: `/api/users/${$state.params.id}/genres/${item._id}`
-    })
-      .then(res => $scope.boat = res.data);
+      method: 'PUT',
+      url: `/api/users/${$state.params.id}`,
+      data: $scope.data
+    });
+  };
+
+  $scope.deleteGenre = function(genre) {
+    $scope.user.musicGenres.splice($scope.user.musicGenres.indexOf(genre), 1);
+
+    $http({
+      method: 'PUT',
+      url: `/api/users/${$state.params.id}`,
+      data: $scope.data
+    });
   };
 }
 

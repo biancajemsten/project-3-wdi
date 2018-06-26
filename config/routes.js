@@ -22,9 +22,7 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(users.show)
-  .put(secureRoute, users.update);
-
-router.delete('/users/:id/genres/:genreId', users.deleteGenre);
+  .put(users.update);
 
 router.post('/bundles/:id/attendees', secureRoute, bundles.attendeeCreate);
 router.delete('/bundles/:id/attendees/:attendeeId', secureRoute, bundles.attendeeDelete);
