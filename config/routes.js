@@ -26,6 +26,8 @@ router.route('/users/:id')
 
 router.delete('/users/:id/genres/:genreId', users.deleteGenre);
 
+router.post('/bundles/:id/attendees', secureRoute, bundles.attendeeCreate);
+
 router.get('/events', skiddle.eventFinder);
 
 router.get('/findPlaces', googlePlaceSearch.findGooglePlaces);

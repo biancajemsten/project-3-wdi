@@ -40,10 +40,21 @@ function deleteRoute(req, res, next){
     .catch(next);
 }
 
+function attendeeCreateRoute(req, res, next){
+  Bundle.findById(req.params.id)
+    .then(bundle => {
+      bundle.attendees.push(req.body);
+      return bundle.save();
+    })
+    .then(boat => res.json(boat))
+    .catch(next);
+}
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
   create: createRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  attendeeCreate: attendeeCreateRoute
 };

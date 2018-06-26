@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
 
+const attendeeSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  _id: String
+});
+
 const eventSchema = new mongoose.Schema({
   name: String,
   date: String,
@@ -38,7 +44,8 @@ const bundleSchema = new mongoose.Schema({
   event: eventSchema,
   bar: placeSchema,
   restaurant: placeSchema,
-  creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  attendees: [attendeeSchema]
 });
 
 module.exports = mongoose.model('Bundle', bundleSchema);
