@@ -1,4 +1,5 @@
 function BundlesShowCtrl( $scope, $http, $state){
+  $scope.currentLocation = {};
 
   $http({
     method: 'GET',
@@ -49,7 +50,23 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
   $scope.setCurrentLocation = function(location){
-    console.log(location);
+    $scope.currentLocation = location;
+  };
+
+  $scope.getTravelTime = function(bundle){
+    $http({
+      method: 'GET',
+      url: 'api/travelTime',
+      params: {
+        lat: $scope.currentLocation.lat,
+        lng: $scope.currentLocation.lng,
+        eventLat: bundle.event.location.lat,
+        eventLng: bundle.event.location.lng
+      }
+    })
+      .then(res => {
+        $scope.bundle = res.data;
+      });
   };
 }
 
