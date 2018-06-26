@@ -1,4 +1,3 @@
-{{ user }}
 <section class="columns">
   <div class="column is-half-desktop">
     <img src="{{ user.image }}" alt="">
@@ -9,10 +8,10 @@
     <hr>
     <span ng-repeat="genre in user.musicGenres" class="tag is-warning">
       {{ genre }}
-      <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(item)"></button>
+      <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
     </span>
-
-    <div class="dropdown is-active">
+    <hr>
+    <div class="dropdown is-active" ng-if="currentUserId === user._id">
       <div class="dropdown-trigger">
         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
           <span>Add Music Genres</span>
@@ -48,7 +47,7 @@
     <h3>Upcoming Bundles</h3>
     <hr>
     <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.bundles">
-      <bundle-card bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+      <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
     </a>
   </div>
 </section>

@@ -31,7 +31,7 @@ function UsersShowCtrl($scope, $http, $state){
   };
 
   $scope.deleteGenre = function(genre) {
-    $scope.user.musicGenres.splice(genre);
+    $scope.user.musicGenres.splice($scope.user.musicGenres.indexOf(genre), 1);
 
     $http({
       method: 'PUT',
