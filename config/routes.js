@@ -22,7 +22,7 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(users.show)
-  .put(secureRoute, users.update);
+  .put(users.update);
 
 router.get('/events', skiddle.eventFinder);
 

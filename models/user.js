@@ -27,6 +27,15 @@ userSchema.virtual('upcomingBundles')
     });
   });
 
+userSchema.virtual('previousBundles')
+  .get(function() {
+    if(!this.bundles) return null;
+
+    return this.bundles.filter(bundle => {
+      return moment(bundle.event.date).isBefore(moment());
+    });
+  });
+
 userSchema.set('toJSON', {
   virtuals: true
 });

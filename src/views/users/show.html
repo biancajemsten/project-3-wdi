@@ -40,14 +40,14 @@
   <div class="column is-half-desktop">
     <h3>Previous Bundles</h3>
     <hr>
-    <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.bundles">
+    <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.previousBundles">
       <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
     </a>
   </div>
   <div class="column is-half-desktop">
     <h3>Upcoming Bundles</h3>
     <hr>
-    <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.bundles">
+    <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.upcomingBundles">
       <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
     </a>
   </div>
