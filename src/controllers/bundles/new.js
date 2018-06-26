@@ -176,7 +176,7 @@ function BundlesNewCtrl($scope, $http, $state){
         restaurant: pickedRestaurant
       }
     })
-      .then(() => $state.go('usersShow', { id: $scope.currentUserId }));
+      .then(res => $state.go('bundlesShow', { id: res.data._id }));
   };
 
 }
