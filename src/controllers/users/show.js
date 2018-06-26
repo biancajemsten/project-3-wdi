@@ -24,12 +24,20 @@ function UsersShowCtrl($scope, $http, $state){
   $scope.currentMonth = $scope.today.getMonth();
   $scope.currentYear = $scope.today.getFullYear();
 
+  $scope.createGenre = function(){
+    $http({
+      method: 'POST',
+      url: `/api/users/${$state.params.id}/genres`
+    })
+      .then(res => $scope.user = res.data);
+  };
+
   $scope.deleteGenre = function(item) {
     $http({
       method: 'DELETE',
       url: `/api/users/${$state.params.id}/genres/${item._id}`
     })
-      .then(res => $scope.boat = res.data);
+      .then(res => $scope.user = res.data);
   };
 }
 

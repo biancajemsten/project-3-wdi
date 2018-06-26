@@ -24,6 +24,7 @@ router.route('/users/:id')
   .get(users.show)
   .put(secureRoute, users.update);
 
+router.post('/users/:id/genres', users.createGenre);
 router.delete('/users/:id/genres/:genreId', users.deleteGenre);
 
 router.get('/events', skiddle.eventFinder);
