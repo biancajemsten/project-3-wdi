@@ -86,8 +86,6 @@ xdescribe('POST /bundles', () => {
       });
   });
 
-
-
   it('should return a 401 response without a token', done => {
     api.post('/api/bundles')
       .end((err, res) => {

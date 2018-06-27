@@ -66,7 +66,7 @@ const bundleData = {
 let token;
 let bundleId;
 
-describe('/bundles/:id', () => {
+xdescribe('/bundles/:id', () => {
 
   beforeEach(done => {
     Bundle.remove({})
