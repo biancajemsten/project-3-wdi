@@ -4,7 +4,10 @@ function AuthLoginCtrl($scope, $auth, $state, $rootScope){
   $scope.handleSubmit = function() {
     console.log($scope.data);
     $auth.login($scope.data)
-      .then(() => $state.go('bundlesNew'))
+      .then(() => {
+        $state.go('bundlesNew'); 
+        $scope.setCurrentUser();
+      })
       .catch(() => {
         $rootScope.$broadcast('flashMessage', {
           type: 'danger',
