@@ -89,32 +89,32 @@ xdescribe('POST /bundles', () => {
         done();
       });
   });
-});
 
+  it('should return a 401 response without a token', done => {
+    api.post('/api/bundles')
+      .end((err, res) => {
+        expect(res.status).to.eq(401);
+        done();
+      });
+  });
 
-it('should return a 401 response without a token', done => {
-  api.post('/api/bundles')
-    .end((err, res) => {
-      expect(res.status).to.eq(401);
-      done();
-    });
-});
+  it('should return a 201 response', done => {
+    api.post('/api/bundles')
+      .set('Authorization', `Bearer ${token}`)
+      .end((err, res) => {
+        expect(res.status).to.eq(201);
+        done();
+      });
+  });
 
-it('should return a 201 response', done => {
-  api.post('/api/bundles')
-    .set('Authorization', `Bearer ${token}`)
-    .end((err, res) => {
-      expect(res.status).to.eq(201);
-      done();
-    });
-});
+  it('should return an object', done => {
+    api.post('/api/bundles')
+      .set('Authorization', `Bearer ${token}`)
+      .send(bundleData)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
 
-it('should return an object', done => {
-  api.post('/api/bundles')
-    .set('Authorization', `Bearer ${token}`)
-    .send(bundleData)
-    .end((err, res) => {
-      expect(res.body).to.be.an('object');
-      done();
-    });
 });
