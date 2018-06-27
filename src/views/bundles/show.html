@@ -1,14 +1,8 @@
 <h2 class="is-2 title" ng-if="currentUserId === bundle.creator._id">Your bundle on {{bundle.event.date}}!</h2>
 <h2 class="is-2 title" ng-if="currentUserId !== bundle.creator._id">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
-<div class="columns">
-  <div class="column is-one-third">The Event</div>
-  <div class="column is-one-third" ng-if="bundle.restaurant">The Restaurant</div>
-  <div class="column is-one-third" ng-if="bundle.bar">The Bar</div>
-</div>
-
 
 <div class="columns">
-  <div class="column is-one-third">
+  <div class="column is-one-third-desktop">The Event
     <h3 class="is-3 title">{{bundle.event.name}}</h3>
     <div class="container">
       <p><strong>Venue: </strong>{{bundle.event.venue}}</p>
@@ -18,14 +12,14 @@
       <p><strong>Description: </strong> {{bundle.event.description}}</p>
     </div>
   </div>
-  <div ng-if="bundle.restaurant" class="column is-one-third">
+  <div ng-if="bundle.restaurant" class="column is-one-third">The Restaurant
     <h3 class="is-3 title">{{bundle.restaurant.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.restaurant.address}}</p>
       <p ng-if="bundle.restaurant.website"><strong>Website: </strong><a href="http://{{bundle.restaurant.website}}">Click here</a></p>
     </div>
   </div>
-  <div ng-if="bundle.bar" class="column is-one-third">
+  <div ng-if="bundle.bar" class="column is-one-third">The Bar
     <h3 class="is-3 title">{{bundle.bar.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.bar.address}}</p>
