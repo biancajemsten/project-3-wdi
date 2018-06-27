@@ -1,9 +1,11 @@
-<h2 class="is-2 title">Get excited for your bundle  on {{bundle.event.date}}</h2>
+<h2 class="is-2 title" ng-if="currentUserId === bundle.creator._id">Your bundle on {{bundle.event.date}}!</h2>
+<h2 class="is-2 title" ng-if="currentUserId !== bundle.creator._id">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
 <div class="columns">
   <div class="column is-one-third">The Event</div>
   <div class="column is-one-third" ng-if="bundle.restaurant">The Restaurant</div>
   <div class="column is-one-third" ng-if="bundle.bar">The Bar</div>
 </div>
+
 
 <div class="columns">
   <div class="column is-one-third">
@@ -20,35 +22,30 @@
     <h3 class="is-3 title">{{bundle.restaurant.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.restaurant.address}}</p>
-      <p><strong>Website: </strong><a href="{{bundle.restaurant.website}}">{{bundle.restaurant.website}}</a></p>
+      <p><strong>Website: </strong><a href="{{bundle.restaurant.website}}">Click here</a></p>
     </div>
   </div>
   <div ng-if="bundle.bar" class="column is-one-third">
     <h3 class="is-3 title">{{bundle.bar.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.bar.address}}</p>
-      <p><strong>Website: </strong><a href="{{bundle.bar.website}}">{{bundle.bar.website}}</a></p>
+      <p><a href="{{bundle.bar.website}}">Click here</a></p>
     </div>
   </div>
 </div>
 
+<button class="button is-danger" ng-click="deleteBundle()" ng-if="currentUserId === bundle.creator._id">Delete</button>
+
+
 <div class="columns">
-  <div class="column is-one-quarter"></div>
-  <div class="column is-one-quarter">
-    <a class="button">Edit</a>
-  </div>
-  <div class="column is-one-quarter">
-    <button class="button is-danger" ng-click="deleteBundle()">Delete</button>
-  </div>
-  <div class="column is-one-quarter"></div>
-</div>
-<div class="columns">
-  <h5 class="title is-5">Who's coming?</h5>
-  <div class="column is-one-quarter">
+  <h5 class="title is-5" ng-if="currentUserId === bundle.creator._id">Who's coming?</h5>
+  <h5 class="title is-5" ng-if="currentUserId !== bundle.creator._id && bundle.attendees[0]">Who's coming?</h5>
+  <div class="column is-one-quarter" ng-if="currentUserId === bundle.creator._id">
     <form name="form">
       <div class="wrapper">
         <label>Add Attendees</label>
         <input type="text" name="search" placeholder="Search users..." ng-model="search"/>
+        {{search}}
       </div>
       <div ng-if="form.search.$dirty">
         <ul ng-repeat="user in users | filter: search">
@@ -58,9 +55,9 @@
     </form>
   </div>
   <div class="column is-one-quarter">
-    <p>You've added</p>
-    <span ng-repeat="attendee in bundle.attendees" class="tag is-info">{{attendee.firstName}}
-      <button ng-click="removeAttendee(attendee)" class="delete is-small"></button>
+    <p ng-if="currentUserId === bundle.creator._id">You've added</p>
+    <span ng-repeat="attendee in bundle.attendees" class="tag is-info">{{attendee.firstName}} {{attendee.lastName}}
+      <button ng-if="currentUserId===bundle.creator._id" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
     </span>
   </div>
 </div>
