@@ -2,7 +2,7 @@ function BundlesShowCtrl( $scope, $http, $state){
   $scope.currentLocation = {};
   $scope.travelTime = {};
   $scope.hideTravelTime = true;
-
+  $scope.hideGetTravelTime = false;
 
   $http({
     method: 'GET',
@@ -24,7 +24,7 @@ function BundlesShowCtrl( $scope, $http, $state){
       method: 'DELETE',
       url: `/api/bundles/${$state.params.id}`
     })
-      .then(() => $state.go('usersShow', { id: $scope.currentUserId }));
+      .then(() => $state.go('usersShow', { id: $scope.currentUser._id }));
   };
 
   $scope.addAttendee = function(user){
@@ -59,8 +59,24 @@ function BundlesShowCtrl( $scope, $http, $state){
     console.log($scope.currentLocation);
   };
 
+  // $scope.testEventCoverage = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: 'api/coverageTest',
+  //     params: {
+  //       lat: $scope.bundle.event.location.lat,
+  //       lng: $scope.bundle.event.location.lng
+  //     }
+  //   })
+  //     .then(res => {
+  //       console.log(res.data);
+  //       if(res.data.points[0].covered === true){
+  //         $scope.hideGetTravelTime = false;
+  //       }
+  //     });
+  // };
+
   $scope.testCoverage = function(){
-    console.log($scope.currentLocation);
     $http({
       method: 'GET',
       url: 'api/coverageTest',
@@ -93,6 +109,5 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
 }
-
 
 export default BundlesShowCtrl;

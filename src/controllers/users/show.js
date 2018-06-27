@@ -5,7 +5,11 @@ function UsersShowCtrl($scope, $http, $state){
     option1: 'Rock',
     option2: 'Blues',
     option3: 'Jazz',
-    option4: 'Swedish Pop'
+    option4: 'Swedish Pop',
+    option5: 'Alternative Music',
+    option6: 'Classical Music',
+    option7: 'Country Music',
+    option8: 'Dance Music'
   };
 
   $http({

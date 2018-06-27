@@ -33,7 +33,7 @@
 
 <div class="columns">
 
-  <div class="column is-half-desktop">
+  <div class="column is-half-desktop" ng-class="{ 'hide': hideGetTravelTime }">
     <h5 class="title is-5">Where are you coming from?</h5>
     <input class="input" name="searchLocation" ng-model="location" placeholder="Search location to find travel time" google-autocomplete set-current-location="setCurrentLocation(location)" test-coverage="testCoverage()">
     <p ng-if="coverageTest.points[0].covered === false">Can't find this location</p>
