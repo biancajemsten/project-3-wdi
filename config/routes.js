@@ -7,6 +7,7 @@ const secureRoute = require('../lib/secureRoute');
 const googlePlaceSearch = require('../controllers/googlePlaceSearch');
 const googlePlaceDetails = require('../controllers/googlePlaceDetails');
 const googlePlacePhotos = require('../controllers/googlePlacePhotos');
+const citymapperTravelTime = require('../controllers/citymapperTravelTime');
 
 router.route('/bundles')
   .get(secureRoute, bundles.index)
@@ -22,7 +23,7 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(users.show)
-  .put(users.update);
+  .put(secureRoute, users.update);
 
 router.post('/bundles/:id/attendees', secureRoute, bundles.attendeeCreate);
 router.delete('/bundles/:id/attendees/:attendeeId', secureRoute, bundles.attendeeDelete);
@@ -32,6 +33,7 @@ router.get('/events', skiddle.eventFinder);
 router.get('/findPlaces', googlePlaceSearch.findGooglePlaces);
 router.get('/findDetails', googlePlaceDetails.findPlaceDetails);
 router.get('/findPhotos', googlePlacePhotos.findPlacePhotos);
+router.get('/travelTime', citymapperTravelTime.getTravelTime);
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);

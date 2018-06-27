@@ -22,6 +22,7 @@ import UsersShowCtrl from './controllers/users/show';
 import UsersEditCtrl from './controllers/users/edit';
 import filePicker from './directives/filePicker';
 import googleMap from './directives/googleMap';
+import googleAutocomplete from './directives/googleAutocomplete';
 import bundleCard from './directives/bundleCard';
 
 angular.module('bundleApi', [
@@ -45,4 +46,5 @@ angular.module('bundleApi', [
 
   .directive('filePicker', filePicker)
   .directive('googleMap', googleMap)
-  .directive('bundleCard', bundleCard);
+  .directive('bundleCard', bundleCard)
+  .directive('googleAutocomplete', googleAutocomplete);

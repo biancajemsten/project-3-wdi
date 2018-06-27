@@ -11,7 +11,7 @@ function googleMap() {
     link($scope, $element) {
 
       const map = new google.maps.Map($element[0], {
-        zoom: 15,
+        zoom: 14,
         center: { lat: 51.515, lng: -0.072}
       });
 

@@ -1,4 +1,8 @@
 function BundlesShowCtrl( $scope, $http, $state){
+  $scope.currentLocation = {};
+  // $scope.destinationLocation = {};
+  $scope.travelTime = {};
+  $scope.hideTravelTime = true;
 
 
 
@@ -51,6 +55,34 @@ function BundlesShowCtrl( $scope, $http, $state){
     })
       .then(res => $scope.bundle = res.data);
   };
+
+  $scope.setCurrentLocation = function(location){
+    $scope.currentLocation = location;
+  };
+
+  // $scope.selectDestination = function(location){
+  //   console.log(location);
+  //   $scope.destinationLocation = location;
+  // };
+
+  $scope.getTravelTime = function(){
+    console.log($scope.destinationLocation);
+    $http({
+      method: 'GET',
+      url: 'api/travelTime',
+      params: {
+        lat: $scope.currentLocation.lat,
+        lng: $scope.currentLocation.lng,
+        destinationLat: $scope.destinationLocation.lat,
+        destinationLng: $scope.destinationLocation.lng
+      }
+    })
+      .then(res => {
+        $scope.travelTime = res.data;
+        $scope.hideTravelTime = false;
+      });
+  };
+
 }
 
 
