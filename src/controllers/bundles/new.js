@@ -13,23 +13,23 @@ function BundlesNewCtrl($scope, $http, $state){
   $scope.events = [];
   $scope.currentShowRestaurant = '';
   $scope.currentShowBar = '';
+  $scope.skipRestaurant = false;
 
 
-  //search function only works if the user searches in one keyword
-  // possibly still only shows up to 20 results
+
   $scope.searchEvents = function() {
     const keyword = $scope.search.replace(' ','_');
     $http({
       method: 'GET',
       url: '/api/events',
-      params: { keyword: keyword, radius: $scope.radius }
+      params: { keyword: keyword}
     })
       .then(res => {
         $scope.events = res.data.results;
       });
   };
 
-  //function that sends a request to get bar and restaurant info based on the location of the picked event. Also hides the full list of events and only displays picked one.
+  //function that sends a request to restaurant info based on the location of the picked event. Also hides the full list of events and only displays picked one.
   $scope.choseEvent = function(event){
     $scope.hideEvents = true;
     $scope.pickedEvent = {
@@ -58,6 +58,7 @@ function BundlesNewCtrl($scope, $http, $state){
     })
       .then(res => {
         $scope.restaurants = res.data.results;
+        console.log($scope.restaurants); 
         res.data.results.forEach(item => {
           $http({
             method: 'GET',
@@ -69,12 +70,17 @@ function BundlesNewCtrl($scope, $http, $state){
             });
         });
       });
+    pickedEvent = $scope.pickedEvent;
+  };
+
+  //function that finds bars close to the picked event
+  $scope.findBars = function(){
     $http({
       method: 'GET',
       url: 'api/findPlaces',
       params: {
-        lat: event.venue.latitude,
-        lng: event.venue.longitude,
+        lat: pickedEvent.location.lat,
+        lng: pickedEvent.location.lng,
         radius: $scope.radius,
         type: 'bar'
       }
@@ -92,9 +98,13 @@ function BundlesNewCtrl($scope, $http, $state){
             });
         });
       });
-    return pickedEvent = $scope.pickedEvent;
   };
 
+  $scope.skipRestaurants = function(){
+    $scope.findBars();
+    console.log('click');
+    $scope.skipRestaurant = true;
+  };
 
   //functions that show or hide place details depending on if they are currently showing by setting the currentShow to their id or an empty string.
   $scope.showDetailsRestaurant = function(restaurant){
@@ -137,7 +147,8 @@ function BundlesNewCtrl($scope, $http, $state){
       place_id: restaurant.place_id
     };
     console.log($scope.pickedRestaurant);
-    return pickedRestaurant = $scope.pickedRestaurant;
+    pickedRestaurant = $scope.pickedRestaurant;
+    $scope.findBars();
   };
 
   $scope.chooseBar = function(bar){
