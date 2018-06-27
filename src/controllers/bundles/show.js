@@ -1,9 +1,7 @@
 function BundlesShowCtrl( $scope, $http, $state){
   $scope.currentLocation = {};
-  // $scope.destinationLocation = {};
   $scope.travelTime = {};
   $scope.hideTravelTime = true;
-
 
 
   $http({
@@ -58,12 +56,23 @@ function BundlesShowCtrl( $scope, $http, $state){
 
   $scope.setCurrentLocation = function(location){
     $scope.currentLocation = location;
+    console.log($scope.currentLocation);
   };
 
-  // $scope.selectDestination = function(location){
-  //   console.log(location);
-  //   $scope.destinationLocation = location;
-  // };
+  $scope.testCoverage = function(){
+    console.log($scope.currentLocation);
+    $http({
+      method: 'GET',
+      url: 'api/coverageTest',
+      params: {
+        lat: $scope.currentLocation.lat,
+        lng: $scope.currentLocation.lng
+      }
+    })
+      .then(res => {
+        $scope.coverageTest = res.data;
+      });
+  };
 
   $scope.getTravelTime = function(){
     console.log($scope.destinationLocation);
@@ -84,7 +93,6 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
 }
-
 
 
 export default BundlesShowCtrl;
