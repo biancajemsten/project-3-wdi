@@ -46,7 +46,8 @@ function Router($stateProvider, $urlRouterProvider){
     .state('bundlesShow', {
       url: '/bundles/:id',
       templateUrl: './views/bundles/show.html',
-      controller: 'BundlesShowCtrl'
+      controller: 'BundlesShowCtrl',
+      resolve: { secureState }
     })
     .state('bundlesNew', {
       url: '/bundles/new',
