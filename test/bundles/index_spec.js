@@ -1,6 +1,9 @@
 /* global api, expect, describe, it, beforeEach */
 
 const Bundle = require('../../models/bundle');
+const User = require('../../models/user');
+const jwt = require('jsonwebtoken');
+const {secret} = require('../../config/environment');
 
 const bundleData =[{
   event: {
@@ -61,16 +64,38 @@ const bundleData =[{
   }]
 }];
 
-xdescribe('GET /users', () => {
+let token;
+
+describe('GET /bundles', () => {
 
   beforeEach(done => {
     Bundle.remove({})
       .then(() => Bundle.create(bundleData))
-      .then(() => done());
+      .then(() => User.remove({}))
+      .then(() => User.create({
+        firstName: 'test',
+        lastName: 'test',
+        email: 'test@test.com',
+        password: 'test',
+        passwordConfirmation: 'test'
+      }))
+      .then(user => {
+        token = jwt.sign({ sub: user._id}, secret, {expiresIn: '8h'});
+        done();
+      });
+  });
+
+  it('should return a 401 response without a token', done => {
+    api.get('/api/bundles')
+      .end((err, res) => {
+        expect(res.status).to.eq(401);
+        done();
+      });
   });
 
   it('should return a 200 response', done => {
     api.get('/api/users')
+      .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res.status).to.eq(200);
         done();
@@ -79,6 +104,7 @@ xdescribe('GET /users', () => {
 
   it('should return an array', done => {
     api.get('/api/users')
+      .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res.body).to.be.an('array');
         done();
@@ -87,8 +113,22 @@ xdescribe('GET /users', () => {
 
   it('should return an array of ojects', done => {
     api.get('/api/users')
+      .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
         res.body.forEach(bundle => expect(bundle).to.be.an('object'));
+        done();
+      });
+  });
+  // could add more keys to this test
+  it('should return the correct data', done => {
+    api.get('/api/bundles')
+      .set('Authorization', `Bearer ${token}`)
+      .end((err, res) => {
+        res.body.forEach((bundle, index) => {
+          expect(bundle.event.name).to.eq(bundleData[index].event.name);
+          expect(bundle.restaurant.name).to.eq(bundleData[index].restaurant.name);
+          expect(bundle.bar.name).to.eq(bundleData[index].bar.name);
+        });
         done();
       });
   });

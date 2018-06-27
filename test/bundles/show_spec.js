@@ -66,7 +66,7 @@ const bundleData = {
 let token;
 let bundleId;
 
-xdescribe('/bundles/:id', () => {
+describe('/bundles/:id', () => {
 
   beforeEach(done => {
     Bundle.remove({})
@@ -88,6 +88,14 @@ xdescribe('/bundles/:id', () => {
       });
   });
 
+  it('should return a 401 response without a token', done => {
+    api.get(`/api/bundles/${bundleId}`)
+      .end((err, res) => {
+        expect(res.status).to.eq(401);
+        done();
+      });
+  });
+
   it('should return a 200 response', done => {
     api.get(`/api/bundles/${bundleId}`)
       .set('Authorization', `Bearer ${token}`)
@@ -104,12 +112,11 @@ xdescribe('/bundles/:id', () => {
         done();
       });
   });
-
+  // could add more keys to this test
   it('should return correct keys and values', done => {
     api.get(`/api/bundles/${bundleId}`)
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
-        console.log(res.body);
         expect(res.body.event.name).to.eq(bundleData.event.name);
         expect(res.body.bar.name).to.eq(bundleData.bar.name);
         expect(res.body.restaurant.name).to.eq(bundleData.restaurant.name);
