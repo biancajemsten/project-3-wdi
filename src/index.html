@@ -21,7 +21,7 @@
       <div class="navbar-end">
         <a class="navbar-item" ui-sref="usersIndex">All Users</a>
         <a class="navbar-item" ui-sref="bundlesNew" ng-if="isAuthenticated()">New Bundle</a>
-        <a class="navbar-item" ui-sref="usersShow({ id: currentUserId })" ng-if="isAuthenticated()">My Bundles</a>
+        <a class="navbar-item" ui-sref="usersShow({ id: currentUser._id })" ng-if="isAuthenticated()">My Bundles</a>
         <a class="navbar-item" ui-sref="login" ng-if="!isAuthenticated()">Login</a>
         <a class="navbar-item" ui-sref="register" ng-if="!isAuthenticated()">Register</a>
         <a class="navbar-item" ng-click="logout()" ng-if="isAuthenticated()">Logout</a>

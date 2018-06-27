@@ -1,5 +1,5 @@
-<h2 class="is-2 title" ng-if="currentUserId === bundle.creator._id">Your bundle on {{bundle.event.date}}!</h2>
-<h2 class="is-2 title" ng-if="currentUserId !== bundle.creator._id">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
+<h2 class="is-2 title" ng-if="currentUser._id === bundle.creator._id">Your bundle on {{bundle.event.date}}!</h2>
+<h2 class="is-2 title" ng-if="currentUser._id !== bundle.creator._id">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
 
 <div class="columns">
   <div class="column is-one-third-desktop">The Event
@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<button class="button is-danger" ng-click="deleteBundle()" ng-if="currentUserId === bundle.creator._id">Delete</button>
+<button class="button is-danger" ng-click="deleteBundle()" ng-if="currentUser._id === bundle.creator._id">Delete</button>
 
 
 <div class="columns">
@@ -37,8 +37,8 @@
     <h5 class="title is-5">Where are you coming from?</h5>
     <input class="input" name="searchLocation" ng-model="location" placeholder="Search location to find travel time" google-autocomplete set-current-location="setCurrentLocation(location)" test-coverage="testCoverage()">
     <p ng-if="coverageTest.points[0].covered === false">Can't find this location</p>
-      <h5 class="title is-6">Where would you like to go first?</h5>
-      <form>
+      <h5 ng-show="bundle.bar && bundle.restaurant" class="title is-6">Where would you like to go first?</h5>
+      <form ng-show="bundle.bar && bundle.restaurant">
         <input ng-model="destinationLocation" type="radio" name="radio" id="radio-1" ng-value="bundle.restaurant.location"/>
         <label for="restaurant">Restaurant</label>
 
@@ -47,24 +47,24 @@
       </form>
 
       <hr>
-      <button class="button" ng-click="getTravelTime(bundle)">Get Travel Time</button>
+      <button class="button" ng-click="getTravelTime()">Get Travel Time</button>
       <p ng-class="{ 'hide': hideTravelTime }">It will take you {{ travelTime.travel_time_minutes }} minutes to walk there.</p>
       <hr>
   </div>
 
   <div class="column is-half-desktop">
 
-    <h5 class="title is-5" ng-if="currentUserId === bundle.creator._id">Who's coming?</h5>
-    <h5 class="title is-5" ng-if="currentUserId !== bundle.creator._id && bundle.attendees[0]">Who's coming?</h5>
+    <h5 class="title is-5" ng-if="currentUser._id === bundle.creator._id">Who's coming?</h5>
+    <h5 class="title is-5" ng-if="currentUser._id !== bundle.creator._id && bundle.attendees[0]">Who's coming?</h5>
     <div>
       <form name="form">
         <div class="column is-half">
-          <p ng-if="currentUserId === bundle.creator._id && bundle.attendees[0]">You've added</p>
+          <p ng-if="currentUser._id === bundle.creator._id && bundle.attendees[0]">You've added</p>
           <span ng-repeat="attendee in bundle.attendees" class="tag is-info"><a ui-sref="usersShow({ id: attendee.userId })">{{attendee.firstName}} {{attendee.lastName}}</a>
-            <button ng-if="currentUserId===bundle.creator._id" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
+            <button ng-if="currentUser._id===bundle.creator._id" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
           </span>
         </div>
-        <div class="wrapper" ng-if="currentUserId === bundle.creator._id">
+        <div class="wrapper" ng-if="currentUser._id === bundle.creator._id">
           <label>Add Attendees</label>
           <input class="input" type="text" name="search" placeholder="Search users..." ng-model="search"/>
         </div>
