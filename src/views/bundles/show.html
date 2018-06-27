@@ -6,6 +6,7 @@
   <div class="column is-one-third" ng-if="bundle.bar">The Bar</div>
 </div>
 
+
 <div class="columns">
   <div class="column is-one-third">
     <h3 class="is-3 title">{{bundle.event.name}}</h3>
@@ -33,12 +34,13 @@
   </div>
 </div>
 
-<button class="button is-danger" ng-click="deleteBundle()">Delete</button>
+<button class="button is-danger" ng-click="deleteBundle()" ng-if="currentUserId === bundle.creator._id">Delete</button>
 
 
 <div class="columns">
-  <h5 class="title is-5">Who's coming?</h5>
-  <div class="column is-one-quarter" ng-class="{ 'hide': currentUserIsCreator }">
+  <h5 class="title is-5" ng-if="currentUserId === bundle.creator._id">Who's coming?</h5>
+  <h5 class="title is-5" ng-if="currentUserId !== bundle.creator._id && bundle.attendees[0]">Who's coming?</h5>
+  <div class="column is-one-quarter" ng-if="currentUserId === bundle.creator._id">
     <form name="form">
       <div class="wrapper">
         <label>Add Attendees</label>
@@ -55,7 +57,7 @@
   <div class="column is-one-quarter">
     <p ng-if="currentUserId === bundle.creator._id">You've added</p>
     <span ng-repeat="attendee in bundle.attendees" class="tag is-info">{{attendee.firstName}} {{attendee.lastName}}
-      <button ng-click="removeAttendee(attendee)" class="delete is-small"></button>
+      <button ng-if="currentUserId===bundle.creator._id" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
     </span>
   </div>
 </div>
