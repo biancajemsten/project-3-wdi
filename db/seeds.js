@@ -196,7 +196,6 @@ mongoose.connect(dbURI, (err, db) => {
           }
         },
         creator: users[2]
-
       }]);
     })
     .then(bundles => console.log(`${bundles.length} Bundle(s) created`))

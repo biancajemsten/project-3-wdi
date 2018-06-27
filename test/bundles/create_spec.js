@@ -6,7 +6,7 @@ const { secret } = require('../../config/environment');
 
 const Bundle = require('../../models/bundle');
 
-const bundleData = {
+const bundleData = [{
   event: {
     name: 'Diamonds Are Forever',
     date: '2018-06-20',
@@ -56,28 +56,41 @@ const bundleData = {
       lat: 53.478226,
       lng: -2.240074
     }
+  },
+  creator: {
+    firstName: 'Arabella',
+    lastName: 'Dear',
+    email: 'ad@test.com',
+    image: 'https://media.licdn.com/dms/image/C5103AQGzHzd2aQENcw/profile-displayphoto-shrink_800_800/0?e=1535587200&v=beta&t=RsmA095b5Houz0gHrLFabJEadDCc0mIQ_WdWwDh4p_I',
+    password: '1234',
+    passwordConfirmation: '1234',
+    location: 'Scotland',
+    musicGenres: ['Jazz']
   }
-};
+}];
 
 let token;
 
-describe('POST /bundles', () => {
+xdescribe('POST /bundles', () => {
 
   beforeEach(done => {
     Bundle.remove({})
       .then(() => User.remove({}))
       .then(() => User.create({
-        username: 'test',
+        firstName: 'test',
+        lastName: 'test',
         email: 'test',
         password: 'test',
         passwordConfirmation: 'test'
       }))
       .then(user => {
-        token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' });
+        token = jwt.sign({ sub: user._id }, secret, { expiresIn: '8h' });
+
         done();
       });
   });
 });
+
 
 it('should return a 401 response without a token', done => {
   api.post('/api/bundles')
