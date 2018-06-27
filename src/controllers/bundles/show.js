@@ -1,9 +1,7 @@
 function BundlesShowCtrl( $scope, $http, $state){
   $scope.currentLocation = {};
-  // $scope.destinationLocation = {};
   $scope.travelTime = {};
   $scope.hideTravelTime = true;
-
 
 
   $http({
@@ -77,6 +75,7 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
   $scope.getTravelTime = function(){
+    console.log($scope.destinationLocation);
     $http({
       method: 'GET',
       url: 'api/travelTime',
@@ -94,7 +93,6 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
 }
-
 
 
 export default BundlesShowCtrl;
