@@ -22,14 +22,15 @@
     <h3 class="is-3 title">{{bundle.restaurant.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.restaurant.address}}</p>
-      <p><strong>Website: </strong><a href="{{bundle.restaurant.website}}">Click here</a></p>
+      {{bundle.restaurant.website}}
+      <p ng-if="bundle.restaurant.website"><strong>Website: </strong><a href="http://{{bundle.restaurant.website}}">Click here</a></p>
     </div>
   </div>
   <div ng-if="bundle.bar" class="column is-one-third">
     <h3 class="is-3 title">{{bundle.bar.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.bar.address}}</p>
-      <p><a href="{{bundle.bar.website}}">Click here</a></p>
+      <p ng-if="bundle.bar.website"><strong>Website: </strong><a href="http://{{bundle.bar.website}}">Click here</a></p>
     </div>
   </div>
 </div>
@@ -39,7 +40,7 @@
 
 <div class="columns">
 
-  <div class="column">
+  <div class="column is-half-desktop">
     <h5 class="title is-5">Where are you coming from?</h5>
     <input class="input" name="searchLocation" ng-model="location" placeholder="Search location to find travel time" google-autocomplete set-current-location="setCurrentLocation(location)">
 
@@ -58,32 +59,31 @@
     <hr>
   </div>
 
-  <div class="column">
-    <div class="column is-one-quarter">
+  <div class="column is-half-desktop">
 
-      <h5 class="title is-5" ng-if="currentUserId === bundle.creator._id">Who's coming?</h5>
-      <h5 class="title is-5" ng-if="currentUserId !== bundle.creator._id && bundle.attendees[0]">Who's coming?</h5>
-      <div class="column is-one-quarter" ng-if="currentUserId === bundle.creator._id">
+    <h5 class="title is-5" ng-if="currentUserId === bundle.creator._id">Who's coming?</h5>
+    <h5 class="title is-5" ng-if="currentUserId !== bundle.creator._id && bundle.attendees[0]">Who's coming?</h5>
 
-        <form name="form">
-          <div class="wrapper">
-            <label>Add Attendees</label>
-            <input type="text" name="search" placeholder="Search users..." ng-model="search"/>
-          </div>
-          <div ng-if="form.search.$dirty">
-            <ul ng-repeat="user in users | filter: search">
-              <li>{{user.firstName}} {{user.lastName}}<button ng-click="addAttendee(user); form.search.$setPristine()">Add</button></li>
-            </ul>
-          </div>
-        </form>
-      </div>
-      <div class="column is-one-quarter">
-        <p ng-if="currentUserId === bundle.creator._id">You've added</p>
-        <span ng-repeat="attendee in bundle.attendees" class="tag is-info">{{attendee.firstName}} {{attendee.lastName}}
-          <button ng-if="currentUserId===bundle.creator._id" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
-        </span>
-      </div>
+    <div ng-if="currentUserId === bundle.creator._id">
+      <form name="form">
+        <div class="column is-one-quarter">
+          <p ng-if="currentUserId === bundle.creator._id && bundle.attendees[0]">You've added</p>
+          <span ng-repeat="attendee in bundle.attendees" class="tag is-info"><a ui-sref="usersShow({ id: attendee.userId })">{{attendee.firstName}} {{attendee.lastName}}</a>
+            <button ng-if="currentUserId===bundle.creator._id" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
+          </span>
+        </div>
+        <div class="wrapper">
+          <label>Add Attendees</label>
+          <input class="input" type="text" name="search" placeholder="Search users..." ng-model="search"/>
+        </div>
+        <div ng-if="form.search.$dirty">
+          <ul ng-repeat="user in users | filter: search">
+            <li>{{user.firstName}} {{user.lastName}}<button ng-click="addAttendee(user); form.search.$setPristine()">Add</button></li>
+          </ul>
+        </div>
+      </form>
     </div>
+
   </div>
 
 </div>
