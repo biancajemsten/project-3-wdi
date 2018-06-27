@@ -45,7 +45,6 @@
       <div class="wrapper">
         <label>Add Attendees</label>
         <input type="text" name="search" placeholder="Search users..." ng-model="search"/>
-        {{search}}
       </div>
       <div ng-if="form.search.$dirty">
         <ul ng-repeat="user in users | filter: search">
