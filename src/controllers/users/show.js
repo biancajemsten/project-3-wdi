@@ -22,22 +22,20 @@ function UsersShowCtrl($scope, $http, $state){
 
   $scope.addGenre = function(genre){
     if(!$scope.user.musicGenres.includes(genre)) $scope.user.musicGenres.push(genre);
-
     $http({
       method: 'PUT',
       url: `/api/users/${$state.params.id}`,
-      data: $scope.data
+      data: $scope.user
     })
       .then(() => $state.go('usersShow', { id: $state.params.id }));
   };
 
   $scope.deleteGenre = function(genre) {
     $scope.user.musicGenres.splice($scope.user.musicGenres.indexOf(genre), 1);
-
     $http({
       method: 'PUT',
       url: `/api/users/${$state.params.id}`,
-      data: $scope.data
+      data: $scope.user
     })
       .then(() => $state.go('usersShow', { id: $state.params.id }));
   };
