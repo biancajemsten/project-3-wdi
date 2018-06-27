@@ -22,14 +22,15 @@
     <h3 class="is-3 title">{{bundle.restaurant.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.restaurant.address}}</p>
-      <p><strong>Website: </strong><a href="{{bundle.restaurant.website}}">Click here</a></p>
+      {{bundle.restaurant.website}}
+      <p ng-if="bundle.restaurant.website"><strong>Website: </strong><a href="http://{{bundle.restaurant.website}}">Click here</a></p>
     </div>
   </div>
   <div ng-if="bundle.bar" class="column is-one-third">
     <h3 class="is-3 title">{{bundle.bar.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.bar.address}}</p>
-      <p><a href="{{bundle.bar.website}}">Click here</a></p>
+      <p ng-if="bundle.bar.website"><strong>Website: </strong><a href="http://{{bundle.bar.website}}">Click here</a></p>
     </div>
   </div>
 </div>
