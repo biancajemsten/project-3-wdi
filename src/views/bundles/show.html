@@ -18,14 +18,14 @@
       <p><strong>Description: </strong> {{bundle.event.description}}</p>
     </div>
   </div>
-  <div ng-if="bundle.restaurant" class="ccolumn is-one-third">
+  <div ng-if="bundle.restaurant" class="column is-one-third">
     <h3 class="is-3 title">{{bundle.restaurant.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.restaurant.address}}</p>
       <p ng-if="bundle.restaurant.website"><strong>Website: </strong><a href="http://{{bundle.restaurant.website}}">Click here</a></p>
     </div>
   </div>
-  <div ng-if="bundle.bar" class="column is-one-third-desktop">
+  <div ng-if="bundle.bar" class="column is-one-third">
     <h3 class="is-3 title">{{bundle.bar.name}}</h3>
     <div class="container">
       <p><strong>Address: </strong>{{bundle.bar.address}}</p>
@@ -43,8 +43,8 @@
     <h5 class="title is-5">Where are you coming from?</h5>
     <input class="input" name="searchLocation" ng-model="location" placeholder="Search location to find travel time" google-autocomplete set-current-location="setCurrentLocation(location)" test-coverage="testCoverage()">
     <p ng-if="coverageTest.points[0].covered === false">Can't find this location</p>
-      <h5 class="title is-6">Where would you like to go first?</h5>
-      <form>
+      <h5 ng-show="bundle.bar && bundle.restaurant" class="title is-6">Where would you like to go first?</h5>
+      <form ng-show="bundle.bar && bundle.restaurant">
         <input ng-model="destinationLocation" type="radio" name="radio" id="radio-1" ng-value="bundle.restaurant.location"/>
         <label for="restaurant">Restaurant</label>
 
@@ -53,7 +53,7 @@
       </form>
 
       <hr>
-      <button class="button" ng-click="getTravelTime(bundle)">Get Travel Time</button>
+      <button class="button" ng-click="getTravelTime()">Get Travel Time</button>
       <p ng-class="{ 'hide': hideTravelTime }">It will take you {{ travelTime.travel_time_minutes }} minutes to walk there.</p>
       <hr>
   </div>
