@@ -1,10 +1,9 @@
 /* global describe, it, expect, api, beforeEach */
 
 const User = require('../../models/user');
-const jwt = require('jsonwebtoken');
-const { secret } = require('../../config/environment');
-
 const Bundle = require('../../models/bundle');
+const jwt = require('jsonwebtoken');
+const {secret} = require('../../config/environment');
 
 const bundleData = {
   event: {
@@ -66,61 +65,62 @@ const bundleData = {
 };
 
 let token;
+let bundleId;
 
-describe('POST /bundles', () => {
-
+describe('DELETE /api/bundles/:id', () => {
   beforeEach(done => {
     Bundle.remove({})
+      .then(() => Bundle.create(bundleData))
+      .then(bundle => {
+        bundleId = bundle._id;
+      })
       .then(() => User.remove({}))
       .then(() => User.create({
         firstName: 'test',
         lastName: 'test',
-        email: 'test',
+        email: 'test@test.com',
         password: 'test',
         passwordConfirmation: 'test'
       }))
       .then(user => {
-        token = jwt.sign({ sub: user._id }, secret, { expiresIn: '8h' });
+        token = jwt.sign({ sub: user._id}, secret, {expiresIn: '8h'});
         done();
       });
   });
 
   it('should return a 401 response without a token', done => {
-    api.post('/api/bundles')
+    api.delete(`/api/bundles/${bundleId}`)
       .end((err, res) => {
         expect(res.status).to.eq(401);
         done();
       });
   });
-
-  it('should return a 201 response', done => {
-    api.post('/api/bundles')
+  it('should return a 204 response', done => {
+    api.delete(`/api/bundles/${bundleId}`)
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
-        expect(res.status).to.eq(201);
+        expect(res.status).to.eq(204);
+        done();
+      });
+  });
+  it('should return undefined', done => {
+    api.delete(`/api/bundles/${bundleId}`)
+      .set('Authorization', `Bearer ${token}`)
+      .end((err, res) => {
+        expect(res.body).to.deep.eq({});
         done();
       });
   });
 
-  it('should return an object', done => {
-    api.post('/api/bundles')
+  it('should delete the data from the DB', done => {
+    api.delete(`/api/bundles/${bundleId}`)
       .set('Authorization', `Bearer ${token}`)
-      .send(bundleData)
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        done();
-      });
-  });
-  // could add more keys to this test
-  it('should return correct keys and values', done => {
-    api.post('/api/bundles')
-      .set('Authorization', `Bearer ${token}`)
-      .send(bundleData)
-      .end((err, res) => {
-        expect(res.body.event.name).to.eq(bundleData.event.name);
-        expect(res.body.bar.name).to.eq(bundleData.bar.name);
-        expect(res.body.restaurant.name).to.eq(bundleData.restaurant.name);
-        done();
+      .end(() => {
+        Bundle.findById(bundleId)
+          .then(bundle => {
+            expect(bundle).to.not.be.ok;
+            done();
+          });
       });
   });
 });
