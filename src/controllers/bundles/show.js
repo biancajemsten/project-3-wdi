@@ -1,5 +1,6 @@
 function BundlesShowCtrl( $scope, $http, $state){
   $scope.currentLocation = {};
+  $scope.destinationLocation = {};
   $scope.travelTime = {};
   $scope.hideTravelTime = true;
 
@@ -55,15 +56,20 @@ function BundlesShowCtrl( $scope, $http, $state){
     $scope.currentLocation = location;
   };
 
-  $scope.getTravelTime = function(bundle){
+  $scope.selectDestination = function(location){
+    console.log(location);
+    $scope.destinationLocation = location;
+  };
+
+  $scope.getTravelTime = function(){
     $http({
       method: 'GET',
       url: 'api/travelTime',
       params: {
         lat: $scope.currentLocation.lat,
         lng: $scope.currentLocation.lng,
-        eventLat: bundle.event.location.lat,
-        eventLng: bundle.event.location.lng
+        destinationLat: $scope.destinationLocation.lat,
+        destinationLng: $scope.destinationLocation.lng
       }
     })
       .then(res => {
@@ -71,6 +77,7 @@ function BundlesShowCtrl( $scope, $http, $state){
         $scope.hideTravelTime = false;
       });
   };
+
 }
 
 
