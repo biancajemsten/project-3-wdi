@@ -91,7 +91,6 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
   $scope.getTravelTime = function(){
-    console.log($scope.destinationLocation);
     $http({
       method: 'GET',
       url: 'api/travelTime',

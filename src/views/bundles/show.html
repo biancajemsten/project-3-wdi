@@ -1,4 +1,4 @@
-<h2 class="is-2 title" ng-if="currentUser._id === bundle.creator._id">Your bundle on {{bundle.event.date}}!</h2>
+<h2 class="is-2 title" ng-if="currentUser._id === bundle.creator._id">Your bundle on {{ bundle.event.date }}!</h2>
 <h2 class="is-2 title" ng-if="currentUser._id !== bundle.creator._id">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
 
 <div class="columns">
@@ -36,9 +36,9 @@
   <div class="column is-half-desktop" ng-class="{ 'hide': hideGetTravelTime }">
     <h5 class="title is-5">Where are you coming from?</h5>
     <input class="input" name="searchLocation" ng-model="location" placeholder="Search location to find travel time" google-autocomplete set-current-location="setCurrentLocation(location)" test-coverage="testCoverage()">
-    <p ng-if="coverageTest.points[0].covered === false">Can't find this location</p>
-      <h5 ng-show="bundle.bar && bundle.restaurant" class="title is-6">Where would you like to go first?</h5>
-      <form ng-show="bundle.bar && bundle.restaurant">
+    <p ng-if="coverageTest.points[0].covered === false">Sorry the location you have entered is out of zone</p>
+      <h5 class="title is-6">Where would you like to go first?</h5>
+      <form>
         <input ng-model="destinationLocation" type="radio" name="radio" id="radio-1" ng-value="bundle.restaurant.location"/>
         <label for="restaurant">Restaurant</label>
 
