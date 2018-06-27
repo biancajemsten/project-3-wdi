@@ -159,7 +159,7 @@ mongoose.connect(dbURI, (err, db) => {
           name: 'Lower Than Atlantis',
           date: '2018-03-24',
           venue: 'The Plug',
-          address: '14-16 MATILDA STREET, SHEFFIELD, SHEFFIELD, S1 4QD',
+          address: '14-16 Matilda Street, Sheffield, Sheffield, S1 4QD',
           ticketPrice: '£21',
           description: 'Lower Than Atlantis are an English rock band, formed in 2007 and based in Watford',
           startTime: '8pm',

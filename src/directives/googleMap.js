@@ -15,35 +15,18 @@ function googleMap() {
         center: { lat: 51.515, lng: -0.072}
       });
 
-      const eventImage = {
-        url: 'http://maps.google.com/mapfiles/ms/icons/red.png',
-        anchor: ''
-      };
-      const restaurantImage = {
-        url: 'http://maps.google.com/mapfiles/ms/icons/green.png',
-        anchor: ''
-      };
-      const barImage = {
-        url: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
-        anchor: ''
-      };
-
-
       const eventMarker = new google.maps.Marker({
         map: map,
-        icon: eventImage,
         animation: google.maps.Animation.DROP,
         label: ' 🎶'
       });
       const restaurantMarker = new google.maps.Marker({
         map: map,
-        icon: restaurantImage,
         animation: google.maps.Animation.DROP,
         label: ' 🍴'
       });
       const barMarker = new google.maps.Marker({
         map: map,
-        icon: barImage,
         animation: google.maps.Animation.DROP,
         label: '🍺'
       });
