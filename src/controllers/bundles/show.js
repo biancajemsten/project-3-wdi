@@ -1,5 +1,7 @@
 function BundlesShowCtrl( $scope, $http, $state){
   $scope.currentLocation = {};
+  $scope.travelTime = {};
+  $scope.hideTravelTime = true;
 
   $http({
     method: 'GET',
@@ -65,7 +67,8 @@ function BundlesShowCtrl( $scope, $http, $state){
       }
     })
       .then(res => {
-        $scope.bundle = res.data;
+        $scope.travelTime = res.data;
+        $scope.hideTravelTime = false;
       });
   };
 }

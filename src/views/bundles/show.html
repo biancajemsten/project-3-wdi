@@ -46,7 +46,7 @@
 <h5 class="title is-5">Where are you coming from?</h5>
 <input class="input" name="searchLocation" ng-model="location" placeholder="Search location to find travel time" google-autocomplete set-current-location="setCurrentLocation(location)">
 <button class="button" ng-click="getTravelTime(bundle)">Get Travel Time</button>
-<p>{{ travel_time_minutes }}</p>
+<p ng-class="{ 'hide': hideTravelTime }">It will take you {{ travelTime.travel_time_minutes }} minutes to get there. You should leave around {{ bundle.event.time }}</p>
 <hr>
 
 <div class="columns">
