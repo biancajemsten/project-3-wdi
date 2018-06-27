@@ -90,7 +90,12 @@ mongoose.connect(dbURI, (err, db) => {
             lng: -2.240074
           }
         },
-        creator: users[0]
+        creator: users[0],
+        attendees: [{
+          userId: '5b325bc4cbc256270346f579',
+          firstName: 'Bianca',
+          lastName: 'Jemsten'
+        }]
 
       }, {
         event: {
@@ -143,7 +148,12 @@ mongoose.connect(dbURI, (err, db) => {
             lng: -0.111345
           }
         },
-        creator: users[1]
+        creator: users[1],
+        attendees: [{
+          userId: '5b338d5ecf10883d66c0a832',
+          firstName: 'James',
+          lastName: 'Newell'
+        }]
       }, {
         event: {
           name: 'Lower Than Atlantis',
@@ -195,7 +205,13 @@ mongoose.connect(dbURI, (err, db) => {
             lng: -1.471142
           }
         },
-        creator: users[2]
+        creator: users[2],
+        attendees: [{
+          userId: '5b325bc4cbc256270346f579',
+          firstName: 'Bianca',
+          lastName: 'Jemsten'
+        }]
+
       }]);
     })
     .then(bundles => console.log(`${bundles.length} Bundle(s) created`))

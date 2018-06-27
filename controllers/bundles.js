@@ -11,6 +11,7 @@ function showRoute(req, res, next){
   Bundle
     .findById(req.params.id)
     .populate('creator')
+    .populate('attendees')
     .then(bundle => res.json(bundle))
     .catch(next);
 }
@@ -43,6 +44,7 @@ function deleteRoute(req, res, next){
 function attendeeCreateRoute(req, res, next){
   Bundle.findById(req.params.id)
     .populate('creator')
+    .populate('attendees')
     .then(bundle => {
       bundle.attendees.push(req.body);
       return bundle.save();
@@ -53,6 +55,7 @@ function attendeeCreateRoute(req, res, next){
 function attendeeDeleteRoute(req, res, next){
   Bundle.findById(req.params.id)
     .populate('creator')
+    .populate('attendees')
     .then(bundle => {
       const attendee = bundle.attendees.id(req.params.attendeeId);
       attendee.remove();
