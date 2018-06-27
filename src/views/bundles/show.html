@@ -68,7 +68,7 @@
     <div ng-if="currentUserId === bundle.creator._id">
       <form name="form">
         <div class="column is-one-quarter">
-          <p ng-if="currentUserId === bundle.creator._id">You've added</p>
+          <p ng-if="currentUserId === bundle.creator._id && bundle.attendees[0]">You've added</p>
           <span ng-repeat="attendee in bundle.attendees" class="tag is-info"><a ui-sref="usersShow({ id: attendee.userId })">{{attendee.firstName}} {{attendee.lastName}}</a>
             <button ng-if="currentUserId===bundle.creator._id" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
           </span>
