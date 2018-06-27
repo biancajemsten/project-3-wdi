@@ -34,6 +34,7 @@ router.get('/findPlaces', googlePlaceSearch.findGooglePlaces);
 router.get('/findDetails', googlePlaceDetails.findPlaceDetails);
 router.get('/findPhotos', googlePlacePhotos.findPlacePhotos);
 router.get('/travelTime', citymapperTravelTime.getTravelTime);
+router.get('/coverageTest', citymapperTravelTime.coverageTest);
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);
