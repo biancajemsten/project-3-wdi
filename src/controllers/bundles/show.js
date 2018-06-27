@@ -4,11 +4,15 @@ function BundlesShowCtrl( $scope, $http, $state){
   $scope.travelTime = {};
   $scope.hideTravelTime = true;
 
+
+
   $http({
     method: 'GET',
     url: `/api/bundles/${$state.params.id}`
   })
-    .then(res => $scope.bundle = res.data);
+    .then(res => {
+      $scope.bundle = res.data;
+    });
 
   $http({
     method: 'GET',
@@ -38,8 +42,8 @@ function BundlesShowCtrl( $scope, $http, $state){
         data: data
       })
         .then(res => {
-          $scope.bundle = res.data;
           $scope.search = '';
+          $scope.bundle = res.data;
         });
     }
   };

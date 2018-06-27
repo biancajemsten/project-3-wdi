@@ -9,7 +9,7 @@ function googleMap() {
       location: '='
     },
     link($scope, $element) {
-      console.log('googlescope', $scope.$parent);
+
       const map = new google.maps.Map($element[0], {
         zoom: 15,
         center: { lat: 51.515, lng: -0.072}
@@ -17,17 +17,15 @@ function googleMap() {
 
       const eventImage = {
         url: 'http://maps.google.com/mapfiles/ms/icons/red.png',
-        size: new google.maps.Size(50, 50)
+        anchor: ''
       };
       const restaurantImage = {
         url: 'http://maps.google.com/mapfiles/ms/icons/green.png',
-        size: new google.maps.Size(50, 50),
-        origin: new google.maps.Point(0, 0)
+        anchor: ''
       };
       const barImage = {
         url: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
-        size: new google.maps.Size(50 , 50),
-        origin: new google.maps.Point(0, 0)
+        anchor: ''
       };
 
 
@@ -35,13 +33,13 @@ function googleMap() {
         map: map,
         icon: eventImage,
         animation: google.maps.Animation.DROP,
-        label: '🎶'
+        label: ' 🎶'
       });
       const restaurantMarker = new google.maps.Marker({
         map: map,
         icon: restaurantImage,
         animation: google.maps.Animation.DROP,
-        label: '🍴'
+        label: ' 🍴'
       });
       const barMarker = new google.maps.Marker({
         map: map,
