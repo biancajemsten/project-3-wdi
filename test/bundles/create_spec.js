@@ -6,7 +6,7 @@ const { secret } = require('../../config/environment');
 
 const Bundle = require('../../models/bundle');
 
-const bundleData = [{
+const bundleData = {
   event: {
     name: 'Diamonds Are Forever',
     date: '2018-06-20',
@@ -57,17 +57,13 @@ const bundleData = [{
       lng: -2.240074
     }
   },
-  creator: {
-    firstName: 'Arabella',
-    lastName: 'Dear',
-    email: 'ad@test.com',
-    image: 'https://media.licdn.com/dms/image/C5103AQGzHzd2aQENcw/profile-displayphoto-shrink_800_800/0?e=1535587200&v=beta&t=RsmA095b5Houz0gHrLFabJEadDCc0mIQ_WdWwDh4p_I',
-    password: '1234',
-    passwordConfirmation: '1234',
-    location: 'Scotland',
-    musicGenres: ['Jazz']
-  }
-}];
+  creator: '5b339202de502c3e1b971323',
+  attendees: [{
+    userId: '5b325bc4cbc256270346f579',
+    firstName: 'Bianca',
+    lastName: 'Jemsten'
+  }]
+};
 
 let token;
 
@@ -89,32 +85,33 @@ xdescribe('POST /bundles', () => {
         done();
       });
   });
-});
 
 
-it('should return a 401 response without a token', done => {
-  api.post('/api/bundles')
-    .end((err, res) => {
-      expect(res.status).to.eq(401);
-      done();
-    });
-});
 
-it('should return a 201 response', done => {
-  api.post('/api/bundles')
-    .set('Authorization', `Bearer ${token}`)
-    .end((err, res) => {
-      expect(res.status).to.eq(201);
-      done();
-    });
-});
+  it('should return a 401 response without a token', done => {
+    api.post('/api/bundles')
+      .end((err, res) => {
+        expect(res.status).to.eq(401);
+        done();
+      });
+  });
 
-it('should return an object', done => {
-  api.post('/api/bundles')
-    .set('Authorization', `Bearer ${token}`)
-    .send(bundleData)
-    .end((err, res) => {
-      expect(res.body).to.be.an('object');
-      done();
-    });
+  it('should return a 201 response', done => {
+    api.post('/api/bundles')
+      .set('Authorization', `Bearer ${token}`)
+      .end((err, res) => {
+        expect(res.status).to.eq(201);
+        done();
+      });
+  });
+
+  it('should return an object', done => {
+    api.post('/api/bundles')
+      .set('Authorization', `Bearer ${token}`)
+      .send(bundleData)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
 });

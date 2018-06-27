@@ -1,7 +1,10 @@
 /* global api, expect, describe, it, beforeEach */
-
+const User = require('../../models/user');
 const Bundle = require('../../models/bundle');
-const bundleData = [{
+const jwt = require('jsonwebtoken');
+const {secret} = require('../../config/environment');
+
+const bundleData = {
   event: {
     name: 'Diamonds Are Forever',
     date: '2018-06-20',
@@ -52,9 +55,15 @@ const bundleData = [{
       lng: -2.240074
     }
   },
-  creator: { ref: 'User', required: true }
-}];
+  creator: '5b339202de502c3e1b971323',
+  attendees: [{
+    userId: '5b325bc4cbc256270346f579',
+    firstName: 'Bianca',
+    lastName: 'Jemsten'
+  }]
+};
 
+let token;
 let bundleId;
 
 describe('/bundles/:id', () => {
@@ -64,12 +73,24 @@ describe('/bundles/:id', () => {
       .then(() => Bundle.create(bundleData))
       .then(bundle => {
         bundleId = bundle._id;
+      })
+      .then(() => User.remove({}))
+      .then(() => User.create({
+        firstName: 'test',
+        lastName: 'test',
+        email: 'test@test.com',
+        password: 'test',
+        passwordConfirmation: 'test'
+      }))
+      .then(user => {
+        token = jwt.sign({ sub: user._id}, secret, {expiresIn: '8h'});
         done();
       });
   });
 
   it('should return a 200 response', done => {
     api.get(`/api/bundles/${bundleId}`)
+      .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res.status).to.eq(200);
         done();
@@ -80,6 +101,18 @@ describe('/bundles/:id', () => {
     api.get(`/api/bundles/${bundleId}`)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should return correct keys and values', done => {
+    api.get(`/api/bundles/${bundleId}`)
+      .set('Authorization', `Bearer ${token}`)
+      .end((err, res) => {
+        console.log(res.body);
+        expect(res.body.event.name).to.eq(bundleData.event.name);
+        expect(res.body.bar.name).to.eq(bundleData.bar.name);
+        expect(res.body.restaurant.name).to.eq(bundleData.restaurant.name);
         done();
       });
   });

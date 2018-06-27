@@ -2,7 +2,7 @@
 
 const Bundle = require('../../models/bundle');
 
-const bundleData = [{
+const bundleData =[{
   event: {
     name: 'Diamonds Are Forever',
     date: '2018-06-20',
@@ -52,7 +52,13 @@ const bundleData = [{
       lat: 53.478226,
       lng: -2.240074
     }
-  }
+  },
+  creator: '5b339202de502c3e1b971323',
+  attendees: [{
+    userId: '5b325bc4cbc256270346f579',
+    firstName: 'Bianca',
+    lastName: 'Jemsten'
+  }]
 }];
 
 xdescribe('GET /users', () => {
