@@ -1,5 +1,5 @@
-<h2 class="is-2 title" ng-if="currentUser._id === bundle.creator._id">Your bundle on {{bundle.event.date}}!</h2>
-<h2 class="is-2 title" ng-if="currentUser._id !== bundle.creator._id">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
+<h2 class="is-2 title" ng-show="isCreator">Your bundle on {{bundle.event.date}}!</h2>
+<h2 class="is-2 title" ng-show="!isCreator">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
 
 <div class="columns">
   <div class="column is-one-third-desktop">The Event
@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<button class="button is-danger" ng-click="deleteBundle()" ng-if="currentUser._id === bundle.creator._id">Delete</button>
+<button class="button is-danger" ng-click="deleteBundle()" ng-if="isCreator">Delete</button>
 
 
 <div class="columns">
@@ -54,17 +54,16 @@
 
   <div class="column is-half-desktop">
 
-    <h5 class="title is-5" ng-if="currentUser._id === bundle.creator._id">Who's coming?</h5>
-    <h5 class="title is-5" ng-if="currentUser._id !== bundle.creator._id && bundle.attendees[0]">Who's coming?</h5>
+    <h5 class="title is-5" ng-if="isCreator">Who's coming?</h5>
+    <h5 class="title is-5" ng-if="!isCreator && bundle.attendees[0]">Who's coming?</h5>
     <div>
       <form name="form">
         <div class="column is-half">
-          <p ng-if="currentUser._id === bundle.creator._id && bundle.attendees[0]">You've added</p>
           <span ng-repeat="attendee in bundle.attendees" class="tag is-info"><a ui-sref="usersShow({ id: attendee.userId })">{{attendee.firstName}} {{attendee.lastName}}</a>
-            <button ng-if="currentUser._id===bundle.creator._id" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
+            <button ng-if="isCreator" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
           </span>
         </div>
-        <div class="wrapper" ng-if="currentUser._id === bundle.creator._id">
+        <div class="wrapper" ng-show="isCreator">
           <label>Add Attendees</label>
           <input class="input" type="text" name="search" placeholder="Search users..." ng-model="search"/>
         </div>

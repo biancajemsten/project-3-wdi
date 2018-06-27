@@ -2,6 +2,7 @@ function BundlesShowCtrl( $scope, $http, $state){
   $scope.currentLocation = {};
   $scope.travelTime = {};
   $scope.hideTravelTime = true;
+  $scope.isCreator = false;
 
 
   $http({
@@ -10,6 +11,7 @@ function BundlesShowCtrl( $scope, $http, $state){
   })
     .then(res => {
       $scope.bundle = res.data;
+      if($scope.currentUser._id === $scope.bundle.creator._id) $scope.isCreator = true;
     });
 
   $http({
