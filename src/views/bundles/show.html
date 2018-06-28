@@ -1,5 +1,5 @@
-<h2 class="is-2 is-centered title" ng-show="isCreator">Your bundle on {{ bundle.event.date | date:'fullDate'}}!</h2>
-<h2 class="is-2 is-centered title" ng-show="!isCreator">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
+<h2 class="is-2 is-centered title has-bottom-margin" ng-show="isCreator">Your bundle on {{ bundle.event.date | date:'fullDate'}}!</h2>
+<h2 class="is-2 is-centered title has-bottom-margin" ng-show="!isCreator">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date | date:'fullDate'}}</h2>
 
 <div class="columns">
   <div class="column is-one-third-desktop">The Event
@@ -13,18 +13,40 @@
       <p>{{bundle.event.description}}</p>
     </div>
   </div>
+  <div ng-if="bundle.bar" class="verticalLine"></div>
   <div ng-if="bundle.restaurant" class="column is-one-third">The Restaurant
     <h3 class="is-3 title place-title">{{bundle.restaurant.name}}</h3>
     <div class="container" id="info">
       <p><strong>Address: </strong>{{bundle.restaurant.address}}</p>
       <p ng-if="bundle.restaurant.website"><strong>Website: </strong><a href="http://{{bundle.restaurant.website}}">Click here</a></p>
+      <p ng-show="bundle.restaurant.openingHours"><strong>Opening Hours: </strong>
+        <ul>
+          <li><small>Monday: {{bundle.restaurant.openingHours.monday}}</small></li>
+          <li><small>Tuesday: {{bundle.restaurant.openingHours.tuesday}}</small></li>
+          <li><small>Wednesday: {{bundle.restaurant.openingHours.wednesday}}</small></li>
+          <li><small>Thursday: {{bundle.restaurant.openingHours.thursday}}</small></li>
+          <li><small>Friday: {{bundle.restaurant.openingHours.friday}}</small></li>
+          <li><small>Saturday: {{bundle.restaurant.openingHours.saturday}}</small></li>
+          <li><small>Sunday: {{bundle.restaurant.openingHours.sunday}}</small></li>
+        </ul></p>
     </div>
   </div>
+  <div ng-if="bundle.bar" class="verticalLine"></div>
   <div ng-if="bundle.bar" class="column is-one-third">The Bar
     <h3 class="is-3 title place-title">{{bundle.bar.name}}</h3>
     <div class="container" id="info">
       <p><strong>Address: </strong>{{bundle.bar.address}}</p>
       <p ng-if="bundle.bar.website"><strong>Website: </strong><a href="http://{{bundle.bar.website}}">Click here</a></p>
+      <p ng-show="bundle.restaurant.openingHours"><strong>Opening Hours: </strong>
+        <ul>
+          <li><small>Monday: {{bundle.bar.openingHours.monday}}</small></li>
+          <li><small>Tuesday: {{bundle.bar.openingHours.tuesday}}</small></li>
+          <li><small>Wednesday: {{bundle.bar.openingHours.wednesday}}</small></li>
+          <li><small>Thursday: {{bundle.bar.openingHours.thursday}}</small></li>
+          <li><small>Friday: {{bundle.bar.openingHours.friday}}</small></li>
+          <li><small>Saturday: {{bundle.bar.openingHours.saturday}}</small></li>
+          <li><small>Sunday: {{bundle.bar.openingHours.sunday}}</small></li>
+        </ul></p>
     </div>
   </div>
 </div>
