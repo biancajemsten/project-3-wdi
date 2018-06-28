@@ -2,17 +2,36 @@
 
 .navbar {
     background: $light-blue;
+    padding: 0;
     .navbar-brand {
-      &:hover {
-        background: $off-white;
+      a:hover {
+        color: $off-white;
+      }
+      .navbar-burger {
+        color: $dark-green;
+        &:hover {
+          background: $light-blue;
+        }
       }
     }
-    .navbar-item {
-      color: $off-white;
-      text-transform: uppercase;
-      &:hover {
-        background: $off-white;
-        color: $dark-green;
+    .navbar-menu {
+      padding: 0;
+      .navbar-item {
+        color: $off-white;
+        background: $light-blue;
+        text-transform: uppercase;
+        &:hover {
+          background: $off-white;
+          color: $dark-green;
+        }
       }
+      .navbar-menu.is-active {
+      color: $off-white;
+      background-color: $light-blue;
+      &:hover {
+        color: $dark-green;
+        background-color: $off-white;
+      }
+    }
     }
   }
