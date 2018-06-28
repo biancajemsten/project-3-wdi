@@ -24,6 +24,7 @@ function createRoute(req, res, next){
     .catch(next);
 }
 
+//not implemented on the front yet
 function updateRoute(req, res, next){
   Bundle
     .findById(req.params.id)
