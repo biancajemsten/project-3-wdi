@@ -1,3 +1,4 @@
+
 function BundlesShowCtrl( $scope, $http, $state){
   $scope.currentLocation = {};
   $scope.travelTime = {};
@@ -5,7 +6,6 @@ function BundlesShowCtrl( $scope, $http, $state){
   $scope.hideGetTravelTime = false;
   $scope.isCreator = false;
   let destinationLocation = null;
-  // let eventCoverageTest =
 
 
   $http({
@@ -115,5 +115,4 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
 }
-
 export default BundlesShowCtrl;

@@ -42,7 +42,7 @@
           <div class="content">
               <h5 class="title is-5  is-centered">{{event.eventname}}</h6>
               <p><strong>Venue: </strong> {{event.venue.name}}</p>
-              <p><strong>Date: </strong> {{event.date}}</p>
+              <p><strong>Date: </strong> {{event.date | date:'fullDate'}}</p>
               <p><strong>Address: </strong> {{event.venue.address}}, {{event.venue.town}}</p>
               <p><strong>Event type: </strong> {{event.EventCode}}</p>
               <p><strong>Description: </strong> {{event.description}}</p>
@@ -66,7 +66,7 @@
           <div class="content">
               <h6 class="title is-6 is-centered">{{pickedEvent.name}}</h6>
               <p><strong>Venue: </strong> {{pickedEvent.venue}}</p>
-              <p><strong>Date: </strong> {{pickedEvent.date}}</p>
+              <p><strong>Date: </strong> {{pickedEvent.date | date:'fullDate'}}</p>
               <p ng-if="pickedEvent.price"><strong>Ticket Price: </strong> {{pickedEvent.price}}</p>
           </div>
         </div>

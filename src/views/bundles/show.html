@@ -1,4 +1,4 @@
-<h2 class="is-2 title" ng-show="isCreator">Your bundle on {{bundle.event.date}}!</h2>
+<h2 class="is-2 title" ng-show="isCreator">Your bundle on {{ bundle.event.date | date:'fullDate'}}!</h2>
 <h2 class="is-2 title" ng-show="!isCreator">{{bundle.creator.firstName}}'s bundle on {{bundle.event.date}}</h2>
 
 <div class="columns">
