@@ -7,7 +7,7 @@ const secureRoute = require('../lib/secureRoute');
 const googlePlaceSearch = require('../controllers/googlePlaceSearch');
 const googlePlaceDetails = require('../controllers/googlePlaceDetails');
 const googlePlacePhotos = require('../controllers/googlePlacePhotos');
-const citymapperTravelTime = require('../controllers/citymapperTravelTime');
+const citymapper = require('../controllers/citymapper');
 
 router.route('/bundles')
   .get(secureRoute, bundles.index)
@@ -33,8 +33,8 @@ router.get('/events', skiddle.eventFinder);
 router.get('/findPlaces', googlePlaceSearch.findGooglePlaces);
 router.get('/findDetails', googlePlaceDetails.findPlaceDetails);
 router.get('/findPhotos', googlePlacePhotos.findPlacePhotos);
-router.get('/travelTime', citymapperTravelTime.getTravelTime);
-router.get('/coverageTest', citymapperTravelTime.coverageTest);
+router.get('/travelTime', citymapper.getTravelTime);
+router.get('/coverageTest', citymapper.coverageTest);
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);
