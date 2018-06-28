@@ -1,3 +1,17 @@
+@import 'base/typography';
+@import 'base/variables';
+@import 'base/globalClasses';
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/navbar';
+@import 'components/flashMessages';
+@import 'layouts/responsive';
+@import 'pages/login';
+@import 'pages/registration';
+@import 'pages/userIndex';
+@import 'pages/bundleShow';
+@import 'pages/bundlesNew';
+
 .hide{
   display: none !important;
 }
@@ -6,47 +20,16 @@
   height: 500px;
 }
 
-.notification.is-flash {
-  height: 0;
-  opacity: 0;
-  transition: all 1s;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-
-  &.is-active {
-    height: 65px;
-    opacity: 1;
-    padding: 1.25rem 2.5rem 1.25rem 1.5rem;
-  }
-}
-
 body {
   margin-top: 80px !important;
-
 }
 
-.wrapper {
-    display:inline-block;
-}
 
 input {
     background-color:transparent;
     border: 1px solid grey;
 }
 
-.skipButton{
-  height: 20px;
-}
-
 p.ng-binding {
   max-width: 350px;
-}
-
-.is-centered{
-  text-align: center;
-}
-
-.bundleCard{
-  margin-top: 25px;
 }
