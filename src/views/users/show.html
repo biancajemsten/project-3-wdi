@@ -1,13 +1,13 @@
 <section class="columns">
   <div class="column is-half-desktop">
-    <img src="{{ user.image }}" alt="">
+    <img width="300px" src="{{ user.image }}" alt=" {{ user.firstName }}">
     <h3 class="title">{{ user.firstName }} {{ user.lastName }}</h3>
   </div>
   <div class="column is-half-desktop">
     <h5><strong>Based in:</strong> {{ user.location }}</h5>
     <hr>
     <h5><strong>Preferred Music Genres:</strong>
-    <span ng-repeat="genre in user.musicGenres" class="tag">
+    <span ng-repeat="genre in user.musicGenres" class="tag" id="genre-tag">
       {{ genre }}
       <button ng-if="currentUser._id === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
     </span>
