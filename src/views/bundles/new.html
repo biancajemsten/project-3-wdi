@@ -51,7 +51,7 @@
       </div>
     </div>
 </div>
-<div class="columns" ng-class="{ 'hide': !hideEvents}">
+<div class="columns" ng-show="hideEvents">
   <div class="column is-one-third">
     <h3>Your Event</h3>
     <div class="card">
@@ -69,17 +69,17 @@
   </div>
   <div class="columns column is-multiline is-one-third">
     <h3>Restaurants</h3><button class="skipButton" ng-click="skipRestaurants()">Skip Restaurants</button>
-    <div class="column is-full" ng-repeat="restaurant in restaurants" ng-class="{ 'hide': hideRestaurants}">
+    <div class="column is-full" ng-repeat="restaurant in restaurants" ng-show="!hideRestaurants">
       <div class="card">
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{restaurant.name}}</h6>
             <p><strong>Address:</strong>{{restaurant.details.formatted_address}}</p>
-            <p ng-if="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
-            <p ng-if="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
-            <div ng-if="restaurant.id === currentShowRestaurant">
-              <p ng-if="restaurant.details.website"><strong>Website: </strong><a href="{{restaurant.details.website}}">Click here</a></p>
-              <p ng-if="restaurant.details.opening_hours"><strong>Opening Hours: </strong>
+            <p ng-show="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
+            <p ng-show="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
+            <div ng-show="restaurant.id === currentShowRestaurant">
+              <p ng-show="restaurant.details.website"><strong>Website: </strong><a href="{{restaurant.details.website}}">Click here</a></p>
+              <p ng-show="restaurant.details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>
                   <li>{{restaurant.details.opening_hours.weekday_text[0]}}</li>
                   <li>{{restaurant.details.opening_hours.weekday_text[1]}}</li>
@@ -96,14 +96,14 @@
         </div>
       </div>
     </div>
-    <div class="column is-full" ng-class="{ 'hide': !hideRestaurants }">
+    <div class="column is-full" ng-show="hideRestaurants">
       <div class="card" >
         <div class="card-content">
           <form>
             <h6 class="title is-6">{{pickedRestaurant.name}}</h6>
             <p><strong>Address:</strong>{{pickedRestaurant.address}}</p>
-            <p ng-if="pickedRestaurant.rating"><strong>Rating: </strong> {{pickedRestaurant.rating}}</p>
-            <p ng-if="pickedRestaurant.price_level"><strong>Price level: </strong> {{pickedRestaurant.price_level}}</p>
+            <p ng-show="pickedRestaurant.rating"><strong>Rating: </strong> {{pickedRestaurant.rating}}</p>
+            <p ng-show="pickedRestaurant.price_level"><strong>Price level: </strong> {{pickedRestaurant.price_level}}</p>
           </form>
         </div>
       </div>
@@ -111,7 +111,7 @@
   </div>
   <div class="columns column is-multiline is-one-third">
     <h3>Bars</h3>
-    <div class="column is-full" ng-repeat="bar in bars"  ng-class="{ 'hide': hideBars}">
+    <div class="column is-full" ng-repeat="bar in bars"  ng-show="!hideBars">
       <div class="card">
         <div class="card-content">
           <form>
@@ -138,7 +138,7 @@
         </div>
       </div>
     </div>
-    <div class="column is-full" ng-class="{ 'hide': !hideBars}">
+    <div class="column is-full" ng-show="hideBars">
       <div class="card" >
         <div class="card-content">
           <form>
