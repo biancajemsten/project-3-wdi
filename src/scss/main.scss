@@ -10,6 +10,7 @@
 @import 'pages/login_register';
 @import 'pages/homepage';
 @import 'pages/userIndex';
+@import 'pages/userShow';
 @import 'pages/bundleShow';
 @import 'pages/bundlesNew';
 
@@ -24,6 +25,10 @@
 .map {
   height: 500px;
   margin-bottom: 60px;
+}
+
+hr {
+  margin: 15px 0;
 }
 
 html{
