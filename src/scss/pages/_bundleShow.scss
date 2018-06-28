@@ -2,6 +2,23 @@
     display:inline-block;
 }
 
+.place-title {
+  margin-top: 5px;
+}
+
+#info {
+  p {
+    margin: 6px 0;
+    a {
+      margin-left: 5px;
+    }
+  }
+}
+
+#travel-time {
+  margin-top: 15px;
+}
+
 #delete {
   border: 1px solid $dark-blue;
 }

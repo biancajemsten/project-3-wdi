@@ -9,7 +9,7 @@ function filePicker(filepickerService) {
         filepickerService.pick({
           accept: 'image/*',
           maxFiles: 1,
-          transformations: { crop: { force: true, aspectRation: 3/2 } }
+          transformations: { crop: { force: true, aspectRation: 1/1 } }
         }, data => {
           console.log(data);
           ngModel.$setViewValue(data.url);
