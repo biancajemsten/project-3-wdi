@@ -1,3 +1,22 @@
 .skipButton{
-  height: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+.buttonColumn{
+  text-align: right;
+}
+
+.postEventContainer{
+  align-items: flex-start;
+}
+
+.titlePlace{
+  font-weight: bold;
+  text-align: center;
+}
+
+div.submitBundleButton{
+  justify-content: right;
+  align-items: flex-end;
+  align-items: flex-end;
 }
