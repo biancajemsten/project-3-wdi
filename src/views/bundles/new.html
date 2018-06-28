@@ -52,9 +52,11 @@
       </div>
     </div>
 </div>
-<div class="columns" ng-show="hideEvents">
+<div class="columns is-flex postEventContainer" ng-show="hideEvents">
   <div class="column is-one-third">
-    <h3>Your Event</h3>
+    <div class="column titleColumn">
+      <h3>Your Event</h3>
+    </div>
     <div class="card">
       <div class="card-content">
         <div class="content">
@@ -69,7 +71,12 @@
     </div>
   </div>
   <div class="columns column is-multiline is-one-third">
-    <h3>Restaurants</h3><button class="skipButton" ng-click="skipRestaurants()">Skip Restaurants</button>
+    <div class="column is-half titleColumn">
+      <h3>Restaurants</h3>
+    </div>
+    <div class="column is-half buttonColumn titleColumn">
+      <button class="skipButton button" ng-click="skipRestaurants()">Skip Restaurants</button>
+    </div>
     <div class="column is-full" ng-repeat="restaurant in restaurants" ng-show="!hideRestaurants">
       <div class="card">
         <div class="card-content">
@@ -111,7 +118,9 @@
     </div>
   </div>
   <div class="columns column is-multiline is-one-third">
-    <h3>Bars</h3>
+    <div class="column is-full titleColumn">
+      <h3>Bars</h3>
+    </div>
     <div class="column is-full" ng-repeat="bar in bars"  ng-show="!hideBars">
       <div class="card">
         <div class="card-content">

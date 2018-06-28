@@ -1,3 +1,16 @@
-.skipButton{
-  height: 20px;
+
+  .skipButton{
+    height: 20px;
+    font-size: 10px;
+  }
+.buttonColumn{
+  text-align: right;
+}
+
+.titleColumn{
+  max-height: 40px;
+}
+
+.postEventContainer{
+  align-items: flex-start;
 }
