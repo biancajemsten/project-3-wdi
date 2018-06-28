@@ -1,3 +1,18 @@
+@import 'base/variables';
 .bundleCard{
   margin-top: 25px;
+}
+
+.card{
+  background-color: $middle-blue;
+  color: $off-white;
+  opacity: 0.95;
+  radius: 
+  strong{
+    color: $off-white;
+  }
+  .title{
+    color: $off-white;
+    font-weight: 200px;
+  }
 }

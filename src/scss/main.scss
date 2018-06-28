@@ -12,6 +12,9 @@
 @import 'pages/bundleShow';
 @import 'pages/bundlesNew';
 
+*{
+  font-family: $font !important;
+}
 .hide{
   display: none !important;
 }
