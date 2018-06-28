@@ -1,0 +1,18 @@
+@import 'base/variables';
+
+.navbar {
+    background: $dark-green;
+    .navbar-brand {
+      &:hover {
+        background: $off-white;
+      }
+    }
+    .navbar-item {
+      color: $off-white;
+      text-transform: uppercase;
+      &:hover {
+        background: $off-white;
+        color: $dark-green;
+      }
+    }
+  }
