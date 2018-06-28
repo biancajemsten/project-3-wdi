@@ -5,6 +5,7 @@
 @import 'components/cards';
 @import 'components/navbar';
 @import 'components/flashMessages';
+@import 'components/tags';
 @import 'layouts/responsive';
 @import 'pages/login';
 @import 'pages/registration';
@@ -25,7 +26,7 @@
 }
 
 html{
-  background-color: $off-white; 
+  background-color: $off-white;
 }
 body {
   margin-top: 80px !important;

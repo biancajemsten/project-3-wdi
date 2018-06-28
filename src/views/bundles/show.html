@@ -60,7 +60,7 @@
     <div>
       <form name="form">
         <div class="column is-half">
-          <span ng-repeat="attendee in bundle.attendees" class="tag is-info"><a ui-sref="usersShow({ id: attendee.userId })">{{attendee.firstName}} {{attendee.lastName}}</a>
+          <span ng-repeat="attendee in bundle.attendees" class="tag"><a ui-sref="usersShow({ id: attendee.userId })">{{attendee.firstName}} {{attendee.lastName}}</a>
             <button ng-if="isCreator" ng-click="removeAttendee(attendee)" class="delete is-small"></button>
           </span>
         </div>
