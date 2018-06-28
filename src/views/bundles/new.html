@@ -1,6 +1,6 @@
 <h2 class="is-2 title">Create a bundle</h2>
 
-<form name="form" novalidate ng-submit="searchEvents()">
+<form name="form" novalidate ng-submit="searchEvents()" ng-show="!hideEvents">
     <div class="columns is-multiline">
       <div class="column is-half field">
         <label for="search">What event are you going to?</label>
@@ -31,7 +31,9 @@
       </div>
   </div>
 </form>
-<button class="button" name="button" ng-class="{ 'hide': !hideEvents}" ng-click="createBundle()">Submit Bundle</button>
+<div class="is-flex submitBundleButton">
+  <button class="button" name="button" ng-class="{ 'hide': !hideEvents}" ng-click="createBundle()">Submit Bundle</button>
+</div>
 
 <div class="columns is-multiline" ng-class="{ 'hide': hideEvents }">
     <div class="column is-3-desktop is-4-tablet" ng-repeat="event in events | filter: search">

@@ -4,6 +4,10 @@
     background: $light-blue;
     padding: 0;
     .navbar-brand {
+      a{
+        color: $off-white;
+        text-transform: uppercase;
+      }
       a:hover {
         color: $off-white;
       }
