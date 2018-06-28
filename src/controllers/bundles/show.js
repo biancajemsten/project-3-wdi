@@ -2,8 +2,10 @@ function BundlesShowCtrl( $scope, $http, $state){
   $scope.currentLocation = {};
   $scope.travelTime = {};
   $scope.hideTravelTime = true;
+  $scope.hideGetTravelTime = false;
   $scope.isCreator = false;
   let destinationLocation = null;
+  // let eventCoverageTest =
 
 
   $http({
@@ -12,6 +14,7 @@ function BundlesShowCtrl( $scope, $http, $state){
   })
     .then(res => {
       $scope.bundle = res.data;
+      $scope.testEventCoverage($scope.bundle.event.location);
       if($scope.currentUser._id === $scope.bundle.creator._id) $scope.isCreator = true;
       if(!$scope.bundle.bar) destinationLocation = $scope.bundle.restaurant.location;
       else if(!$scope.bundle.restaurant) destinationLocation = $scope.bundle.bar.location;
@@ -64,22 +67,20 @@ function BundlesShowCtrl( $scope, $http, $state){
     console.log($scope.currentLocation);
   };
 
-  // $scope.testEventCoverage = function(){
-  //   $http({
-  //     method: 'GET',
-  //     url: 'api/coverageTest',
-  //     params: {
-  //       lat: $scope.bundle.event.location.lat,
-  //       lng: $scope.bundle.event.location.lng
-  //     }
-  //   })
-  //     .then(res => {
-  //       console.log(res.data);
-  //       if(res.data.points[0].covered === true){
-  //         $scope.hideGetTravelTime = false;
-  //       }
-  //     });
-  // };
+  $scope.testEventCoverage = function(location){
+    $http({
+      method: 'GET',
+      url: 'api/coverageTest',
+      params: {
+        lat: location.lat,
+        lng: location.lng
+      }
+    })
+      .then(res => {
+        $scope.eventCoverageTest = res.data;
+        if($scope.eventCoverageTest.points[0].covered === false) $scope.hideGetTravelTime = true;
+      });
+  };
 
   $scope.testCoverage = function(){
     $http({
