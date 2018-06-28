@@ -9,10 +9,10 @@
     <h5><strong>Preferred Music Genres:</strong>
     <span ng-repeat="genre in user.musicGenres" class="tag is-warning">
       {{ genre }}
-      <button ng-if="currentUserId === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
+      <button ng-if="currentUser._id === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
     </span>
     <hr>
-    <div class="dropdown" ng-class="{ 'is-active': dropdownOpen }" ng-if="currentUserId === user._id">
+    <div class="dropdown" ng-class="{ 'is-active': dropdownOpen }" ng-if="currentUser._id === user._id">
       <div ng-click="toggleMenu()">
         <button class="button">
           <span>Add Music Genres</span>
@@ -33,7 +33,7 @@
 
   </div>
 </section>
-<a class="button" ng-if="currentUserId === user._id"ui-sref="usersEdit({ id: user._id })">Edit</a>
+<a class="button" ng-if="currentUser._id === user._id"ui-sref="usersEdit({ id: user._id })">Edit</a>
 <hr>
 
 <section class="columns">

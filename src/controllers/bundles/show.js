@@ -3,6 +3,7 @@ function BundlesShowCtrl( $scope, $http, $state){
   $scope.travelTime = {};
   $scope.hideTravelTime = true;
   $scope.isCreator = false;
+  let destinationLocation = null;
 
 
   $http({
@@ -12,6 +13,8 @@ function BundlesShowCtrl( $scope, $http, $state){
     .then(res => {
       $scope.bundle = res.data;
       if($scope.currentUser._id === $scope.bundle.creator._id) $scope.isCreator = true;
+      if(!$scope.bundle.bar) destinationLocation = $scope.bundle.restaurant.location;
+      else if(!$scope.bundle.restaurant) destinationLocation = $scope.bundle.bar.location;
     });
 
   $http({
@@ -26,7 +29,7 @@ function BundlesShowCtrl( $scope, $http, $state){
       method: 'DELETE',
       url: `/api/bundles/${$state.params.id}`
     })
-      .then(() => $state.go('usersShow', { id: $scope.currentUserId }));
+      .then(() => $state.go('usersShow', { id: $scope.currentUser._id }));
   };
 
   $scope.addAttendee = function(user){
@@ -61,8 +64,24 @@ function BundlesShowCtrl( $scope, $http, $state){
     console.log($scope.currentLocation);
   };
 
+  // $scope.testEventCoverage = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: 'api/coverageTest',
+  //     params: {
+  //       lat: $scope.bundle.event.location.lat,
+  //       lng: $scope.bundle.event.location.lng
+  //     }
+  //   })
+  //     .then(res => {
+  //       console.log(res.data);
+  //       if(res.data.points[0].covered === true){
+  //         $scope.hideGetTravelTime = false;
+  //       }
+  //     });
+  // };
+
   $scope.testCoverage = function(){
-    console.log($scope.currentLocation);
     $http({
       method: 'GET',
       url: 'api/coverageTest',
@@ -77,15 +96,15 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
   $scope.getTravelTime = function(){
-    console.log($scope.destinationLocation);
+    if(destinationLocation === null) destinationLocation = $scope.chooseLocation;
     $http({
       method: 'GET',
       url: 'api/travelTime',
       params: {
         lat: $scope.currentLocation.lat,
         lng: $scope.currentLocation.lng,
-        destinationLat: $scope.destinationLocation.lat,
-        destinationLng: $scope.destinationLocation.lng
+        destinationLat: destinationLocation.lat,
+        destinationLng: destinationLocation.lng
       }
     })
       .then(res => {
@@ -95,6 +114,5 @@ function BundlesShowCtrl( $scope, $http, $state){
   };
 
 }
-
 
 export default BundlesShowCtrl;
