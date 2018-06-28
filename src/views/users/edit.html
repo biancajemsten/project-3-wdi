@@ -1,23 +1,25 @@
 <form ng-submit="updateUser()">
-  <div class="field">
-    <label class="label" for="firstName">First Name</label>
-    <input class="input" id="name" name="name" placeholder="Name" ng-model="data.firstName"/>
+  <div class="columns is-multiline">
+    <div class="column is-one-quarter">
+      <img src="{{ data.image }}" ng-if="data.image">
+      <div class="field">
+        <button class="button" id="image" name="image" placeholder="Image" file-picker ng-model="data.image">Choose File</button>
+      </div>
+    </div>
+    <div class="column is-three-quarters">
+      <div class="field">
+        <label class="label" for="firstName">First Name</label>
+        <input class="input" id="name" name="name" placeholder="Name" ng-model="data.firstName"/>
+      </div>
+      <div class="field">
+        <label class="label" for="lastName">Last Name</label>
+        <input class="input" id="lastName" name="lastName" placeholder="Last Name" ng-model="data.lastName"/>
+      </div>
+      <div class="field">
+        <label class="label" for="location">Based in</label>
+        <input class="input" id="location" name="location" placeholder="Where are you based?" ng-model="data.location"/>
+      </div>
+      <button class="button">Update Profile</button>
+    </div>
   </div>
-  <div class="field">
-    <label class="label" for="lastName">Last Name</label>
-    <input class="input" id="lastName" name="lastName" placeholder="Last Name" ng-model="data.lastName"/>
-  </div>
-  <div class="field">
-    <label class="label" for="image">Image</label>
-    <button class="button" id="image" name="image" placeholder="Image" file-picker ng-model="data.image">Choose File</button>
-  </div>
-
-<img src="{{ data.image }}" ng-if="data.image">
-
-  <div class="field">
-    <label class="label" for="location">Location</label>
-    <input class="input" id="location" name="location" placeholder="Location" ng-model="data.location"/>
-  </div>
-
-  <button class="button">Update</button>
 </form>

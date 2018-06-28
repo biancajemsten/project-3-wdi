@@ -40,7 +40,6 @@
       <div class="card">
         <div class="card-content">
           <div class="content">
-
               <h5 class="title is-5  is-centered">{{event.eventname}}</h6>
               <p><strong>Venue: </strong> {{event.venue.name}}</p>
               <p><strong>Date: </strong> {{event.date}}</p>
@@ -50,7 +49,6 @@
               <p><strong>Event starts: </strong> {{event.openingtimes.doorsopen}}</p>
               <p ng-if="event.entryprice"><strong>Ticket Price: </strong> {{event.entryprice}}</p>
               <button class="button" name="button" ng-click="choseEvent(event)">Pick this event</button>
-
           </div>
         </div>
       </div>
@@ -66,12 +64,10 @@
       <div class="card">
         <div class="card-content">
           <div class="content">
-
               <h6 class="title is-6 is-centered">{{pickedEvent.name}}</h6>
               <p><strong>Venue: </strong> {{pickedEvent.venue}}</p>
               <p><strong>Date: </strong> {{pickedEvent.date}}</p>
-              <p><strong>Ticket Price: </strong> {{pickedEvent.price}}</p>
-
+              <p ng-if="pickedEvent.price"><strong>Ticket Price: </strong> {{pickedEvent.price}}</p>
           </div>
         </div>
       </div>
