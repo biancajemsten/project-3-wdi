@@ -1,0 +1,14 @@
+@import './base/variables';
+
+span.tag{
+  background-color: white;
+  color: $dark-green;
+  border: 0.5px solid $dark-green;
+  .delete{
+    background-color: $dark-green;
+  }
+  a{
+    color: $dark-green; 
+  }
+  margin: 0px 5px;
+}
