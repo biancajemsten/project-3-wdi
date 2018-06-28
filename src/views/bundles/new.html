@@ -1,34 +1,35 @@
 <h2 class="is-2 title">Create a bundle</h2>
 
 <form name="form" novalidate ng-submit="searchEvents()">
-  <div class="columns is-multiline">
-    <div class="column is-half field">
-      <label for="search">What event are you going to?</label>
-      <input class="input" name="search" placeholder="Search..." ng-model="search" required/>
-      <div ng-messages="form.search.$error" ng-if="form.search.$dirty">
-        <small ng-message="required">This field is required </small>
-      </div>
-    </div>
-    <div class="column is-half field">
-      <label for="radius">Radius for restaurants and bars: </label>
-      <div class="control">
-        <div class="select">
-          <select ng-model="radius" name="radius" required>
-            <option value="500">0.5km</option>
-            <option value="1000">1km</option>
-            <option value="1500">1.5km</option>
-            <option value="2000">2km</option>
-            <option value="2500">2.5km</option>
-          </select>
+    <div class="columns is-multiline">
+      <div class="column is-half field">
+        <label for="search">What event are you going to?</label>
+        <input class="input" name="search" placeholder="Search..." ng-model="search" required/>
+        <div ng-messages="form.search.$error" ng-if="form.search.$dirty">
+          <small ng-message="required">This field is required </small>
         </div>
       </div>
-      <div ng-messages="form.radius.$error" ng-if="form.radius.$dirty">
-        <small ng-message="required">This field is required </small>
+      <div class="column is-half field">
+        <label for="radius">Radius for restaurants and bars: </label>
+        <div class="control">
+          <div class="select">
+            <select ng-model="radius" name="radius" required>
+              <option value="500">0.5km</option>
+              <option value="1000">1km</option>
+              <option value="1500">1.5km</option>
+              <option value="2000">2km</option>
+              <option value="2500">2.5km</option>
+            </select>
+          </div>
+        </div>
+        <div ng-messages="form.radius.$error" ng-if="form.radius.$dirty">
+          <small ng-message="required">This field is required </small>
+        </div>
       </div>
-    </div>
-    <div class="column">
-      <button class="button" name="button" ng-disabled="form.$invalid">Find my event</button>
-    </div>
+      <div class="column">
+        <button class="button" name="button" ng-disabled="form.$invalid">Find my event</button>
+      </div>
+  </div>
 </form>
 
 <div class="columns is-multiline" ng-class="{ 'hide': hideEvents }">
@@ -52,25 +53,28 @@
       </div>
     </div>
 </div>
+
 <div class="columns is-flex postEventContainer" ng-show="hideEvents">
   <div class="column is-one-third">
-    <div class="column titleColumn">
+    <div class="column titleColumn is-full">
       <h3>Your Event</h3>
     </div>
-    <div class="card">
-      <div class="card-content">
-        <div class="content">
-          <form>
-            <h6 class="title is-6">{{pickedEvent.name}}</h6>
-            <p><strong>Venue: </strong> {{pickedEvent.venue}}</p>
-            <p><strong>Date: </strong> {{pickedEvent.date}}</p>
-            <p><strong>Ticket Price: </strong> {{pickedEvent.price}}</p>
-          </form>
+    <div class="column is-full">
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <form>
+              <h6 class="title is-6">{{pickedEvent.name}}</h6>
+              <p><strong>Venue: </strong> {{pickedEvent.venue}}</p>
+              <p><strong>Date: </strong> {{pickedEvent.date}}</p>
+              <p><strong>Ticket Price: </strong> {{pickedEvent.price}}</p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="columns column is-multiline is-one-third">
+  <div class="columns column is-multiline is-one-third no-margin" ng-show="!skipRestaurant">
     <div class="column is-half titleColumn">
       <h3>Restaurants</h3>
     </div>
@@ -117,7 +121,7 @@
       </div>
     </div>
   </div>
-  <div class="columns column is-multiline is-one-third">
+  <div class="columns column is-multiline is-one-third no-margin">
     <div class="column is-full titleColumn">
       <h3>Bars</h3>
     </div>
@@ -152,7 +156,7 @@
       <div class="card" >
         <div class="card-content">
           <form>
-            <h6 class="title is-6">{{pickedBar.name}}</h6>
+            <h6 class="title is-2">{{pickedBar.name}}</h6>
             <p><strong>Address:</strong>{{pickedBar.address}}</p>
             <p ng-if="pickedBar.rating"><strong>Rating: </strong> {{pickedBar.rating}}</p>
             <p ng-if="pickedBar.price_level"><strong>Price level: </strong> {{pickedBar.price_level}}</p>

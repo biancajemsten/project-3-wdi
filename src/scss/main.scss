@@ -16,6 +16,7 @@
 
 *{
   font-family: $font;
+  box-sizing: border-box; 
 }
 .hide{
   display: none !important;
