@@ -31,13 +31,14 @@
       </div>
   </div>
 </form>
+<button class="button" name="button" ng-class="{ 'hide': !hideEvents}" ng-click="createBundle()">Submit Bundle</button>
 
 <div class="columns is-multiline" ng-class="{ 'hide': hideEvents }">
     <div class="column is-3-desktop is-4-tablet" ng-repeat="event in events | filter: search">
       <div class="card">
         <div class="card-content">
           <div class="content">
-            <form>
+
               <h5 class="title is-5  is-centered">{{event.eventname}}</h6>
               <p><strong>Venue: </strong> {{event.venue.name}}</p>
               <p><strong>Date: </strong> {{event.date}}</p>
@@ -47,7 +48,7 @@
               <p><strong>Event starts: </strong> {{event.openingtimes.doorsopen}}</p>
               <p ng-if="event.entryprice"><strong>Ticket Price: </strong> {{event.entryprice}}</p>
               <button class="button" name="button" ng-click="choseEvent(event)">Pick this event</button>
-            </form>
+
           </div>
         </div>
       </div>
@@ -56,36 +57,36 @@
 
 <div class="columns is-flex postEventContainer" ng-show="hideEvents">
   <div class="column is-one-third">
-    <div class="column titleColumn is-full">
+    <div class="column is-full">
       <h3>Your Event</h3>
     </div>
     <div class="column is-full">
       <div class="card">
         <div class="card-content">
           <div class="content">
-            <form>
-              <h6 class="title is-6">{{pickedEvent.name}}</h6>
+
+              <h6 class="title is-6 is-centered">{{pickedEvent.name}}</h6>
               <p><strong>Venue: </strong> {{pickedEvent.venue}}</p>
               <p><strong>Date: </strong> {{pickedEvent.date}}</p>
               <p><strong>Ticket Price: </strong> {{pickedEvent.price}}</p>
-            </form>
+
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="columns column is-multiline is-one-third no-margin" ng-show="!skipRestaurant">
-    <div class="column is-half titleColumn">
+    <div class="column is-half">
       <h3>Restaurants</h3>
     </div>
-    <div class="column is-half buttonColumn titleColumn">
+    <div class="column is-half buttonColumn">
       <button class="skipButton button" ng-click="skipRestaurants()">Skip Restaurants</button>
     </div>
     <div class="column is-full" ng-repeat="restaurant in restaurants" ng-show="!hideRestaurants">
       <div class="card">
         <div class="card-content">
           <form>
-            <h6 class="title is-6">{{restaurant.name}}</h6>
+            <h6 class="titlePlace is-6">{{restaurant.name}}</h6>
             <p><strong>Address:</strong>{{restaurant.details.formatted_address}}</p>
             <p ng-show="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
             <p ng-show="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
@@ -111,25 +112,24 @@
     <div class="column is-full" ng-show="hideRestaurants">
       <div class="card" >
         <div class="card-content">
-          <form>
-            <h6 class="title is-6">{{pickedRestaurant.name}}</h6>
+
+            <h6 class="titlePlace is-6">{{pickedRestaurant.name}}</h6>
             <p><strong>Address:</strong>{{pickedRestaurant.address}}</p>
             <p ng-show="pickedRestaurant.rating"><strong>Rating: </strong> {{pickedRestaurant.rating}}</p>
             <p ng-show="pickedRestaurant.price_level"><strong>Price level: </strong> {{pickedRestaurant.price_level}}</p>
-          </form>
         </div>
       </div>
     </div>
   </div>
   <div class="columns column is-multiline is-one-third no-margin">
-    <div class="column is-full titleColumn">
+    <div class="column is-full">
       <h3>Bars</h3>
     </div>
     <div class="column is-full" ng-repeat="bar in bars"  ng-show="!hideBars">
       <div class="card">
         <div class="card-content">
           <form>
-            <h6 class="title is-6">{{bar.name}}</h6>
+            <h6 class="titlePlace is-6">{{bar.name}}</h6>
             <p><strong>Address:</strong>{{bar.details.formatted_address}}</p>
             <p ng-if="bar.rating"><strong>Rating: </strong> {{bar.rating}}</p>
             <p ng-if="bar.price_level"><strong>Price level: </strong> {{bar.price_level}}</p>
@@ -155,15 +155,14 @@
     <div class="column is-full" ng-show="hideBars">
       <div class="card" >
         <div class="card-content">
-          <form>
-            <h6 class="title is-2">{{pickedBar.name}}</h6>
+
+            <h6 class="titlePlace is-6">{{pickedBar.name}}</h6>
             <p><strong>Address:</strong>{{pickedBar.address}}</p>
             <p ng-if="pickedBar.rating"><strong>Rating: </strong> {{pickedBar.rating}}</p>
             <p ng-if="pickedBar.price_level"><strong>Price level: </strong> {{pickedBar.price_level}}</p>
-          </form>
+
         </div>
       </div>
     </div>
   </div>
 </div>
-<button class="button" name="button" ng-class="{ 'hide': !hideEvents}" ng-click="createBundle()">Submit Bundle</button>

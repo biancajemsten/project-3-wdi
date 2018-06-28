@@ -1,5 +1,4 @@
-
-  .skipButton{
+.skipButton{
     height: 20px;
     font-size: 10px;
   }
@@ -7,10 +6,11 @@
   text-align: right;
 }
 
-.titleColumn{
-  max-height: 40px;
-}
-
 .postEventContainer{
   align-items: flex-start;
+}
+
+.titlePlace{
+  font-weight: bold;
+  text-align: center; 
 }
