@@ -1,0 +1,54 @@
+<section class="columns">
+  <div class="column is-half-desktop">
+    <img src="{{ user.image }}" alt="">
+    <h3 class="title">{{ user.firstName }} {{ user.lastName }}</h3>
+  </div>
+  <div class="column is-half-desktop">
+    <h5><strong>Based in:</strong> {{ user.location }}</h5>
+    <hr>
+    <h5><strong>Preferred Music Genres:</strong>
+    <span ng-repeat="genre in user.musicGenres" class="tag">
+      {{ genre }}
+      <button ng-if="currentUser._id === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
+    </span>
+    <hr>
+    <div class="dropdown" ng-class="{ 'is-active': dropdownOpen }" ng-if="currentUser._id === user._id">
+      <div ng-click="toggleMenu()">
+        <button class="button">
+          <span>Add Music Genres</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item" ng-click="addGenre(genre)" ng-repeat="genre in genres">
+            <p>{{ genre }}</p>
+            <hr class="dropdown-divider">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<a class="button" ng-if="currentUser._id === user._id"ui-sref="usersEdit({ id: user._id })">Edit</a>
+<hr>
+
+<section class="columns">
+  <div class="column is-half-desktop">
+    <h3>Previous Bundles</h3>
+    <hr>
+    <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.previousBundles">
+      <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+    </a>
+  </div>
+  <div class="column is-half-desktop">
+    <h3>Upcoming Bundles</h3>
+    <hr>
+    <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.upcomingBundles">
+      <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
+    </a>
+  </div>
+</section>

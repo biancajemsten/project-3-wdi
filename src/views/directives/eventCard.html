@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-content">
+    <div class="content">
+      <form>
+        <h6 class="title is-6">{{eventName}}</h6>
+        <p><strong>Venue: </strong> {{venueName}}</p>
+        <p><strong>Date: </strong> {{eventDate}}</p>
+        <p><strong>Address: </strong> {{venueAddress}}, {{venueTown}}</p>
+        <p><strong>Event type: </strong> {{eventType}}</p>
+        <p><strong>Description: </strong> {{description}}</p>
+        <p><strong>Event starts: </strong> {{doorsopen}}</p>
+        <p ng-if="entryprice"><strong>Ticket Price: </strong> {{entryprice}}</p>
+        <button class="button" name="button" ng-click="choseEvent(event)">Pick this event</button>
+      </form>
+    </div>
+  </div>
+</div>

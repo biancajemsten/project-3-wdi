@@ -1,0 +1,44 @@
+@import 'base/typography';
+@import 'base/variables';
+@import 'base/globalClasses';
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/navbar';
+@import 'components/flashMessages';
+@import 'components/tags';
+@import 'layouts/responsive';
+@import 'pages/login_register';
+@import 'pages/homepage';
+@import 'pages/userIndex';
+@import 'pages/bundleShow';
+@import 'pages/bundlesNew';
+
+*{
+  font-family: $font;
+  box-sizing: border-box;
+}
+.hide{
+  display: none !important;
+}
+
+.map {
+  height: 500px;
+  margin-bottom: 60px;
+}
+
+html{
+  background-color: $off-white;
+}
+body {
+  margin-top: 80px !important;
+}
+
+
+input {
+    background-color:transparent;
+    border: 1px solid grey;
+}
+
+p.ng-binding {
+  max-width: 350px;
+}

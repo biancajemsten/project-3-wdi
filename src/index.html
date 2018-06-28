@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="bundleApi">
 <head>
   <meta charset="utf-8">
-  <title>WDI32 Group Project</title>
+  <title>Bundle API</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt4E-WEbD72VuN0hRhsoIAOAoYjEjxkTY&libraries=places"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
-<body>
+<body ng-controller="MainCtrl">
+  <nav class="navbar is-fixed-top">
+    <div class="navbar-brand">
+      <a class="navbar-item" ui-sref="home">Home</a>
 
-  <h1>WDI32 Group Project</h1>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" ng-class="{ 'is-active': navbarOpen }" ng-click="toggleMenu()">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
+    <div class="navbar-menu" ng-class="{ 'is-active': navbarOpen }">
+      <div class="navbar-end">
+        <a class="navbar-item" ui-sref="usersIndex">All Users</a>
+        <a class="navbar-item" ui-sref="bundlesNew" ng-if="isAuthenticated()">New Bundle</a>
+        <a class="navbar-item" ui-sref="usersShow({ id: currentUser._id })" ng-if="isAuthenticated()">My Profile</a>
+        <a class="navbar-item" ui-sref="login" ng-if="!isAuthenticated()">Login</a>
+        <a class="navbar-item" ui-sref="register" ng-if="!isAuthenticated()">Register</a>
+        <a class="navbar-item" ng-click="logout()" ng-if="isAuthenticated()">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="notification is-{{flashMessage.type}} is-flash" ng-class="{ 'is-active': flashMessage }">
+      {{ flashMessage.content }}
+    </div
+
+  <section class="section">
+    <div class="container">
+      <ui-view></ui-view>
+    </div>
+  </section>
 </body>
 </html>

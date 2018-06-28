@@ -1,0 +1,15 @@
+<h1 class="title is-3">All Users</h1>
+<hr>
+<div class="field">
+  <input class="input" name="search" placeholder="Search users..." autocomplete="off" ng-model="search"/>
+</div>
+<hr>
+<div class="columns is-multiline">
+  <div class="column is-one-quarter" id="user-column" ng-repeat="user in users | filter: search">
+    <a ui-sref="usersShow({ id: user._id })">
+      <img width="250px" src="{{ user.image }}" alt="{{ user.firstName }} {{ user.lastName }}">
+      <h1 class="title is-5">{{ user.firstName }} {{ user.lastName }}</h1>
+    </a>
+    <h2>{{ user.bundles.length }} bundle(s)</h2>
+  </div>
+</div>

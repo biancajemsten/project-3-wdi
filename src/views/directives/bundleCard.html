@@ -1,0 +1,18 @@
+<div class="card bundleCard">
+  <h3 class="is-centered">{{ date | date:'fullDate'}}</h3>
+  <hr>
+  <div class="columns">
+    <div class="column is-one-third is-centered">
+      <h2><strong>The event</strong></h2>
+      <h2>{{ event }}</h2>
+    </div>
+    <div class="column is-one-third is-centered">
+      <h2 ng-show="restaurant"><strong>The restaurant</strong></h2>
+      <h2>{{ restaurant }}</h2>
+    </div>
+    <div class="column is-one-third is-centered">
+      <h2 ng-show="bar"><strong>The bar</strong></h2>
+      <h2>{{ bar }}</h2>
+    </div>
+  </div>
+</div>
