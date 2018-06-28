@@ -1,0 +1,9 @@
+div#user-column {
+  transition: 0.3s ease;
+    &:hover {
+      transform: scale(1.005);
+    }
+  a, h2 {
+    text-align: center;
+  }
+}

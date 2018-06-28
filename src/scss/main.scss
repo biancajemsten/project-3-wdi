@@ -7,8 +7,7 @@
 @import 'components/flashMessages';
 @import 'components/tags';
 @import 'layouts/responsive';
-@import 'pages/login';
-@import 'pages/registration';
+@import 'pages/login_register';
 @import 'pages/homepage';
 @import 'pages/userIndex';
 @import 'pages/bundleShow';
@@ -16,6 +15,7 @@
 
 *{
   font-family: $font;
+  box-sizing: border-box;
 }
 .hide{
   display: none !important;

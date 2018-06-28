@@ -34,8 +34,8 @@
     </div>
   </div>
   <div class="field">
-    <label class="label" for="passwordConfirmation">Password confirmation</label>
-    <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password confirmation" ng-model="data.passwordConfirmation" required ng-pattern="data.password" />
+    <label class="label" for="passwordConfirmation">Password Confirmation</label>
+    <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" ng-model="data.passwordConfirmation" required ng-pattern="data.password" />
 
     <div ng-messages="form.passwordConfirmation.$error" ng-if="form.passwordConfirmation.$dirty">
       <small ng-message="required">This field is required</small>
@@ -43,5 +43,5 @@
     </div>
   </div>
 
-  <button class="button" ng-disabled="form.$invalid">Submit</button>
+  <button class="button" id="submit" ng-disabled="form.$invalid">Submit</button>
 </form>
