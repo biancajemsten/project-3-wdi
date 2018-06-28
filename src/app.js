@@ -24,6 +24,7 @@ import filePicker from './directives/filePicker';
 import googleMap from './directives/googleMap';
 import googleAutocomplete from './directives/googleAutocomplete';
 import bundleCard from './directives/bundleCard';
+import eventCard from './directives/eventCard';
 
 angular.module('bundleApi', [
   'ui.router',
@@ -47,4 +48,5 @@ angular.module('bundleApi', [
   .directive('filePicker', filePicker)
   .directive('googleMap', googleMap)
   .directive('bundleCard', bundleCard)
+  .directive('eventCard', eventCard)
   .directive('googleAutocomplete', googleAutocomplete);
