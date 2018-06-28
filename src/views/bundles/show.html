@@ -10,7 +10,7 @@
       <p><strong>Doors open: </strong> {{bundle.event.startTime}}</p>
       <p><strong>Event type: </strong> {{bundle.event.eventType}}</p>
       <p><strong>Description: </strong> </p>
-        <p>{{bundle.event.description}}</p>
+      <p>{{bundle.event.description}}</p>
     </div>
   </div>
   <div ng-if="bundle.restaurant" class="column is-one-third">The Restaurant
@@ -38,20 +38,19 @@
     <h5 class="title is-5">Where are you coming from?</h5>
     <input class="input" name="searchLocation" ng-model="location" placeholder="Search location to find travel time" google-autocomplete set-current-location="setCurrentLocation(location)" test-coverage="testCoverage()">
     <p ng-if="coverageTest.points[0].covered === false">Sorry the location you have entered is out of zone</p>
-<hr>
-      <h5 ng-show="bundle.bar && bundle.restaurant" class="title is-6">Where would you like to go first?</h5>
-      <form ng-show="bundle.bar && bundle.restaurant">
-        <input ng-model="chooseLocation" type="radio" name="radio" id="radio-1" ng-value="bundle.restaurant.location"/>
-        <label for="restaurant">Restaurant</label>
+    <hr>
+    <h5 ng-show="bundle.bar && bundle.restaurant" class="title is-6">Where would you like to go first?</h5>
+    <form ng-show="bundle.bar && bundle.restaurant">
+      <input ng-model="chooseLocation" type="radio" name="radio" id="radio-1" ng-value="bundle.restaurant.location"/>
+      <label for="restaurant">Restaurant</label>
 
-        <input ng-model="chooseLocation" type="radio" name="radio" id="radio-2" ng-value="bundle.bar.location"/>
-        <label for="bar">Bar</label>
-      </form>
+      <input ng-model="chooseLocation" type="radio" name="radio" id="radio-2" ng-value="bundle.bar.location"/>
+      <label for="bar">Bar</label>
+    </form>
 
-      <hr>
-      <button class="button" ng-click="getTravelTime()">Get Travel Time</button>
-      <p ng-class="{ 'hide': hideTravelTime }">It will take you {{ travelTime.travel_time_minutes }} minutes to walk there.</p>
-      <hr>
+    <hr>
+    <button class="button" ng-click="getTravelTime()">Get Travel Time</button>
+    <p id="travel-time" ng-class="{ 'hide': hideTravelTime }">It will take you {{ travelTime.travel_time_minutes }} minutes to walk there.</p>
   </div>
 
   <div class="column is-half-desktop">
