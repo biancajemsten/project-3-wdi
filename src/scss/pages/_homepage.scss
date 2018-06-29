@@ -1,12 +1,12 @@
-.app-name {
-  font-size: 100px;
-  text-align: center;
-  margin-top: 250px;
+.footerStyle{
+  color: $off-white;
+  position: fixed !important
 }
 
-
 .homepageDiv{
-  background-color: $light-blue;
+  background-image: url('https://i.imgur.com/ZivosL7.jpg');
+  background-repeat:no-repeat;
+  background-size: cover;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -27,8 +27,8 @@
   overflow:hidden;
 
   font-family: $font;
-  font-size: 35px;
-  line-height: 40px;
+  font-size: 50px;
+  line-height: 55px;
   color: #ecf0f1;
   li + li{
     margin-top: 0px !important
@@ -37,8 +37,8 @@
   &__container {
     font-weight: 600;
     overflow: hidden;
-    height: 40px;
-    padding: 0 40px;
+    height: 55px;
+    padding: 0 55px;
 
     &:before {
       animationContent: '[';
@@ -75,8 +75,8 @@
 
     &__list {
       margin-top: 0 !important;
-      padding-left: 160px;
-      width: 380px;
+      padding-left: 250px;
+      width: 560px;
       margin-left: 50px;
       text-align: left;
       list-style: none !important;
@@ -89,7 +89,7 @@
       animation-iteration-count: infinite;
 
       &__item {
-        line-height:40px;
+        line-height:56px;
         margin:0;
       }
     }

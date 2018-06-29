@@ -41,5 +41,11 @@
     </div>
   </section>
   <ui-view ng-if="isHomepage"></ui-view>
+  <footer ng-class="{'footerStyle': isHomepage}">
+      <div class="container is-centered">
+        <hr/>
+        <small>&copy; Copyright 2018, BBJ Group Limited</small>
+      </div>
+  </footer>
 </body>
 </html>
