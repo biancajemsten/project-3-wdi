@@ -89,7 +89,7 @@
             <p ng-show="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
             <p ng-show="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
             <div ng-show="restaurant.id === currentShowRestaurant">
-              <p ng-show="restaurant.details.website"><strong>Website: </strong><a href="{{restaurant.details.website}}">Click here</a></p>
+              <p ng-show="restaurant.details.website"><strong>Website: </strong><a id="website-link" href="{{restaurant.details.website}}">Click here</a></p>
               <p ng-show="restaurant.details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>
                   <li>{{restaurant.details.opening_hours.weekday_text[0]}}</li>
