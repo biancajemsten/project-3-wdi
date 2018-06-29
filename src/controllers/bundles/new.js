@@ -58,7 +58,6 @@ function BundlesNewCtrl($scope, $http, $state){
     })
       .then(res => {
         $scope.restaurants = res.data.results;
-        console.log($scope.restaurants); 
         res.data.results.forEach(item => {
           $http({
             method: 'GET',
