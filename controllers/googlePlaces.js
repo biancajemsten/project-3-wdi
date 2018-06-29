@@ -14,7 +14,7 @@ function findGooglePlaces(req, res, next){
 function findPlaceDetails(req, res, next){
   rp({
     method: 'GET',
-    url: `https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.query.place_id}&fields=website,opening_hours,formatted_address,place_id&key=AIzaSyBEHFd9Xa4XDwejj0-Goj9EpDXLmjQRJvo`,
+    url: `https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.query.place_id}&fields=website,opening_hours,formatted_address,place_id&key=${googleApiKey}`,
     json: true
   })
     .then(response => res.json(response))

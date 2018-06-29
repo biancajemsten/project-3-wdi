@@ -6,7 +6,7 @@ const citymapperApiKey = process.env.CITYMAPPER_API_KEY;
 const dbURI = process.env.MONGODB_URI || `mongodb://localhost/bundle-api-${env}`;
 const secret = '3_u@*BT_a@E#mXw';
 
-// console.log('skiddle', process.env.GOOGLE_MAPS_API_KEY);
-// console.log('goodle',googleApiKey);
+console.log('skiddle', process.env.GOOGLE_MAPS_API_KEY);
+console.log('google',googleApiKey);
 
 module.exports = { port, dbURI, secret, googleApiKey, skiddleApiKey, citymapperApiKey };
