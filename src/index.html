@@ -33,12 +33,13 @@
 
   <div class="notification is-{{flashMessage.type}} is-flash" ng-class="{ 'is-active': flashMessage }">
       {{ flashMessage.content }}
-    </div
+    </div>
 
-  <section class="section">
+  <section ng-if="!isHomepage"class="section">
     <div class="container">
       <ui-view></ui-view>
     </div>
   </section>
+  <ui-view ng-if="isHomepage"></ui-view>
 </body>
 </html>
