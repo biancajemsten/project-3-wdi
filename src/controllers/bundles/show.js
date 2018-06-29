@@ -37,6 +37,7 @@ function BundlesShowCtrl( $scope, $http, $state){
 
   $scope.addAttendee = function(user){
     if(!$scope.bundle.attendees.includes(user)){
+      console.log(user);
       const data = {
         userId: user._id,
         firstName: user.firstName,
