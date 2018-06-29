@@ -1,3 +1,17 @@
 .skipButton{
   height: 20px;
 }
+
+.titlePlace{
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#website-link {
+  color: #fff;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}

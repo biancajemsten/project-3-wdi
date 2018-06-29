@@ -1,13 +1,13 @@
 <section class="columns">
-  <div class="column is-half-desktop">
-    <img src="{{ user.image }}" alt="">
+  <div class="column is-one-third-desktop">
+    <img width="300px" src="{{ user.image }}" alt=" {{ user.firstName }}">
     <h3 class="title">{{ user.firstName }} {{ user.lastName }}</h3>
   </div>
-  <div class="column is-half-desktop">
+  <div class="column is-two-thirds-desktop">
     <h5><strong>Based in:</strong> {{ user.location }}</h5>
     <hr>
     <h5><strong>Preferred Music Genres:</strong>
-    <span ng-repeat="genre in user.musicGenres" class="tag">
+    <span ng-repeat="genre in user.musicGenres" class="tag" id="genre-tag">
       {{ genre }}
       <button ng-if="currentUser._id === user._id" class="delete is-small" ng-click="deleteGenre(genre)"></button>
     </span>
@@ -38,14 +38,14 @@
 
 <section class="columns">
   <div class="column is-half-desktop">
-    <h3>Previous Bundles</h3>
+    <h3 class="title is-5" id="bundles-title">Previous Bundles</h3>
     <hr>
     <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.previousBundles">
       <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>
     </a>
   </div>
   <div class="column is-half-desktop">
-    <h3>Upcoming Bundles</h3>
+    <h3 class="title is-5" id="bundles-title">Upcoming Bundles</h3>
     <hr>
     <a ui-sref="bundlesShow({ id: bundle._id })" ng-repeat="bundle in user.upcomingBundles">
       <bundle-card event="bundle.event.name" bar="bundle.bar.name" restaurant="bundle.restaurant.name" date="bundle.event.date"></bundle-card>

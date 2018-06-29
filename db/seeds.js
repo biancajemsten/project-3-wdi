@@ -132,7 +132,7 @@ mongoose.connect(dbURI, (err, db) => {
         },
         creator: users[0],
         attendees: [{
-          userId: '5b325bc4cbc256270346f579',
+          userId: users[1]._id,
           firstName: 'Bianca',
           lastName: 'Jemsten'
         }]
@@ -190,7 +190,7 @@ mongoose.connect(dbURI, (err, db) => {
         },
         creator: users[1],
         attendees: [{
-          userId: '5b338d5ecf10883d66c0a832',
+          userId: users[2]._id,
           firstName: 'James',
           lastName: 'Newell'
         }]
@@ -247,7 +247,7 @@ mongoose.connect(dbURI, (err, db) => {
         },
         creator: users[2],
         attendees: [{
-          userId: '5b325bc4cbc256270346f579',
+          userId: users[1]._id,
           firstName: 'Bianca',
           lastName: 'Jemsten'
         }]
@@ -304,7 +304,7 @@ mongoose.connect(dbURI, (err, db) => {
         },
         creator: users[3],
         attendees: [{
-          userId: '5b34b361ea774b11d879d91d',
+          userId: users[5]._id,
           firstName: 'Gerry',
           lastName: 'Mathe'
         }]
@@ -361,7 +361,7 @@ mongoose.connect(dbURI, (err, db) => {
         },
         creator: users[4],
         attendees: [{
-          userId: '5b34b361ea774b11d879d91b',
+          userId: users[3]._id,
           firstName: 'Martin',
           lastName: 'Allgood'
         }]
@@ -418,7 +418,7 @@ mongoose.connect(dbURI, (err, db) => {
         },
         creator: users[5],
         attendees: [{
-          userId: '5b34b361ea774b11d879d91e',
+          userId: users[6]._id,
           firstName: 'Martin',
           lastName: 'Koeoep'
         }]
@@ -475,7 +475,7 @@ mongoose.connect(dbURI, (err, db) => {
         },
         creator: users[6],
         attendees: [{
-          userId: '5b34b361ea774b11d879d91a',
+          userId: users[2]._id,
           firstName: 'James',
           lastName: 'Newell'
         }]
@@ -532,7 +532,7 @@ mongoose.connect(dbURI, (err, db) => {
         },
         creator: users[0],
         attendees: [{
-          userId: '5b325bc4cbc256270346f579',
+          userId: users[1]._id,
           firstName: 'Bianca',
           lastName: 'Jemsten'
         }]

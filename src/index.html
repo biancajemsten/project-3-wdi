@@ -33,12 +33,19 @@
 
   <div class="notification is-{{flashMessage.type}} is-flash" ng-class="{ 'is-active': flashMessage }">
       {{ flashMessage.content }}
-    </div
+    </div>
 
-  <section class="section">
+  <section ng-if="!isHomepage"class="section">
     <div class="container">
       <ui-view></ui-view>
     </div>
   </section>
+  <ui-view ng-if="isHomepage"></ui-view>
+  <footer ng-class="{'footerStyle': isHomepage}">
+      <div class="container is-centered">
+        <hr/>
+        <small>&copy; Copyright 2018, BBJ Group Limited</small>
+      </div>
+  </footer>
 </body>
 </html>

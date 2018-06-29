@@ -34,7 +34,7 @@
 <div class="is-flex submitBundleButton">
   <button class="button" name="button" ng-class="{ 'hide': !hideEvents}" ng-click="createBundle()">Submit Bundle</button>
 </div>
-
+<hr>
 <div class="columns is-multiline" ng-class="{ 'hide': hideEvents }">
     <div class="column is-3-desktop is-4-tablet" ng-repeat="event in events | filter: search">
       <div class="card">
@@ -73,7 +73,7 @@
       </div>
     </div>
   </div>
-  <div class="columns column is-multiline is-one-third no-margin" ng-show="!skipRestaurant">
+  <div class="columns column is-multiline is-one-third no-margin flex-start" ng-show="!skipRestaurant">
     <div class="column is-half">
       <h3>Restaurants</h3>
     </div>
@@ -85,11 +85,11 @@
         <div class="card-content">
           <form>
             <h6 class="titlePlace is-6">{{restaurant.name}}</h6>
-            <p><strong>Address:</strong>{{restaurant.details.formatted_address}}</p>
+            <p><strong>Address: </strong>{{restaurant.details.formatted_address}}</p>
             <p ng-show="restaurant.rating"><strong>Rating: </strong> {{restaurant.rating}}</p>
             <p ng-show="restaurant.price_level"><strong>Price level: </strong> {{restaurant.price_level}}</p>
             <div ng-show="restaurant.id === currentShowRestaurant">
-              <p ng-show="restaurant.details.website"><strong>Website: </strong><a href="{{restaurant.details.website}}">Click here</a></p>
+              <p ng-show="restaurant.details.website"><strong>Website: </strong><a id="website-link" href="{{restaurant.details.website}}">Click here</a></p>
               <p ng-show="restaurant.details.opening_hours"><strong>Opening Hours: </strong>
                 <ul>
                   <li>{{restaurant.details.opening_hours.weekday_text[0]}}</li>
@@ -119,7 +119,7 @@
       </div>
     </div>
   </div>
-  <div class="columns column is-multiline is-one-third no-margin">
+  <div class="columns column is-multiline is-one-third no-margin flex-start">
     <div class="column is-full">
       <h3>Bars</h3>
     </div>

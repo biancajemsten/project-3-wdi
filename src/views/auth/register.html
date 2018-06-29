@@ -1,47 +1,59 @@
 <form ng-submit="handleSubmit()" name="form" novalidate>
-  <div class="field">
-    <label class="label" for="firstName">First Name</label>
-    <input class="input" name="firstName" id="firstName" placeholder="First Name" ng-model="data.firstName" required/>
+  <div class="columns is-multiline">
+    <div class="column i-half-desktop">
+      <div class="field">
+        <label class="label" for="firstName">First Name</label>
+        <input class="input" name="firstName" id="firstName" placeholder="First Name" ng-model="data.firstName" required/>
 
-    <div ng-messages="form.firstName.$error" ng-if="form.firstName.$dirty">
-      <small ng-message="required">This field is required </small>
+        <div ng-messages="form.firstName.$error" ng-if="form.firstName.$dirty">
+          <small ng-message="required">This field is required </small>
+        </div>
+      </div>
+    </div>
+    <div class="column i-half-desktop">
+      <div class="field">
+        <label class="label" for="lastName">Last Name</label>
+        <input class="input" name="lastName" id="lastName" placeholder="Last Name" ng-model="data.lastName" required/>
+
+        <div ng-messages="form.lastName.$error" ng-if="form.lastName.$dirty">
+          <small ng-message="required">This field is required </small>
+        </div>
+      </div>
+    </div>
+    <div class="column is-full-desktop">
+      <div class="field">
+        <label class="label" for="email">Email</label>
+        <input class="input" type="email" name="email" id="email" placeholder="Email" ng-model="data.email" required />
+
+        <div ng-messages="form.email.$error" ng-if="form.email.$dirty">
+          <small ng-message="required">This field is required </small>
+          <small ng-message="email">Please enter a valid email address </small>
+        </div>
+      </div>
+    </div>
+    <div class="column is-full-desktop">
+      <div class="field">
+        <label class="label" for="password">Password</label>
+        <input class="input" type="password" name="password" id="password" placeholder="Password" ng-model="data.password" required/>
+
+        <div ng-messages="form.password.$error" ng-if="form.password.$dirty">
+          <small ng-message="required">This field is required </small>
+        </div>
+      </div>
+    </div>
+    <div class="column is-full-desktop">
+      <div class="field">
+        <label class="label" for="passwordConfirmation">Password Confirmation</label>
+        <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" ng-model="data.passwordConfirmation" required ng-pattern="data.password" />
+
+        <div ng-messages="form.passwordConfirmation.$error" ng-if="form.passwordConfirmation.$dirty">
+          <small ng-message="required">This field is required</small>
+          <small ng-message="pattern">Passwords do not match</small>
+        </div>
+      </div>      
     </div>
   </div>
-  <div class="field">
-    <label class="label" for="lastName">Last Name</label>
-    <input class="input" name="lastName" id="lastName" placeholder="Last Name" ng-model="data.lastName" required/>
 
-    <div ng-messages="form.lastName.$error" ng-if="form.lastName.$dirty">
-      <small ng-message="required">This field is required </small>
-    </div>
-  </div>
-  <div class="field">
-    <label class="label" for="email">Email</label>
-    <input class="input" type="email" name="email" id="email" placeholder="Email" ng-model="data.email" required />
-
-    <div ng-messages="form.email.$error" ng-if="form.email.$dirty">
-      <small ng-message="required">This field is required </small>
-      <small ng-message="email">Please enter a valid email address </small>
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label" for="password">Password</label>
-    <input class="input" type="password" name="password" id="password" placeholder="Password" ng-model="data.password" required/>
-
-    <div ng-messages="form.password.$error" ng-if="form.password.$dirty">
-      <small ng-message="required">This field is required </small>
-    </div>
-  </div>
-  <div class="field">
-    <label class="label" for="passwordConfirmation">Password Confirmation</label>
-    <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" ng-model="data.passwordConfirmation" required ng-pattern="data.password" />
-
-    <div ng-messages="form.passwordConfirmation.$error" ng-if="form.passwordConfirmation.$dirty">
-      <small ng-message="required">This field is required</small>
-      <small ng-message="pattern">Passwords do not match</small>
-    </div>
-  </div>
 
   <button class="button" id="submit" ng-disabled="form.$invalid">Submit</button>
 </form>

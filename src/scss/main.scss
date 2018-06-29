@@ -10,6 +10,7 @@
 @import 'pages/login_register';
 @import 'pages/homepage';
 @import 'pages/userIndex';
+@import 'pages/userShow';
 @import 'pages/bundleShow';
 @import 'pages/bundlesNew';
 
@@ -26,6 +27,10 @@
   margin-bottom: 60px;
 }
 
+hr {
+  margin: 15px 0;
+}
+
 html{
   background-color: $off-white;
 }
@@ -33,6 +38,12 @@ body {
   margin-top: 80px !important;
 }
 
+footer{
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 5px;
+}
 
 input {
     background-color:transparent;

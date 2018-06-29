@@ -4,6 +4,7 @@ function MainCtrl($scope, $auth, $state, $rootScope, $timeout, $transitions){
 
   $transitions.onSuccess({}, () => {
     $scope.navbarOpen = false;
+    $scope.isHomepage = $state.$current.name === 'home';
   });
 
   if($auth.isAuthenticated()) $scope.currentUser = $auth.getPayload().currentUser;
