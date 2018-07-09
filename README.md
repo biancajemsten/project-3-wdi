@@ -22,9 +22,13 @@ We used [Draw.io](https://www.draw.io/) to plan out the interface of our app. It
 ###### Task planning
 <p align="center"><img src="https://i.imgur.com/SjEDjRD.png" width="700"></p>
 
-Before the project started we planned out every task that had to be done and put them into [Trello Cards](https://trello.com/biancajemsten/boards). We used the color labels to indicate if it was a fontend or backend task(blue vs. red) and if it was a task crucial for MVP or an add-on (green vs. yellow). Initially everything was in the backlog. Then as we started building the app we moved cards to the other categories which were Doing (frontend), Doing (backend), To do, Bugs, and Done. 
+Before the project started we planned out every task that had to be done and put them into [Trello Cards](https://trello.com/biancajemsten/boards). We used the color labels to indicate if it was a fontend or backend task(blue vs. red) and if it was a task crucial for MVP or an add-on (green vs. yellow). Initially everything was in the backlog. Then as we started building the app we moved cards to the other categories which were Doing (frontend), Doing (backend), To do, Bugs, and Done.
 
 
 #### Challenges
+- Bundle New page needs loading time 
 
 #### On the to-do list
+- Mobile responsiveness
+- Bundle Edit page
+- Use directives to clean up the code
