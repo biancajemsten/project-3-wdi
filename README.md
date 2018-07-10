@@ -24,9 +24,62 @@ We used [Draw.io](https://www.draw.io/) to plan out the interface of our app. It
 
 Before the project started we planned out every task that had to be done and put them into [Trello Cards](https://trello.com/biancajemsten/boards). We used the color labels to indicate if it was a fontend or backend task(blue vs. red) and if it was a task crucial for MVP or an add-on (green vs. yellow). Initially everything was in the backlog. Then as we started building the app we moved cards to the other categories which were Doing (frontend), Doing (backend), To do, Bugs, and Done.
 
+#### The App
+
+###### Creating a new bundle
+
+<p align="center"><img src="https://i.imgur.com/n1SoVo2.gif" width="700"></p>
+
+**Searching for the event**
+
+The user types the event he or she is going to into the search bar, which can take both single and multi-word searches. The *Find my Event* button is disabled until the user has indicated both a search word and the preferred radius of restaurants and bars around the event. The button triggered a GET request to the Skiddle API sending the user's search word and returning up to 40 results.
+
+**Searching for the restaurant**
+
+After finding the correct event, the user clicks *Pick Event* which saves the event details, and sends a GET request to the Google Places API with the indicated radius and the coordinates of the picked event as queries. This returns a list of restaurants. It also takes the place_id of each response from Google Places and sends a second nested request to Google Place Details. This allows the user to view things such as the opening times and the url of the place.
+
+**Searching for the bar**
+
+At this point, the user can choose if they want to pick one of the restaurants or click *skip restaurants* to view the bars instead. The first option stores the data of the picked restaurant but both options call on the function shown below.
+
+```
+$scope.findBars = function(){
+  $http({
+    method: 'GET',
+    url: 'api/findPlaces',
+    params: {
+      lat: pickedEvent.location.lat,
+      lng: pickedEvent.location.lng,
+      radius: $scope.radius,
+      type: 'bar'
+    }
+  })
+    .then(res => {
+      $scope.bars = res.data.results;
+      res.data.results.forEach(item => {
+        $http({
+          method: 'GET',
+          url: '/api/findDetails',
+          params: { place_id: item.place_id}
+        })
+          .then(res => {
+            item.details= res.data.result;
+          });
+      });
+    });
+};
+```
+
+**Done**
+The initial search bar has now been replaces with a submit button which the user can click when they are happy with their bundle. It sends a POST request with all the data of the bundle and redirects of the showpage of that bundle. 
+
+
+
+
+
 
 #### Challenges
-- Bundle New page needs loading time 
+- Bundle New page needs loading time
 
 #### On the to-do list
 - Mobile responsiveness
