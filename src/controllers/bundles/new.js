@@ -101,7 +101,6 @@ function BundlesNewCtrl($scope, $http, $state){
 
   $scope.skipRestaurants = function(){
     $scope.findBars();
-    console.log('click');
     $scope.skipRestaurant = true;
   };
 
@@ -145,7 +144,6 @@ function BundlesNewCtrl($scope, $http, $state){
       },
       place_id: restaurant.place_id
     };
-    console.log($scope.pickedRestaurant);
     pickedRestaurant = $scope.pickedRestaurant;
     $scope.findBars();
   };
