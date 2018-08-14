@@ -95,7 +95,16 @@ The nested http requests and the large data that comes back from the requests ca
 
 The Citymapper API is very limited and only returns the travel time for driving. We would have liked to provide the travel time for more modes of transport and also potentially directions. Learning from this, if we were to do this again we would try to use Google Direction API as this may give more data that we can work with and ultimately give the user a better.
 
-#### Feature Wish List
+#### Wins
+
+Aside from the challenges and features we did not get around to we are proud of the app we have produced and have overall increased our knowledge about the MEAN stack. We are happy with:
+- Getting the API requests to talk to each other and the many features we implemented.
+- The dynamic show page of the bundle that shows/hides elements and acts differently depending on who the user is viewing.
+- The css animation on the homepage.
+- How we worked as a team.
+
+
+#### Future features
 **Mobile responsiveness**
 
 The application would be perfect for anyone to use on the go especially with our use of Citymapper API with it's travel time calculator. So this is a high priority for us to add to the functionality across the whole app.
@@ -108,7 +117,7 @@ Given the complexities of retrieving the correct information and then having to 
 
 **Directives**
 
-With the goal of making the code more readable and DRY, we created a couple of directives while we were refactoring. Unfortunately, we did not have enough time to implement them successfully. The directives work visually but as of right now the functionalities of the buttons will not work when the directives are used. We do not believe there is much work to add to make it work so directives are of high priority for us to add. 
+With the goal of making the code more readable and DRY, we created a couple of directives while we were refactoring. Unfortunately, we did not have enough time to implement them successfully. The directives work visually but as of right now the functionalities of the buttons will not work when the directives are used. We do not believe there is much work to add to make it work so directives are of high priority for us to add.
 
 **Notifications**
 
