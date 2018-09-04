@@ -5,7 +5,7 @@ function AuthLoginCtrl($scope, $auth, $state, $rootScope){
     console.log($scope.data);
     $auth.login($scope.data)
       .then(() => {
-        $state.go('bundlesNew'); 
+        $state.go('bundlesNew');
         $scope.setCurrentUser();
       })
       .catch(() => {
@@ -15,8 +15,6 @@ function AuthLoginCtrl($scope, $auth, $state, $rootScope){
         });
       });
   };
-
-
 }
 
 
